@@ -1,8 +1,8 @@
 # Atomic Fuel
-This package contains all of the front end library code for Atomic Jolt apps. It includes all front end code that was previosly in the `client/libs` directory.
+This package contains all of the front-end library code for Atomic Jolt apps. It includes all front-end code that was previously in the `client/libs` directory.
 
 ## Installation
-You should install atomic fuel into each individual app, not in the client directory. Just add as a regular dependency.
+You should install atomic fuel into each individual app not in the client directory. Just add as a regular dependency.
 
 `yarn add atomic-fuel`
 
