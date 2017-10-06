@@ -10,6 +10,7 @@
       ],
       "ignore": [
         "node_modules",
+        "**/*.spec.js"
       ]
     },
     "development": {
@@ -20,6 +21,7 @@
       ],
       "ignore": [
         "node_modules",
+        "**/*.spec.js"
       ]
     },
     "hot": {
@@ -31,6 +33,7 @@
       ],
       "ignore": [
         "node_modules",
+        "**/*.spec.js"
       ]
     },
     "production": {
@@ -43,6 +46,7 @@
       ],
       "ignore": [
         "node_modules",
+        "**/*.spec.js"
       ]
     }
   }
