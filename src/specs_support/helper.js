@@ -2,9 +2,9 @@ import _ from 'lodash';
 import { combineReducers } from 'redux';
 import nock from 'nock';
 
-import API from '../libs/middleware/api';
-import settings from '../libs/reducers/settings';
-import configureStore from '../libs/store/configure_store';
+import API from '../middleware/api';
+import settings from '../reducers/settings';
+import configureStore from '../store/configure_store';
 
 export default class Helper {
 
