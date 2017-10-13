@@ -18,15 +18,15 @@ var _nock = require('nock');
 
 var _nock2 = _interopRequireDefault(_nock);
 
-var _api = require('../libs/middleware/api');
+var _api = require('../middleware/api');
 
 var _api2 = _interopRequireDefault(_api);
 
-var _settings = require('../libs/reducers/settings');
+var _settings = require('../reducers/settings');
 
 var _settings2 = _interopRequireDefault(_settings);
 
-var _configure_store = require('../libs/store/configure_store');
+var _configure_store = require('../store/configure_store');
 
 var _configure_store2 = _interopRequireDefault(_configure_store);
 
