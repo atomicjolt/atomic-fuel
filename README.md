@@ -17,6 +17,7 @@ libs/
 -- loaders
 -- middleware
 -- reducers
+-- specs_support
 -- store
 ```
 If you wanted to use, for example, `libs/store/configure_store.js` you would write the following:
