@@ -4,7 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
 
 exports.getInitialSettings = getInitialSettings;
 
@@ -29,7 +31,7 @@ function getInitialSettings() {
   }
 
   _lodash2.default.forEach(args, function (arg) {
-    return settings = _extends({}, settings, arg);
+    return settings = (0, _extends3.default)({}, settings, arg);
   });
   return settings;
 }

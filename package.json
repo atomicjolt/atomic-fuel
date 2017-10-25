@@ -5,7 +5,7 @@
   "scripts": {
     "test": "./node_modules/jest/bin/jest.js --config=config/jest_config.json",
     "watch": "./node_modules/jest/bin/jest.js --config=config/jest_config.json --watch",
-    "build": "cross-env BABEL_ENV=es babel src --out-dir libs",
+    "build": "cross-env BABEL_ENV=production babel src --out-dir libs",
     "clean": "rimraf libs",
     "lint": "eslint src test",
     "prepare": "yarn clean && yarn build"

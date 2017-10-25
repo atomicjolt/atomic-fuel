@@ -3,8 +3,19 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _promise = require('babel-runtime/core-js/promise');
+
+var _promise2 = _interopRequireDefault(_promise);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
 
 var _lodash = require('lodash');
 
@@ -20,16 +31,14 @@ var _network2 = _interopRequireDefault(_network);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 var pendingRequests = {};
 
 var Api = function () {
   function Api() {
-    _classCallCheck(this, Api);
+    (0, _classCallCheck3.default)(this, Api);
   }
 
-  _createClass(Api, null, [{
+  (0, _createClass3.default)(Api, null, [{
     key: 'get',
     value: function get(url, apiUrl, jwt, csrf, params, headers) {
       var timeout = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : _network2.default.TIMEOUT;
@@ -166,7 +175,7 @@ var Api = function () {
   }, {
     key: 'promisify',
     value: function promisify(request) {
-      return new Promise(function (resolve, reject) {
+      return new _promise2.default(function (resolve, reject) {
         request.end(function (error, res) {
           if (error) {
             reject(error);
@@ -197,7 +206,6 @@ var Api = function () {
       return '';
     }
   }]);
-
   return Api;
 }();
 
