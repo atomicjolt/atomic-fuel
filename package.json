@@ -3,8 +3,8 @@
   "version": "1.0.3",
   "description": "Atomic Jolt's front-end library code",
   "scripts": {
-    "test": "./node_modules/jest/bin/jest.js --config=config/jest_config.json",
-    "watch": "./node_modules/jest/bin/jest.js --config=config/jest_config.json --watch",
+    "test": "jest --config=config/jest_config.json",
+    "watch": "jest --config=config/jest_config.json --watch",
     "build": "cross-env BABEL_ENV=production babel src --out-dir libs",
     "clean": "rimraf libs",
     "lint": "eslint src test",
@@ -29,6 +29,7 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
+    "babel-jest": "^21.2.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-rewire": "^1.1.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
