@@ -7,7 +7,7 @@
     "<rootDir>/node_modules",
     "<rootDir>/../node_modules"
   ],
-  "moduleFileExtensions": ["js", "jsx"],
+  "moduleFileExtensions": ["js", "jsx", "json"],
   "moduleDirectories": ["node_modules"],
   "testPathIgnorePatterns": ["/node_modules/", "/libs/"],
   "moduleNameMapper": {

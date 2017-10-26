@@ -1,6 +1,6 @@
 import api, { apiRequest } from './api';
 import Network from '../constants/network';
-import Helper from 'atomic-reactor/specs_support/helper';
+import Helper from '../specs_support/helper';
 
 describe('api middleware', () => {
   Helper.mockAllAjax();
