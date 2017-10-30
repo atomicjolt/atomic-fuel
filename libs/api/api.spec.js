@@ -4,17 +4,20 @@ var _nock = require('nock');
 
 var _nock2 = _interopRequireDefault(_nock);
 
+var _api = require('./api');
+
+var _api2 = _interopRequireDefault(_api);
+
 var _network = require('../constants/network');
 
 var _network2 = _interopRequireDefault(_network);
 
-var _helper = require('atomic-reactor/specs_support/helper');
+var _helper = require('../specs_support/helper');
 
 var _helper2 = _interopRequireDefault(_helper);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import api     from './api';
 describe('api', function () {
   var jwt = 'jwt_token';
   var apiUrl = 'http://www.example.com';
@@ -40,7 +43,7 @@ describe('api', function () {
     expectedHeaders['X-CSRF-Token'] = csrf;
     var nockRequest = _helper2.default.mockRequest('get', apiUrl, url, expectedHeaders);
 
-    api.get(url, apiUrl, jwt, csrf, params, headers).then(function (result) {
+    _api2.default.get(url, apiUrl, jwt, csrf, params, headers).then(function (result) {
       expect(result.statusCode).toBe(200);
       expect(result.text).toEqual(_helper2.default.testPayload());
     });
@@ -53,7 +56,7 @@ describe('api', function () {
     expectedHeaders['X-CSRF-Token'] = csrf;
     var nockRequest = _helper2.default.mockRequest('get', apiUrl, url, expectedHeaders);
 
-    api.get(url, apiUrl, null, csrf, params, headers).then(function (result) {
+    _api2.default.get(url, apiUrl, null, csrf, params, headers).then(function (result) {
       expect(result.statusCode).toBe(200);
     });
 
@@ -65,7 +68,7 @@ describe('api', function () {
     expectedHeaders.Authorization = 'Bearer ' + jwt;
     var nockRequest = _helper2.default.mockRequest('get', apiUrl, url, expectedHeaders);
 
-    api.get(url, apiUrl, jwt, null, params, headers).then(function (result) {
+    _api2.default.get(url, apiUrl, jwt, null, params, headers).then(function (result) {
       expect(result.statusCode).toBe(200);
     });
 
@@ -76,7 +79,7 @@ describe('api', function () {
     var url = '/api/test/full';
     var nockRequest = _helper2.default.mockRequest('get', apiUrl, url, expectedHeaders);
 
-    api.get('' + apiUrl + url, apiUrl, jwt, null, params, headers).then(function (result) {
+    _api2.default.get('' + apiUrl + url, apiUrl, jwt, null, params, headers).then(function (result) {
       expect(result.statusCode).toBe(200);
     });
 
@@ -87,7 +90,7 @@ describe('api', function () {
     var url = '/api/test';
     var nockRequest = _helper2.default.mockRequest('post', apiUrl, url, expectedHeaders);
 
-    api.post(url, apiUrl, jwt, csrf, params, body, headers).then(function (result) {
+    _api2.default.post(url, apiUrl, jwt, csrf, params, body, headers).then(function (result) {
       expect(result.statusCode).toBe(200);
     });
 
@@ -98,7 +101,7 @@ describe('api', function () {
     var url = '/api/test/full';
     var nockRequest = _helper2.default.mockRequest('post', apiUrl, url, expectedHeaders);
 
-    api.post('' + apiUrl + url, apiUrl, jwt, csrf, params, body, headers).then(function (result) {
+    _api2.default.post('' + apiUrl + url, apiUrl, jwt, csrf, params, body, headers).then(function (result) {
       expect(result.statusCode).toBe(200);
     });
 
@@ -109,7 +112,7 @@ describe('api', function () {
     var url = '/api/test/4';
     var nockRequest = _helper2.default.mockRequest('put', apiUrl, url, expectedHeaders);
 
-    api.put(url, apiUrl, jwt, csrf, params, body, headers).then(function (result) {
+    _api2.default.put(url, apiUrl, jwt, csrf, params, body, headers).then(function (result) {
       expect(result.statusCode).toBe(200);
       var request = result.req;
       expect(request.method.toLowerCase()).toEqual(_network2.default.PUT);
@@ -122,7 +125,7 @@ describe('api', function () {
     var url = '/api/test/5';
     var nockRequest = _helper2.default.mockRequest('delete', apiUrl, url, expectedHeaders);
 
-    api.del(url, apiUrl, jwt, csrf, params, headers).then(function (result) {
+    _api2.default.del(url, apiUrl, jwt, csrf, params, headers).then(function (result) {
       expect(result.statusCode).toBe(200);
     });
 
@@ -133,7 +136,7 @@ describe('api', function () {
     var url = '/api/test/6';
     var nockRequest = _helper2.default.mockRequest('get', apiUrl, url, expectedHeaders);
 
-    api.execRequest(_network2.default.GET, url, apiUrl, null, null).then(function (result) {
+    _api2.default.execRequest(_network2.default.GET, url, apiUrl, null, null).then(function (result) {
       expect(result.statusCode).toBe(200);
       expect(result.text).toEqual(_helper2.default.testPayload());
     });
@@ -146,7 +149,7 @@ describe('api', function () {
     var timeout = 1000;
     var nockRequest = _helper2.default.mockRequest('get', apiUrl, url, expectedHeaders);
 
-    api.execRequest(_network2.default.GET, url, apiUrl, null, null, {}, {}, {}, timeout).then(function (result) {
+    _api2.default.execRequest(_network2.default.GET, url, apiUrl, null, null, {}, {}, {}, timeout).then(function (result) {
       expect(result.statusCode).toBe(200);
       expect(result.text).toEqual(_helper2.default.testPayload());
     });
@@ -159,29 +162,29 @@ describe('api', function () {
 
     it('Reuses an existing GET request', function () {
       var requestType = _network2.default.GET;
-      var request1 = api.wrapRequest(url, requestMethod, requestType);
-      var request2 = api.wrapRequest(url, requestMethod, requestType);
+      var request1 = _api2.default.wrapRequest(url, requestMethod, requestType);
+      var request2 = _api2.default.wrapRequest(url, requestMethod, requestType);
       expect(request1).toBe(request2);
     });
 
     it('Does not reuse Posts requests', function () {
       var requestType = _network2.default.POST;
-      var request1 = api.wrapRequest(url, requestMethod, requestType);
-      var request2 = api.wrapRequest(url, requestMethod, requestType);
+      var request1 = _api2.default.wrapRequest(url, requestMethod, requestType);
+      var request2 = _api2.default.wrapRequest(url, requestMethod, requestType);
       expect(request1).not.toBe(request2);
     });
 
     it('Does not reuse Put requests', function () {
       var requestType = _network2.default.PUT;
-      var request1 = api.wrapRequest(url, requestMethod, requestType);
-      var request2 = api.wrapRequest(url, requestMethod, requestType);
+      var request1 = _api2.default.wrapRequest(url, requestMethod, requestType);
+      var request2 = _api2.default.wrapRequest(url, requestMethod, requestType);
       expect(request1).not.toBe(request2);
     });
 
     it('Does not reuse Del requests', function () {
       var requestType = _network2.default.DELETE;
-      var request1 = api.wrapRequest(url, requestMethod, requestType);
-      var request2 = api.wrapRequest(url, requestMethod, requestType);
+      var request1 = _api2.default.wrapRequest(url, requestMethod, requestType);
+      var request2 = _api2.default.wrapRequest(url, requestMethod, requestType);
       expect(request1).not.toBe(request2);
     });
   });

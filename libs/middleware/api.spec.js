@@ -20,7 +20,7 @@ var _network = require('../constants/network');
 
 var _network2 = _interopRequireDefault(_network);
 
-var _helper = require('atomic-reactor/specs_support/helper');
+var _helper = require('../specs_support/helper');
 
 var _helper2 = _interopRequireDefault(_helper);
 

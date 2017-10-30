@@ -16,7 +16,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function apiRequest(store, action) {
   var state = store.getState();
-  var promise = _api2.default.execRequest(action.method, action.url, state.settings.apiUrl, state.jwt, state.settings.csrfToken, action.params, action.body, action.headers, action.timeout);
+  var promise = _api2.default.execRequest(action.method, action.url, state.settings.api_url, state.jwt, state.settings.csrf_token, action.params, action.body, action.headers, action.timeout);
 
   if (promise) {
     promise.then(function (response) {
