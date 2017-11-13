@@ -1,6 +1,6 @@
 {
   "name": "atomic-fuel",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Atomic Jolt's front-end library code",
   "scripts": {
     "test": "jest --config=config/jest_config.json",
