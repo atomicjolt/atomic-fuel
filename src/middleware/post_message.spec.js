@@ -57,4 +57,11 @@ describe('postMessage middleware', () => {
     expect(spy).toHaveBeenCalled();
   });
 
+  it('HandlerSingleton.handleComm calls the dispatch when data is an object', () => {
+    const spy = jest.fn();
+    HandlerSingleton.prepareInstance(spy);
+    HandlerSingleton.instance.handleComm({ data: {} });
+    expect(spy).toHaveBeenCalled();
+  });
+
 });
