@@ -15,6 +15,10 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 
 var _class, _temp;
 
+var _lodash = require('lodash');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
 var _communicator = require('../communications/communicator');
 
 var _communicator2 = _interopRequireDefault(_communicator);
@@ -46,7 +50,7 @@ var HandlerSingleton = exports.HandlerSingleton = (_temp = _class = function () 
   (0, _createClass3.default)(HandlerSingleton, [{
     key: 'handleComm',
     value: function handleComm(e) {
-      var message = JSON.parse(e.data);
+      var message = _lodash2.default.isString(e.data) ? JSON.parse(e.data) : e.data;
       this.dispatch({
         communication: true,
         type: 'POST_MESSAGE_RECIEVED',
