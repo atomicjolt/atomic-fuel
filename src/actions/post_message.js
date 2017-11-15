@@ -6,8 +6,9 @@ const actions = [
 
 export const Constants = wrapper(actions, []);
 
-export const postMessage = message => ({
+export const postMessage = (message, broadcast = false) => ({
   type: Constants.POST_MESSAGE,
   postMessage: true,
-  message
+  broadcast,
+  message,
 });
