@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.HandlerSingleton = undefined;
 
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
@@ -22,13 +23,16 @@ var _post_message = require('../actions/post_message');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var HandlerSingleton = (_temp = _class = function () {
+var HandlerSingleton = exports.HandlerSingleton = (_temp = _class = function () {
   (0, _createClass3.default)(HandlerSingleton, null, [{
     key: 'prepareInstance',
     value: function prepareInstance(dispatch) {
+      var domain = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '*';
+
       if (!HandlerSingleton.instance) {
+        HandlerSingleton.communicator = new _communicator2.default(domain);
         HandlerSingleton.instance = new HandlerSingleton(dispatch);
-        _communicator2.default.enableListener(HandlerSingleton.instance);
+        HandlerSingleton.communicator.enableListener(HandlerSingleton.instance);
       }
     }
   }]);
@@ -45,14 +49,14 @@ var HandlerSingleton = (_temp = _class = function () {
       var message = JSON.parse(e.data);
       this.dispatch({
         communication: true,
-        type: 'POST_MESSAGE_RECIEVED_' + message.subject,
+        type: 'POST_MESSAGE_RECIEVED',
         message: message,
         data: e.data
       });
     }
   }]);
   return HandlerSingleton;
-}(), _class.instance = null, _temp);
+}(), _class.communicator = null, _class.instance = null, _temp);
 
 exports.default = function (store) {
   return function (next) {
@@ -60,12 +64,10 @@ exports.default = function (store) {
       if (action.postMessage) {
         // You have to call a post message action first before you will recieve messages
         HandlerSingleton.prepareInstance(store.dispatch);
-        if (action.type === _post_message.Constants.POST_MESSAGE) {
-          try {
-            _communicator2.default.broadcastMsg(action.message);
-          } catch (e) {
-            // do nothing
-          }
+        try {
+          HandlerSingleton.communicator.comm(action.message);
+        } catch (e) {
+          // do nothing
         }
       }
       next(action);

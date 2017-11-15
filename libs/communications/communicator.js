@@ -5,13 +5,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _stringify = require('babel-runtime/core-js/json/stringify');
-
-var _stringify2 = _interopRequireDefault(_stringify);
-
 var _set = require('babel-runtime/core-js/set');
 
 var _set2 = _interopRequireDefault(_set);
+
+var _stringify = require('babel-runtime/core-js/json/stringify');
+
+var _stringify2 = _interopRequireDefault(_stringify);
 
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
@@ -25,10 +25,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Communicator = function () {
   function Communicator() {
+    var domain = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '*';
     (0, _classCallCheck3.default)(this, Communicator);
+
+    this.domain = domain;
   }
 
-  (0, _createClass3.default)(Communicator, null, [{
+  (0, _createClass3.default)(Communicator, [{
     key: 'enableListener',
     value: function enableListener(handler) {
       // Create IE + others compatible event handler
@@ -41,16 +44,21 @@ var Communicator = function () {
       }, false);
     }
   }, {
-    key: 'broadcastMsg',
-    value: function broadcastMsg(payload) {
+    key: 'comm',
+    value: function comm(payload) {
+      parent.postMessage((0, _stringify2.default)(payload), this.domain);
+    }
+  }, {
+    key: 'broadcast',
+    value: function broadcast(payload) {
       // Post up the entire chain of parent windows.  This supports our use case
       // of the assessment-player being embedded in dumb content which is then
       // embedded in another controller that can understand this message.
       var parents = new _set2.default();
       var p = parent;
       while (!parents.has(p)) {
-        console.log('Posting message: ' + (0, _stringify2.default)(payload));
-        p.postMessage((0, _stringify2.default)(payload), '*');
+        // console.log(`Posting message: ${JSON.stringify(payload)}`);
+        p.postMessage((0, _stringify2.default)(payload), this.domain);
         parents.add(p);
         p = p.parent;
       }
