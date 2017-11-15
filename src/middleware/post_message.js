@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import Communicator from '../communications/communicator';
 import { Constants } from '../actions/post_message';
 
@@ -19,7 +20,7 @@ export class HandlerSingleton {
   }
 
   handleComm(e) {
-    const message = JSON.parse(e.data);
+    const message = _.isString(e.data) ? JSON.parse(e.data) : e.data;
     this.dispatch({
       communication: true,
       type: 'POST_MESSAGE_RECIEVED',
