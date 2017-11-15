@@ -1,12 +1,16 @@
 import Communicator from '../communications/communicator';
 import { Constants } from '../actions/post_message';
 
-class HandlerSingleton {
+export class HandlerSingleton {
+
+  static communicator = null;
   static instance = null;
-  static prepareInstance(dispatch) {
+
+  static prepareInstance(dispatch, domain = '*') {
     if (!HandlerSingleton.instance) {
+      HandlerSingleton.communicator = new Communicator(domain);
       HandlerSingleton.instance = new HandlerSingleton(dispatch);
-      Communicator.enableListener(HandlerSingleton.instance);
+      HandlerSingleton.communicator.enableListener(HandlerSingleton.instance);
     }
   }
 
@@ -18,7 +22,7 @@ class HandlerSingleton {
     const message = JSON.parse(e.data);
     this.dispatch({
       communication: true,
-      type: `POST_MESSAGE_RECIEVED_${message.subject}`,
+      type: 'POST_MESSAGE_RECIEVED',
       message,
       data: e.data
     });
@@ -29,12 +33,10 @@ export default store => next => (action) => {
   if (action.postMessage) {
     // You have to call a post message action first before you will recieve messages
     HandlerSingleton.prepareInstance(store.dispatch);
-    if (action.type === Constants.POST_MESSAGE) {
-      try {
-        Communicator.broadcastMsg(action.message);
-      } catch (e) {
-        // do nothing
-      }
+    try {
+      HandlerSingleton.communicator.comm(action.message);
+    } catch (e) {
+      // do nothing
     }
   }
   next(action);
