@@ -65,7 +65,11 @@ exports.default = function (store) {
         // You have to call a post message action first before you will recieve messages
         HandlerSingleton.prepareInstance(store.dispatch);
         try {
-          HandlerSingleton.communicator.comm(action.message);
+          if (action.broadcast) {
+            HandlerSingleton.communicator.broadcast(action.message);
+          } else {
+            HandlerSingleton.communicator.comm(action.message);
+          }
         } catch (e) {
           // do nothing
         }
