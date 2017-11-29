@@ -1,4 +1,4 @@
-import Constants from '../actions/errors';
+import { Constants } from '../actions/errors';
 
 const initialState = [];
 
