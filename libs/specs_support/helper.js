@@ -147,6 +147,50 @@ var Helper = function () {
         jasmine.clock().uninstall();
       });
     }
+  }, {
+    key: 'wrapMiddleware',
+    value: function wrapMiddleware(middleware) {
+      var state = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+      var calledWithState = {
+        dispatchedActions: []
+      };
+      var store = {
+        getState: jest.fn(function () {
+          return state;
+        }),
+        dispatch: jest.fn(function (action) {
+          return calledWithState.dispatchedActions.push(action);
+        })
+      };
+      var next = jest.fn();
+      var invoke = function invoke(action) {
+        return middleware(store)(next)(action);
+      };
+      var getCalledWithState = function getCalledWithState() {
+        return calledWithState;
+      };
+
+      return { store: store, next: next, invoke: invoke, getCalledWithState: getCalledWithState };
+    }
+  }, {
+    key: 'indicies',
+    value: function indicies(arr, a, b) {
+      return _lodash2.default.map([a, b], function (i) {
+        return _lodash2.default.indexOf(arr, i);
+      });
+    }
+  }, {
+    key: 'isBefore',
+    value: function isBefore() {
+      var ind = Helper.indicies(arguments.length <= 0 ? undefined : arguments[0], arguments.length <= 1 ? undefined : arguments[1], arguments.length <= 2 ? undefined : arguments[2]);
+      if (_lodash2.default.some(ind, function (i) {
+        return _lodash2.default.isNil(i);
+      })) {
+        throw new Error('Not found in arr');
+      }
+      return ind[0] < ind[1];
+    }
   }]);
   return Helper;
 }();
