@@ -115,4 +115,27 @@ export default class Helper {
     });
   }
 
+  static wrapMiddleware(middleware, state = {}) {
+    const calledWithState = {
+      dispatchedActions: [],
+    };
+    const store = {
+      getState: jest.fn(() => (state)),
+      dispatch: jest.fn(action => calledWithState.dispatchedActions.push(action)),
+    };
+    const next = jest.fn();
+    const invoke = action => middleware(store)(next)(action);
+    const getCalledWithState = () => calledWithState;
+
+    return { store, next, invoke, getCalledWithState };
+  }
+
+  static indicies(arr, a, b) { return _.map([a, b], i => _.indexOf(arr, i)); }
+
+  static isBefore(...args) {
+    const ind = Helper.indicies(args[0], args[1], args[2]);
+    if (_.some(ind, i => _.isNil(i))) { throw new Error('Not found in arr'); }
+    return ind[0] < ind[1];
+  }
+
 }
