@@ -18,13 +18,19 @@ exports.default = function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments[1];
 
-  if (action.type === _errors.Constants.CLEAR_ERRORS) {
-    return [];
-  }
 
-  if (action.error) {
-    return [].concat((0, _toConsumableArray3.default)(state), [action.error]);
-  }
+  switch (action.type) {
 
-  return state;
+    case _errors.Constants.CLEAR_ERRORS:
+      return [];
+
+    case _errors.Constants.ADD_ERROR:
+      return [].concat((0, _toConsumableArray3.default)(state), [action.error]);
+
+    default:
+      if (action.error) {
+        return [].concat((0, _toConsumableArray3.default)(state), [action.error]);
+      }
+      return state;
+  }
 };
