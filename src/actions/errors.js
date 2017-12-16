@@ -4,6 +4,7 @@ import Network from '../constants/network';
 // Local actions
 const actions = [
   'CLEAR_ERRORS',
+  'ADD_ERROR',
 ];
 
 // Actions that make an api request
@@ -15,5 +16,12 @@ export const Constants = wrapper(actions, requests);
 export function clearErrors() {
   return {
     type: Constants.CLEAR_ERRORS,
+  };
+}
+
+export function addError(error) {
+  return {
+    type   : Constants.ADD_ERROR,
+    error,
   };
 }

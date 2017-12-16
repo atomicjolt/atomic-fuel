@@ -39,4 +39,20 @@ describe('error reducer', () => {
     });
   });
 
+  describe('add error', () => {
+    it('adds a new errors', () => {
+      const initialState = [];
+      const state = error(initialState, { type: 'initializeme' });
+      expect(state).toEqual([]);
+
+      const action = {
+        type: Constants.ADD_ERROR,
+        error: new Error('something terrible'),
+      };
+
+      const errorState = error([], action);
+      expect(errorState[0]).toEqual(action.error);
+    });
+  });
+
 });
