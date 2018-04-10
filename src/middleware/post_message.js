@@ -20,7 +20,15 @@ export class HandlerSingleton {
   }
 
   handleComm(e) {
-    const message = _.isString(e.data) ? JSON.parse(e.data) : e.data;
+    let message = e.data;
+    if (_.isString(e.data)) {
+      try {
+        message = JSON.parse(e.data);
+      } catch(e) {
+        // We can't parse the data as JSON just send it through as a string
+        message = e.data;
+      }
+    }
     this.dispatch({
       communication: true,
       type: 'POST_MESSAGE_RECIEVED',

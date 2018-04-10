@@ -57,6 +57,13 @@ describe('postMessage middleware', () => {
     expect(spy).toHaveBeenCalled();
   });
 
+  it('HandlerSingleton.handleComm handles invalid json calls the dispatch', () => {
+    const spy = jest.fn();
+    HandlerSingleton.prepareInstance(spy);
+    HandlerSingleton.instance.handleComm({ data: 'The server responded with something invalid' });
+    expect(spy).toHaveBeenCalled();
+  });
+
   it('HandlerSingleton.handleComm calls the dispatch when data is an object', () => {
     const spy = jest.fn();
     HandlerSingleton.prepareInstance(spy);
