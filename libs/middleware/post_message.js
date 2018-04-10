@@ -50,7 +50,15 @@ var HandlerSingleton = exports.HandlerSingleton = (_temp = _class = function () 
   (0, _createClass3.default)(HandlerSingleton, [{
     key: 'handleComm',
     value: function handleComm(e) {
-      var message = _lodash2.default.isString(e.data) ? JSON.parse(e.data) : e.data;
+      var message = e.data;
+      if (_lodash2.default.isString(e.data)) {
+        try {
+          message = JSON.parse(e.data);
+        } catch (e) {
+          // We can't parse the data as JSON just send it through as a string
+          message = e.data;
+        }
+      }
       this.dispatch({
         communication: true,
         type: 'POST_MESSAGE_RECIEVED',
