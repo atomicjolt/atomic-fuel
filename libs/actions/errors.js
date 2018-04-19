@@ -31,9 +31,11 @@ function clearErrors() {
   };
 }
 
-function addError(error) {
+function addError(error, message, payload) {
   return {
     type: Constants.ADD_ERROR,
-    error: error
+    error: error,
+    message: message,
+    payload: payload
   };
 }
