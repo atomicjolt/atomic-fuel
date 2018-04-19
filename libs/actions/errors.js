@@ -31,11 +31,14 @@ function clearErrors() {
   };
 }
 
-function addError(error, message, payload) {
+// Error should be the original error, usually from a network response.
+function addError(error, message, context) {
   return {
     type: Constants.ADD_ERROR,
-    error: error,
-    message: message,
-    payload: payload
+    payload: {
+      error: error,
+      message: message,
+      context: context
+    }
   };
 }

@@ -25,11 +25,11 @@ exports.default = function () {
       return [];
 
     case _errors.Constants.ADD_ERROR:
-      return [].concat((0, _toConsumableArray3.default)(state), [action.error]);
+      return [].concat((0, _toConsumableArray3.default)(state), [action.payload]);
 
     default:
       if (action.error) {
-        return [].concat((0, _toConsumableArray3.default)(state), [action.error]);
+        return [].concat((0, _toConsumableArray3.default)(state), [{ error: error, context: action }]);
       }
       return state;
   }
