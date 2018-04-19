@@ -14,7 +14,11 @@ export default (state = initialState, action) => {
 
     default:
       if (action.error) {
-        return [...state, { error, context: action }];
+        return [...state, {
+          error: action.error,
+          message: action.error.message,
+          context: action,
+        }];
       }
       return state;
   }
