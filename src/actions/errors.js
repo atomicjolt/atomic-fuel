@@ -19,9 +19,10 @@ export function clearErrors() {
   };
 }
 
-export function addError(error) {
+export function addError(error, message) {
   return {
-    type   : Constants.ADD_ERROR,
+    type: Constants.ADD_ERROR,
     error,
+    message,
   };
 }
