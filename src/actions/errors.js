@@ -20,11 +20,13 @@ export function clearErrors() {
 }
 
 // Error should be the original error, usually from a network response.
-export function addError(error, message, payload) {
+export function addError(error, message, context) {
   return {
     type: Constants.ADD_ERROR,
-    error,
-    message,
-    payload,
+    payload: {
+      error,
+      message,
+      context,
+    },
   };
 }

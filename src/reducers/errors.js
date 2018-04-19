@@ -10,11 +10,11 @@ export default (state = initialState, action) => {
       return [];
 
     case Constants.ADD_ERROR:
-      return [...state, action.error];
+      return [...state, action.payload];
 
     default:
       if (action.error) {
-        return [...state, action.error];
+        return [...state, { error, context: action }];
       }
       return state;
   }
