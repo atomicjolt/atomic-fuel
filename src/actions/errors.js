@@ -19,6 +19,7 @@ export function clearErrors() {
   };
 }
 
+// Error should be the original error, usually from a network response.
 export function addError(error, message, payload) {
   return {
     type: Constants.ADD_ERROR,
