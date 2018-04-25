@@ -29,7 +29,11 @@ exports.default = function () {
 
     default:
       if (action.error) {
-        return [].concat((0, _toConsumableArray3.default)(state), [{ error: error, context: action }]);
+        return [].concat((0, _toConsumableArray3.default)(state), [{
+          error: action.error,
+          message: action.error.message,
+          context: action
+        }]);
       }
       return state;
   }
