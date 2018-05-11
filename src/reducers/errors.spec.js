@@ -17,13 +17,11 @@ describe('error reducer', () => {
         error: new Error('something terrible'),
       };
       const newState = error([], action);
-      expect(newState[0]).toEqual(
-        {
-          error: action.error,
-          message: action.error.message,
-          context: action,
-        }
-      );
+      expect(newState[0]).toEqual({
+        error: action.error,
+        message: action.error.message,
+        context: action,
+      });
     });
   });
 
@@ -34,13 +32,11 @@ describe('error reducer', () => {
         error: new Error('something terrible'),
       };
       const state = error([], action);
-      expect(state[0]).toEqual(
-        {
-          error: action.error,
-          message: action.error.message,
-          context: action,
-        }
-      );
+      expect(state[0]).toEqual({
+        error: action.error,
+        message: action.error.message,
+        context: action,
+      });
 
       const clearAction = {
         type: Constants.CLEAR_ERRORS
