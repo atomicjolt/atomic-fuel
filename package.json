@@ -1,6 +1,6 @@
 {
   "name": "atomic-fuel",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Atomic Jolt's front-end library code",
   "scripts": {
     "test": "jest --config=config/jest_config.json",
@@ -26,7 +26,6 @@
   },
   "homepage": "https://github.com/atomicjolt/atomic-fuel",
   "dependencies": {
-    "atomic-reactor": "^1.1.9",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
