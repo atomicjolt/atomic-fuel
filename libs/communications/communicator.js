@@ -57,14 +57,21 @@ var Communicator = function () {
   (0, _createClass3.default)(Communicator, [{
     key: 'enableListener',
     value: function enableListener(handler) {
+      this.handler = handler;
       // Create IE + others compatible event handler
       var eventMethod = window.addEventListener ? 'addEventListener' : 'attachEvent';
       var eventer = window[eventMethod];
       this.messageEvent = eventMethod === 'attachEvent' ? 'onmessage' : 'message';
       // Listen to message from child window
-      eventer(this.messageEvent, function (e) {
-        return handler.handleComm(e);
-      }, false);
+      eventer(this.messageEvent, this.handler.handleComm, false);
+    }
+  }, {
+    key: 'removeListener',
+    value: function removeListener() {
+      // Create IE + others compatible event handler
+      var eventMethod = window.removeEventListener ? 'removeEventListener' : 'detachEvent';
+      var eventer = window[eventMethod];
+      eventer(this.messageEvent, this.handler.handleComm, false);
     }
   }, {
     key: 'comm',

@@ -23,8 +23,6 @@ var _communicator = require('../communications/communicator');
 
 var _communicator2 = _interopRequireDefault(_communicator);
 
-var _post_message = require('../actions/post_message');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var HandlerSingleton = exports.HandlerSingleton = (_temp = _class = function () {
@@ -54,7 +52,7 @@ var HandlerSingleton = exports.HandlerSingleton = (_temp = _class = function () 
       if (_lodash2.default.isString(e.data)) {
         try {
           message = JSON.parse(e.data);
-        } catch (e) {
+        } catch (ex) {
           // We can't parse the data as JSON just send it through as a string
           message = e.data;
         }
