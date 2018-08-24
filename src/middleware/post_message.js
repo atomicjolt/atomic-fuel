@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import Communicator from '../communications/communicator';
-import { Constants } from '../actions/post_message';
 
 export class HandlerSingleton {
 
@@ -24,7 +23,7 @@ export class HandlerSingleton {
     if (_.isString(e.data)) {
       try {
         message = JSON.parse(e.data);
-      } catch(e) {
+      } catch (ex) {
         // We can't parse the data as JSON just send it through as a string
         message = e.data;
       }
