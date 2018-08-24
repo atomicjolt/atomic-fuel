@@ -20,20 +20,20 @@ export default class Communicator {
   }
 
   enableListener(handler) {
-    this.handler = handler;
     // Create IE + others compatible event handler
     const eventMethod = window.addEventListener ? 'addEventListener' : 'attachEvent';
     const eventer = window[eventMethod];
     this.messageEvent = eventMethod === 'attachEvent' ? 'onmessage' : 'message';
     // Listen to message from child window
-    eventer(this.messageEvent, this.handler.handleComm, false);
+    this.handleCommFunc = e => handler.handleComm(e);
+    eventer(this.messageEvent, this.handleCommFunc, false);
   }
 
   removeListener() {
     // Create IE + others compatible event handler
     const eventMethod = window.removeEventListener ? 'removeEventListener' : 'detachEvent';
     const eventer = window[eventMethod];
-    eventer(this.messageEvent, this.handler.handleComm, false);
+    eventer(this.messageEvent, this.handleCommFunc, false);
   }
 
   comm(payload) {
