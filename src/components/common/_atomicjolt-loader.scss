@@ -1,0 +1,71 @@
+$stroke-color: #333;
+
+.loading{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+	flex-direction: column;
+  margin: 10rem;
+
+	// p{
+	// 	font-family: 'LatoWeb', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	// 	font-size: 1.8rem;
+	// 	color: white;
+	// 	text-transform: uppercase;
+	// 	text-align: center;
+	// 	width: 100%;
+	// 	margin: 1rem 0;
+	// }
+
+	svg{
+		width: 80px;
+
+		polygon, polyline{
+			fill:none;
+			stroke: $stroke-color;
+			stroke-linecap:round;
+			stroke-linejoin:round;
+			stroke-width: 6px;
+		}
+		.cls-1{
+			stroke-dasharray: 0 250;
+			animation: line1 1.5s infinite ease;
+		}
+		.cls-2{
+			stroke-dasharray: 0 270;
+			animation: line2 1.5s infinite ease;
+		}
+	}
+
+	@keyframes line1 {
+		0%{
+			stroke-dasharray: 0 250;
+		}
+		40%{
+			stroke-dasharray: 250 250;
+		}
+		60%{
+			stroke-dasharray: 250 250;
+		}
+		100%{
+			stroke-dasharray: 0 250;
+		}
+	}
+	@keyframes line2 {
+		0%{
+			stroke-dasharray: 0 270;
+		}
+		40%{
+			stroke-dasharray: 270 270;
+		}
+		60%{
+			stroke-dasharray: 270 270;
+		}
+		100%{
+			stroke-dasharray: 0 270;
+		}
+	}
+}
