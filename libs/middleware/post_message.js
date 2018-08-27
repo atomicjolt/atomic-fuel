@@ -40,14 +40,11 @@ var HandlerSingleton = exports.HandlerSingleton = (_temp = _class = function () 
   }]);
 
   function HandlerSingleton(dispatch) {
+    var _this = this;
+
     (0, _classCallCheck3.default)(this, HandlerSingleton);
 
-    this.dispatch = dispatch;
-  }
-
-  (0, _createClass3.default)(HandlerSingleton, [{
-    key: 'handleComm',
-    value: function handleComm(e) {
+    this.handleComm = function (e) {
       var message = e.data;
       if (_lodash2.default.isString(e.data)) {
         try {
@@ -57,14 +54,17 @@ var HandlerSingleton = exports.HandlerSingleton = (_temp = _class = function () 
           message = e.data;
         }
       }
-      this.dispatch({
+      _this.dispatch({
         communication: true,
         type: 'POST_MESSAGE_RECIEVED',
         message: message,
         data: e.data
       });
-    }
-  }]);
+    };
+
+    this.dispatch = dispatch;
+  }
+
   return HandlerSingleton;
 }(), _class.communicator = null, _class.instance = null, _temp);
 

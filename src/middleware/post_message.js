@@ -18,7 +18,7 @@ export class HandlerSingleton {
     this.dispatch = dispatch;
   }
 
-  handleComm(e) {
+  handleComm = (e) => {
     let message = e.data;
     if (_.isString(e.data)) {
       try {
