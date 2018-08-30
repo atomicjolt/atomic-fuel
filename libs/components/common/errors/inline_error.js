@@ -33,7 +33,19 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _styles = require('../../../libs/styles');
+
+var _styles2 = _interopRequireDefault(_styles);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function renderStyles() {
+  (0, _styles2.default)('.error-banner {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: -webkit-flex;\n    display: flex;\n    -webkit-align-items: center;\n    align-items: center;\n    min-height: 4rem;\n    background: #f00;\n    padding: 0.8rem 1.2rem;\n    border-radius: 0.3rem;\n    margin: 20px 0;\n  }');
+  (0, _styles2.default)('.error-banner > i {\n    font-size: 2.4rem;\n    color: #fff;\n    margin-right: 1.2rem;\n  }');
+  (0, _styles2.default)('.error-banner h3 {\n    color: #fff;\n    font-size: 1.4rem;\n    font-family: \'montserratbold\';\n    font-weight: normal;\n    margin: 0;\n    margin-right: 3.2rem;\n  }');
+  (0, _styles2.default)('.error-banner__content {\n    color: #fff;\n    font-family: \'montserratregular\';\n    font-weight: normal;\n    font-size: 1.4rem;\n  }');
+  (0, _styles2.default)('.error-banner__content span {\n    margin-right: 0.8rem;\n  }');
+}
 
 var _ref = _react2.default.createElement(
   'i',
@@ -58,6 +70,7 @@ var InlineError = function (_React$PureComponent) {
   (0, _createClass3.default)(InlineError, [{
     key: 'render',
     value: function render() {
+      renderStyles();
       return _react2.default.createElement(
         'div',
         { className: 'error-banner' },
