@@ -24,6 +24,10 @@ var _stringify2 = _interopRequireDefault(_stringify);
 exports.postMessage = postMessage;
 exports.broadcastMessage = broadcastMessage;
 
+var _lodash = require('lodash');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Just post to the parent
@@ -84,6 +88,20 @@ var Communicator = function () {
     key: 'broadcast',
     value: function broadcast(payload) {
       broadcastMessage(payload, this.domain);
+    }
+  }], [{
+    key: 'parseMessageFromEvent',
+    value: function parseMessageFromEvent(e) {
+      var message = e.data;
+      if (_lodash2.default.isString(e.data)) {
+        try {
+          message = JSON.parse(e.data);
+        } catch (ex) {
+          // We can't parse the data as JSON just send it through as a string
+          message = e.data;
+        }
+      }
+      return message;
     }
   }]);
   return Communicator;
