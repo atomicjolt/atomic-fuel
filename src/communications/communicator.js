@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 // Just post to the parent
 export function postMessage(payload, domain = '*') {
   parent.postMessage(JSON.stringify(payload), domain);
@@ -17,6 +19,19 @@ export function broadcastMessage(payload, domain = '*') {
 export default class Communicator {
   constructor(domain = '*') {
     this.domain = domain;
+  }
+
+  static parseMessageFromEvent(e) {
+    let message = e.data;
+    if (_.isString(e.data)) {
+      try {
+        message = JSON.parse(e.data);
+      } catch (ex) {
+        // We can't parse the data as JSON just send it through as a string
+        message = e.data;
+      }
+    }
+    return message;
   }
 
   enableListener(handler) {
