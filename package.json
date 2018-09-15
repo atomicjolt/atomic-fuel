@@ -26,7 +26,16 @@
     "url": "https://github.com/atomicjolt/atomic-fuel/issues"
   },
   "homepage": "https://github.com/atomicjolt/atomic-fuel",
-  "dependencies": {
+  "peerDependencies": {
+    "babel-core": "^6.26.0",
+    "lodash": "^4.17.11",
+    "mime": "^1.4.1",
+    "react": "^16.5.1",
+    "react-redux": "^5.0.7",
+    "redux": "^3.6.0",
+    "superagent": "^3.8.2"
+  },
+  "devDependencies": {
     "atomic-reactor": "^3.1.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
