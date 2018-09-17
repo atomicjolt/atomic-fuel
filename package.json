@@ -33,6 +33,9 @@
     "react": "^16.5.1",
     "react-redux": "^5.0.7",
     "redux": "^3.6.0",
+    "redux-devtools": "^3.4.1",
+    "redux-devtools-dock-monitor": "^1.1.2",
+    "redux-devtools-log-monitor": "^1.4.0",
     "superagent": "^3.8.2"
   },
   "devDependencies": {
