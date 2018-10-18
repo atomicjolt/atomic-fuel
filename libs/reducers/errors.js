@@ -29,9 +29,20 @@ exports.default = function () {
 
     default:
       if (action.error) {
+        var message = action.error.message;
+        if (action.error.response && action.error.response.text) {
+          try {
+            var json = JSON.parse(action.error.response.text);
+            if (json) {
+              message = json.message;
+            }
+          } catch (ex) {
+            // We can't parse the data as JSON just let the original error message stand
+          }
+        }
         return [].concat((0, _toConsumableArray3.default)(state), [{
           error: action.error,
-          message: action.error.message,
+          message: message,
           context: action
         }]);
       }
