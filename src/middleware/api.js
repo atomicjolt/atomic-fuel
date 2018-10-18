@@ -19,7 +19,8 @@ export function apiRequest(store, action) {
     updatedParams,
     action.body,
     action.headers,
-    action.timeout);
+    action.timeout
+  );
 
   if (promise) {
     promise.then(
