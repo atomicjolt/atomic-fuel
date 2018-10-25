@@ -83,6 +83,10 @@ var AtomicQuery = function (_React$Component) {
             );
           }
           if (error) {
+            if (error.networkError && error.networkError.result && error.networkError.result.canvas_authorization_required) {
+              // This error will be handled by a Canvas reauth. Don't output an error.
+              return null;
+            }
             return _react2.default.createElement(_inline_error2.default, { error: error.message });
           }
           return _this2.props.children(result);

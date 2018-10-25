@@ -30,6 +30,12 @@ export default class AtomicQuery extends React.Component {
             );
           }
           if (error) {
+            if (error.networkError &&
+              error.networkError.result &&
+              error.networkError.result.canvas_authorization_required) {
+                // This error will be handled by a Canvas reauth. Don't output an error.
+                return null;
+            }
             return (
               <InlineError error={error.message} />
             );
