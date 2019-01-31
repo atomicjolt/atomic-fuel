@@ -29,6 +29,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _styles = require('../../libs/styles');
 
 var _styles2 = _interopRequireDefault(_styles);
@@ -36,30 +40,32 @@ var _styles2 = _interopRequireDefault(_styles);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function renderStyles() {
-  (0, _styles2.default)('.atomicjolt-loading-animation {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: -webkit-flex;\n    display: flex;\n    -webkit-align-items: center;\n    align-items: center;\n    flex-direction: column;\n    margin: 10rem;\n  }');
-  (0, _styles2.default)('.atomicjolt-loading-animation svg {\n    width: 80px;\n  }');
-  (0, _styles2.default)('.atomicjolt-loading-animation svg polygon, .atomicjolt-loading-animation svg polyline {\n    fill: none;\n    stroke: #333;\n    stroke-linecap: round;\n    stroke-linejoin: round;\n    stroke-width: 6px;\n  }');
-  (0, _styles2.default)('.atomicjolt-loading-animation svg .cls-1 {\n    stroke-dasharray: 0 250;\n    animation: line1 1.5s infinite ease;\n  }');
-  (0, _styles2.default)('.atomicjolt-loading-animation svg .cls-2 {\n    stroke-dasharray: 0 270;\n    animation: line2 1.5s infinite ease;\n  }');
+  var logoColor = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '#444';
+  var backgroundColor1 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '#FFEA00';
+  var backgroundColor2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '#FFFF56';
+
+  (0, _styles2.default)('.aj-loader{\n    position: relative;\n  }');
+  (0, _styles2.default)('.atomicjolt-loading-animation {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-direction: column;\n    margin: 48px auto;\n    width: 72px;\n    height: 72px;\n    border-radius: 50%;\n    background-image: linear-gradient(to top right, ' + backgroundColor1 + ', ' + backgroundColor2 + ');\n    box-shadow: -2px 3px 6px rgba(0,0,0,0.25);\n  }');
+  (0, _styles2.default)('.atomicjolt-loading-animation svg {\n    width: 38px;\n    position: relative;\n    left: -2px;\n    top: -1px;\n  }');
+  (0, _styles2.default)('.atomicjolt-loading-animation svg polygon, .atomicjolt-loading-animation svg polyline {\n    fill: none;\n    stroke: ' + logoColor + ';\n    stroke-linecap: round;\n    stroke-linejoin: round;\n    stroke-width: 8px;\n  }');
+  (0, _styles2.default)('.atomicjolt-loading-animation svg .cls-1 {\n    stroke-dasharray: 0 250;\n    animation: line1 1.5s infinite cubic-bezier(0.455, 0.03, 0.515, 0.955);\n  }');
+  (0, _styles2.default)('.atomicjolt-loading-animation svg .cls-2 {\n    stroke-dasharray: 0 270;\n    animation: line2 1.5s infinite cubic-bezier(0.455, 0.03, 0.515, 0.955);\n  }');
   (0, _styles2.default)('@keyframes line1 {\n    0% {\n      stroke-dasharray: 0 250;\n   }\n    40% {\n      stroke-dasharray: 250 250;\n   }\n    60% {\n      stroke-dasharray: 250 250;\n   }\n    100% {\n      stroke-dasharray: 0 250;\n   }\n  }');
   (0, _styles2.default)('@keyframes line2 {\n    0% {\n      stroke-dasharray: 0 270;\n   }\n    40% {\n      stroke-dasharray: 270 270;\n   }\n    60% {\n      stroke-dasharray: 270 270;\n   }\n    100% {\n      stroke-dasharray: 0 270;\n   }\n  }');
+  (0, _styles2.default)('.loader-text{\n    font-size: 24px;\n    font-family: \'Lato\', Arial, Helvetica, sans-serif;\n    font-weight: 500;\n    color: #222;\n    text-align: center;\n    margin: 0 0 48px;\n  }');
 }
 
 var _ref = _react2.default.createElement(
   'div',
-  null,
+  { className: 'atomicjolt-loading-animation' },
   _react2.default.createElement(
-    'div',
-    { className: 'atomicjolt-loading-animation' },
+    'svg',
+    { xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 91.87 114.09', role: 'img', 'aria-label': 'loading' },
     _react2.default.createElement(
-      'svg',
-      { xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 91.87 114.09', role: 'img', 'aria-label': 'loading' },
-      _react2.default.createElement(
-        'g',
-        { 'data-name': 'Layer 2' },
-        _react2.default.createElement('polygon', { className: 'cls-1', points: '40.45 111.32 89.11 99.26 71.35 19.9 21.1 89.71 40.45 111.32' }),
-        _react2.default.createElement('polyline', { className: 'cls-2', points: '50.67 2.77 2.77 69.96 25.47 94.65 66.36 84.13 50.67 2.77 71.35 19.9' })
-      )
+      'g',
+      { 'data-name': 'Layer 2' },
+      _react2.default.createElement('polygon', { className: 'cls-1', points: '40.45 111.32 89.11 99.26 71.35 19.9 21.1 89.71 40.45 111.32' }),
+      _react2.default.createElement('polyline', { className: 'cls-2', points: '50.67 2.77 2.77 69.96 25.47 94.65 66.36 84.13 50.67 2.77 71.35 19.9' })
     )
   )
 );
@@ -75,8 +81,17 @@ var Loader = function (_React$PureComponent) {
   (0, _createClass3.default)(Loader, [{
     key: 'render',
     value: function render() {
-      renderStyles();
-      return _ref;
+      renderStyles(this.props.logoColor, this.props.backgroundColor1, this.props.backgroundColor2);
+      return _react2.default.createElement(
+        'div',
+        { className: 'aj-loader' },
+        _ref,
+        _react2.default.createElement(
+          'p',
+          { className: 'loader-text' },
+          this.props.message
+        )
+      );
     }
   }]);
   return Loader;
