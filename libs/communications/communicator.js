@@ -22,6 +22,7 @@ var _stringify = require('babel-runtime/core-js/json/stringify');
 var _stringify2 = _interopRequireDefault(_stringify);
 
 exports.postMessage = postMessage;
+exports.broadcastRawMessage = broadcastRawMessage;
 exports.broadcastMessage = broadcastMessage;
 
 var _lodash = require('lodash');
@@ -37,8 +38,8 @@ function postMessage(payload) {
   parent.postMessage((0, _stringify2.default)(payload), domain);
 }
 
-// Post up the entire chain of parent windows.
-function broadcastMessage(payload) {
+// Post a payload without changing it up the entire chain of parent windows.
+function broadcastRawMessage(payload) {
   var domain = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '*';
 
   var parents = new _set2.default();
@@ -48,6 +49,13 @@ function broadcastMessage(payload) {
     parents.add(p);
     p = p.parent;
   }
+}
+
+// Post up the entire chain of parent windows.
+function broadcastMessage(payload) {
+  var domain = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '*';
+
+  broadcastRawMessage((0, _stringify2.default)(payload), domain);
 }
 
 var Communicator = function () {

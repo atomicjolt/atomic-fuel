@@ -5,8 +5,8 @@ export function postMessage(payload, domain = '*') {
   parent.postMessage(JSON.stringify(payload), domain);
 }
 
-// Post up the entire chain of parent windows.
-export function broadcastMessage(payload, domain = '*') {
+// Post a payload without changing it up the entire chain of parent windows.
+export function broadcastRawMessage(payload, domain = '*') {
   const parents = new Set();
   let p = parent;
   while (!parents.has(p)) {
@@ -14,6 +14,11 @@ export function broadcastMessage(payload, domain = '*') {
     parents.add(p);
     p = p.parent;
   }
+}
+
+// Post up the entire chain of parent windows.
+export function broadcastMessage(payload, domain = '*') {
+  broadcastRawMessage(JSON.stringify(payload), domain);
 }
 
 export default class Communicator {
