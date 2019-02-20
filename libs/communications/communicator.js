@@ -45,7 +45,7 @@ function broadcastRawMessage(payload) {
   var parents = new _set2.default();
   var p = parent;
   while (!parents.has(p)) {
-    p.postMessage((0, _stringify2.default)(payload), domain);
+    p.postMessage(payload, domain);
     parents.add(p);
     p = p.parent;
   }
