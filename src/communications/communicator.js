@@ -10,7 +10,7 @@ export function broadcastRawMessage(payload, domain = '*') {
   const parents = new Set();
   let p = parent;
   while (!parents.has(p)) {
-    p.postMessage(JSON.stringify(payload), domain);
+    p.postMessage(payload, domain);
     parents.add(p);
     p = p.parent;
   }
