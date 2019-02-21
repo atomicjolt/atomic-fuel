@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import addStyles from '../../libs/styles';
 
-import withSettings from '../settings';
+import { withSettings } from '../settings';
 
 function renderStyles(logoColor = '#444', backgroundColor1 = '#FFEA00', backgroundColor2 = '#FFFF56') {
   addStyles(`.aj-loader{

@@ -39,8 +39,6 @@ var _styles2 = _interopRequireDefault(_styles);
 
 var _settings = require('../settings');
 
-var _settings2 = _interopRequireDefault(_settings);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function renderStyles() {
@@ -106,4 +104,4 @@ var Loader = exports.Loader = function (_React$PureComponent) {
   return Loader;
 }(_react2.default.PureComponent);
 
-exports.default = (0, _settings2.default)(Loader);
+exports.default = (0, _settings.withSettings)(Loader);
