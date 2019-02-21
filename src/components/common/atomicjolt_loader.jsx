@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import addStyles from '../../libs/styles';
 
+import withSettings from '../settings';
 
 function renderStyles(logoColor = '#444', backgroundColor1 = '#FFEA00', backgroundColor2 = '#FFFF56') {
   addStyles(`.aj-loader{
@@ -78,21 +79,27 @@ function renderStyles(logoColor = '#444', backgroundColor1 = '#FFEA00', backgrou
   }`);
 }
 
-export default class Loader extends React.PureComponent {
+export class Loader extends React.PureComponent {
 
   static propTypes = {
     message: PropTypes.string,
     logoColor: PropTypes.string,
     backgroundColor1: PropTypes.string,
     backgroundColor2: PropTypes.string,
+    aj_loader: {
+      logoColor: PropTypes.string,
+      backgroundColor1: PropTypes.string,
+      backgroundColor2: PropTypes.string,
+    }
   };
 
   render() {
-    renderStyles(
-      this.props.logoColor,
-      this.props.backgroundColor1,
-      this.props.backgroundColor2,
-    );
+    const logoColor = this.props.settings.aj_loader.logoColor || this.props.logoColor || '#444';
+    const backgroundColor1 = this.props.settings.aj_loader.backgroundColor1 || this.props.backgroundColor1 || '#FFEA00';
+    const backgroundColor2 = this.props.settings.aj_loader.backgroundColor2 || this.props.backgroundColor2 || '#FFFF56';
+
+    renderStyles(logoColor, backgroundColor1, backgroundColor2);
+
     return (
       <div className="aj-loader">
         <div className="atomicjolt-loading-animation">
@@ -108,3 +115,5 @@ export default class Loader extends React.PureComponent {
     );
   }
 }
+
+export default withSettings(Loader);
