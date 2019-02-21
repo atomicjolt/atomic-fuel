@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = undefined;
+exports.Loader = undefined;
 
 var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
 
@@ -36,6 +36,10 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 var _styles = require('../../libs/styles');
 
 var _styles2 = _interopRequireDefault(_styles);
+
+var _settings = require('../settings');
+
+var _settings2 = _interopRequireDefault(_settings);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -70,7 +74,7 @@ var _ref = _react2.default.createElement(
   )
 );
 
-var Loader = function (_React$PureComponent) {
+var Loader = exports.Loader = function (_React$PureComponent) {
   (0, _inherits3.default)(Loader, _React$PureComponent);
 
   function Loader() {
@@ -81,7 +85,12 @@ var Loader = function (_React$PureComponent) {
   (0, _createClass3.default)(Loader, [{
     key: 'render',
     value: function render() {
-      renderStyles(this.props.logoColor, this.props.backgroundColor1, this.props.backgroundColor2);
+      var logoColor = this.props.settings.aj_loader.logoColor || this.props.logoColor || '#444';
+      var backgroundColor1 = this.props.settings.aj_loader.backgroundColor1 || this.props.backgroundColor1 || '#FFEA00';
+      var backgroundColor2 = this.props.settings.aj_loader.backgroundColor2 || this.props.backgroundColor2 || '#FFFF56';
+
+      renderStyles(logoColor, backgroundColor1, backgroundColor2);
+
       return _react2.default.createElement(
         'div',
         { className: 'aj-loader' },
@@ -97,4 +106,4 @@ var Loader = function (_React$PureComponent) {
   return Loader;
 }(_react2.default.PureComponent);
 
-exports.default = Loader;
+exports.default = (0, _settings2.default)(Loader);
