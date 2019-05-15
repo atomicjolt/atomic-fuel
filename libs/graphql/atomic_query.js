@@ -47,6 +47,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var _ref = _react2.default.createElement(_atomicjolt_loader2.default, null);
 
+var _ref2 = _react2.default.createElement(_inline_error2.default, { error: 'Your authentication token has expired. Please refresh the page to enable authentication.' });
+
 var AtomicQuery = function (_React$Component) {
   (0, _inherits3.default)(AtomicQuery, _React$Component);
 
@@ -87,6 +89,11 @@ var AtomicQuery = function (_React$Component) {
               // This error will be handled by a Canvas reauth. Don't output an error.
               return null;
             }
+
+            if (error.networkError && error.networkError.bodyText && error.networkError.bodyText.indexOf('JWT::ExpiredSignature') >= 0) {
+              return _ref2;
+            }
+
             return _react2.default.createElement(_inline_error2.default, { error: error.message });
           }
           return _this2.props.children(result);

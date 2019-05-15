@@ -33,9 +33,18 @@ export default class AtomicQuery extends React.Component {
             if (error.networkError &&
               error.networkError.result &&
               error.networkError.result.canvas_authorization_required) {
-                // This error will be handled by a Canvas reauth. Don't output an error.
-                return null;
+              // This error will be handled by a Canvas reauth. Don't output an error.
+              return null;
             }
+
+            if (error.networkError &&
+              error.networkError.bodyText &&
+              error.networkError.bodyText.indexOf('JWT::ExpiredSignature') >= 0) {
+              return (
+                <InlineError error="Your authentication token has expired. Please refresh the page to enable authentication." />
+              );
+            }
+
             return (
               <InlineError error={error.message} />
             );

@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.2.0
+### Features
+* Added error checking for expired JWT token
+
 ## 3.0.0
 ### Features
 * Updates to latest dependencies
