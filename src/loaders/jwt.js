@@ -3,14 +3,14 @@ import api from '../api/api';
 
 const REFRESH = 1000 * 60 * 60 * 23; // every 23 hours
 
-export default function(dispatch, currentUserId) {
+export default function(dispatch, currentUserId, refresh = REFRESH) {
   setInterval(() => {
     dispatch(refreshJwt(currentUserId));
-  }, REFRESH);
+  }, refresh);
 }
 
 export class Jwt {
-  constructor(jwt, apiUrl, oauthConsumerKey = null) {
+  constructor(jwt, apiUrl, oauthConsumerKey = null, refresh = REFRESH) {
     this.jwt = jwt;
     this.apiUrl = apiUrl;
 
@@ -23,6 +23,7 @@ export class Jwt {
     this.userId = this._decodedJwt.user_id;
     this.contextId = this._decodedJwt.context_id;
     this.oauthConsumerKey = this._decodedJwt.kid || oauthConsumerKey;
+    this.refresh = refresh;
   }
 
   enableRefresh() {
@@ -37,7 +38,7 @@ export class Jwt {
       api.get(url, this.apiUrl, this.jwt, null, params, null).then((response) => {
         this.jwt = response.body.jwt;
       });
-    }, REFRESH);
+    }, this.refresh);
   }
 
   get currentJwt() {

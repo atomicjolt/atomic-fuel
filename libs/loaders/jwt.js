@@ -14,9 +14,11 @@ var _createClass2 = require('babel-runtime/helpers/createClass');
 var _createClass3 = _interopRequireDefault(_createClass2);
 
 exports.default = function (dispatch, currentUserId) {
+  var refresh = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : REFRESH;
+
   setInterval(function () {
     dispatch((0, _jwt.refreshJwt)(currentUserId));
-  }, REFRESH);
+  }, refresh);
 };
 
 var _jwt = require('../actions/jwt');
@@ -32,6 +34,7 @@ var REFRESH = 1000 * 60 * 60 * 23; // every 23 hours
 var Jwt = exports.Jwt = function () {
   function Jwt(jwt, apiUrl) {
     var oauthConsumerKey = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+    var refresh = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : REFRESH;
     (0, _classCallCheck3.default)(this, Jwt);
 
     this.jwt = jwt;
@@ -46,6 +49,7 @@ var Jwt = exports.Jwt = function () {
     this.userId = this._decodedJwt.user_id;
     this.contextId = this._decodedJwt.context_id;
     this.oauthConsumerKey = this._decodedJwt.kid || oauthConsumerKey;
+    this.refresh = refresh;
   }
 
   (0, _createClass3.default)(Jwt, [{
@@ -64,7 +68,7 @@ var Jwt = exports.Jwt = function () {
         _api2.default.get(url, _this.apiUrl, _this.jwt, null, params, null).then(function (response) {
           _this.jwt = response.body.jwt;
         });
-      }, REFRESH);
+      }, this.refresh);
     }
   }, {
     key: 'currentJwt',

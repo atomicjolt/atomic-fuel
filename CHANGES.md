@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.3.0
+### Features
+* Allow customization of JWT refresh time
+
 ## 3.2.0
 ### Features
 * Added error checking for expired JWT token
