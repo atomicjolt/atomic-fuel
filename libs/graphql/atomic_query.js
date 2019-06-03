@@ -65,7 +65,7 @@ var AtomicQuery = (_temp2 = _class = function (_React$Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = AtomicQuery.__proto__ || (0, _getPrototypeOf2.default)(AtomicQuery)).call.apply(_ref, [this].concat(args))), _this), _this.dataLoaded = false, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = AtomicQuery.__proto__ || (0, _getPrototypeOf2.default)(AtomicQuery)).call.apply(_ref, [this].concat(args))), _this), _this.dataReady = false, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
   (0, _createClass3.default)(AtomicQuery, [{
@@ -107,9 +107,9 @@ var AtomicQuery = (_temp2 = _class = function (_React$Component) {
 
             return _react2.default.createElement(_inline_error2.default, { error: error.message });
           }
-          if (!_this2.dataLoaded) {
-            _this2.props.onDataLoaded(result.data);
-            _this2.dataLoaded = true;
+          if (!_this2.dataReady) {
+            _this2.props.onDataReady(result.data);
+            _this2.dataReady = true;
           }
           return _this2.props.children(result);
         }
@@ -118,6 +118,6 @@ var AtomicQuery = (_temp2 = _class = function (_React$Component) {
   }]);
   return AtomicQuery;
 }(_react2.default.Component), _class.defaultProps = {
-  onDataLoaded: function onDataLoaded() {}
+  onDataReady: function onDataReady() {}
 }, _temp2);
 exports.default = AtomicQuery;
