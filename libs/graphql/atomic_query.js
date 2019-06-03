@@ -25,6 +25,8 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp2;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -45,16 +47,25 @@ var _inline_error2 = _interopRequireDefault(_inline_error);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _ref = _react2.default.createElement(_atomicjolt_loader2.default, null);
+var _ref2 = _react2.default.createElement(_atomicjolt_loader2.default, null);
 
-var _ref2 = _react2.default.createElement(_inline_error2.default, { error: 'Your authentication token has expired. Please refresh the page to enable authentication.' });
+var _ref3 = _react2.default.createElement(_inline_error2.default, { error: 'Your authentication token has expired. Please refresh the page to enable authentication.' });
 
-var AtomicQuery = function (_React$Component) {
+var AtomicQuery = (_temp2 = _class = function (_React$Component) {
   (0, _inherits3.default)(AtomicQuery, _React$Component);
 
   function AtomicQuery() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, AtomicQuery);
-    return (0, _possibleConstructorReturn3.default)(this, (AtomicQuery.__proto__ || (0, _getPrototypeOf2.default)(AtomicQuery)).apply(this, arguments));
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = AtomicQuery.__proto__ || (0, _getPrototypeOf2.default)(AtomicQuery)).call.apply(_ref, [this].concat(args))), _this), _this.dataLoaded = false, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
   (0, _createClass3.default)(AtomicQuery, [{
@@ -76,7 +87,7 @@ var AtomicQuery = function (_React$Component) {
             return _react2.default.createElement(
               'div',
               { className: 'text--centered' },
-              _ref,
+              _ref2,
               _react2.default.createElement(
                 'h1',
                 { className: 'c-title' },
@@ -91,10 +102,14 @@ var AtomicQuery = function (_React$Component) {
             }
 
             if (error.networkError && error.networkError.bodyText && error.networkError.bodyText.indexOf('JWT::ExpiredSignature') >= 0) {
-              return _ref2;
+              return _ref3;
             }
 
             return _react2.default.createElement(_inline_error2.default, { error: error.message });
+          }
+          if (!_this2.dataLoaded) {
+            _this2.props.onDataLoaded(result.data);
+            _this2.dataLoaded = true;
           }
           return _this2.props.children(result);
         }
@@ -102,6 +117,7 @@ var AtomicQuery = function (_React$Component) {
     }
   }]);
   return AtomicQuery;
-}(_react2.default.Component);
-
+}(_react2.default.Component), _class.defaultProps = {
+  onDataLoaded: function onDataLoaded() {}
+}, _temp2);
 exports.default = AtomicQuery;
