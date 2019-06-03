@@ -11,7 +11,17 @@ export default class AtomicQuery extends React.Component {
     children: PropTypes.func.isRequired,
     loadingMessage: PropTypes.string,
     hideLoader: PropTypes.bool,
+    // the base Query component has an onCompleted function, but it's only
+    // called after the initial request for data returns, and not if you visit
+    // the page again
+    onDataReady: PropTypes.func,
   };
+
+  static defaultProps = {
+    onDataReady: () => {},
+  };
+
+  dataReady = false;
 
   render() {
     return (
@@ -48,6 +58,10 @@ export default class AtomicQuery extends React.Component {
             return (
               <InlineError error={error.message} />
             );
+          }
+          if (!this.dataReady) {
+            this.props.onDataReady(result.data);
+            this.dataReady = true;
           }
           return this.props.children(result);
         }}
