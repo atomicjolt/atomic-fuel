@@ -1,90 +1,76 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = undefined;
+exports["default"] = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+var _react = _interopRequireDefault(require("react"));
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _styles = _interopRequireDefault(require("../../../libs/styles"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-var _react = require('react');
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var _react2 = _interopRequireDefault(_react);
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-var _propTypes = require('prop-types');
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _styles = require('../../../libs/styles');
-
-var _styles2 = _interopRequireDefault(_styles);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function renderStyles() {
-  (0, _styles2.default)('.error-banner {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: -webkit-flex;\n    display: flex;\n    -webkit-align-items: center;\n    align-items: center;\n    min-height: 4rem;\n    background: #f00;\n    padding: 0.8rem 1.2rem;\n    border-radius: 0.3rem;\n    margin: 20px 0;\n  }');
-  (0, _styles2.default)('.error-banner > i {\n    font-size: 2.4rem;\n    color: #fff;\n    margin-right: 1.2rem;\n  }');
-  (0, _styles2.default)('.error-banner h3 {\n    color: #fff;\n    font-size: 1.4rem;\n    font-family: \'montserratbold\';\n    font-weight: normal;\n    margin: 0;\n    margin-right: 3.2rem;\n  }');
-  (0, _styles2.default)('.error-banner__content {\n    color: #fff;\n    font-family: \'montserratregular\';\n    font-weight: normal;\n    font-size: 1.4rem;\n  }');
-  (0, _styles2.default)('.error-banner__content span {\n    margin-right: 0.8rem;\n  }');
+  (0, _styles["default"])(".error-banner {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: -webkit-flex;\n    display: flex;\n    -webkit-align-items: center;\n    align-items: center;\n    min-height: 4rem;\n    background: #f00;\n    padding: 0.8rem 1.2rem;\n    border-radius: 0.3rem;\n    margin: 20px 0;\n  }");
+  (0, _styles["default"])(".error-banner > i {\n    font-size: 2.4rem;\n    color: #fff;\n    margin-right: 1.2rem;\n  }");
+  (0, _styles["default"])(".error-banner h3 {\n    color: #fff;\n    font-size: 1.4rem;\n    font-family: 'montserratbold';\n    font-weight: normal;\n    margin: 0;\n    margin-right: 3.2rem;\n  }");
+  (0, _styles["default"])(".error-banner__content {\n    color: #fff;\n    font-family: 'montserratregular';\n    font-weight: normal;\n    font-size: 1.4rem;\n  }");
+  (0, _styles["default"])(".error-banner__content span {\n    margin-right: 0.8rem;\n  }");
 }
 
-var _ref = _react2.default.createElement(
-  'i',
-  { className: 'material-icons' },
-  'error'
-);
-
-var _ref2 = _react2.default.createElement(
-  'h3',
-  null,
-  'Error'
-);
-
-var InlineError = function (_React$PureComponent) {
-  (0, _inherits3.default)(InlineError, _React$PureComponent);
+var InlineError =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inherits(InlineError, _React$PureComponent);
 
   function InlineError() {
-    (0, _classCallCheck3.default)(this, InlineError);
-    return (0, _possibleConstructorReturn3.default)(this, (InlineError.__proto__ || (0, _getPrototypeOf2.default)(InlineError)).apply(this, arguments));
+    _classCallCheck(this, InlineError);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(InlineError).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(InlineError, [{
-    key: 'render',
+  _createClass(InlineError, [{
+    key: "render",
     value: function render() {
       renderStyles();
-      return _react2.default.createElement(
-        'div',
-        { className: 'error-banner' },
-        _ref,
-        _ref2,
-        _react2.default.createElement(
-          'div',
-          { className: 'error-banner__content' },
-          this.props.error
-        )
-      );
+      return _react["default"].createElement("div", {
+        className: "error-banner"
+      }, _react["default"].createElement("i", {
+        className: "material-icons"
+      }, "error"), _react["default"].createElement("h3", null, "Error"), _react["default"].createElement("div", {
+        className: "error-banner__content"
+      }, this.props.error));
     }
   }]);
-  return InlineError;
-}(_react2.default.PureComponent);
 
-exports.default = InlineError;
+  return InlineError;
+}(_react["default"].PureComponent);
+
+exports["default"] = InlineError;
+
+_defineProperty(InlineError, "propTypes", {
+  error: _propTypes["default"].string
+});

@@ -1,123 +1,129 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = undefined;
+exports["default"] = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+var _react = _interopRequireDefault(require("react"));
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+var _reactApollo = require("react-apollo");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _atomicjolt_loader = _interopRequireDefault(require("../components/common/atomicjolt_loader"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inline_error = _interopRequireDefault(require("../components/common/errors/inline_error"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var _class, _temp2;
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-var _react = require('react');
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var _react2 = _interopRequireDefault(_react);
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-var _reactApollo = require('react-apollo');
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-var _propTypes = require('prop-types');
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var _atomicjolt_loader = require('../components/common/atomicjolt_loader');
-
-var _atomicjolt_loader2 = _interopRequireDefault(_atomicjolt_loader);
-
-var _inline_error = require('../components/common/errors/inline_error');
-
-var _inline_error2 = _interopRequireDefault(_inline_error);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _ref2 = _react2.default.createElement(_atomicjolt_loader2.default, null);
-
-var _ref3 = _react2.default.createElement(_inline_error2.default, { error: 'Your authentication token has expired. Please refresh the page to enable authentication.' });
-
-var AtomicQuery = (_temp2 = _class = function (_React$Component) {
-  (0, _inherits3.default)(AtomicQuery, _React$Component);
+var AtomicQuery =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(AtomicQuery, _React$Component);
 
   function AtomicQuery() {
-    var _ref;
+    var _getPrototypeOf2;
 
-    var _temp, _this, _ret;
+    var _this;
 
-    (0, _classCallCheck3.default)(this, AtomicQuery);
+    _classCallCheck(this, AtomicQuery);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = AtomicQuery.__proto__ || (0, _getPrototypeOf2.default)(AtomicQuery)).call.apply(_ref, [this].concat(args))), _this), _this.dataReady = false, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AtomicQuery)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "dataReady", false);
+
+    return _this;
   }
 
-  (0, _createClass3.default)(AtomicQuery, [{
-    key: 'render',
+  _createClass(AtomicQuery, [{
+    key: "render",
     value: function render() {
       var _this2 = this;
 
-      return _react2.default.createElement(
-        _reactApollo.Query,
-        this.props,
-        function (result) {
-          var loading = result.loading,
-              error = result.error;
+      return _react["default"].createElement(_reactApollo.Query, this.props, function (result) {
+        var loading = result.loading,
+            error = result.error;
 
-          if (loading) {
-            if (_this2.props.hideLoader) {
-              return null;
-            }
-            return _react2.default.createElement(
-              'div',
-              { className: 'text--centered' },
-              _ref2,
-              _react2.default.createElement(
-                'h1',
-                { className: 'c-title' },
-                _this2.props.loadingMessage
-              )
-            );
+        if (loading) {
+          if (_this2.props.hideLoader) {
+            return null;
           }
-          if (error) {
-            if (error.networkError && error.networkError.result && error.networkError.result.canvas_authorization_required) {
-              // This error will be handled by a Canvas reauth. Don't output an error.
-              return null;
-            }
 
-            if (error.networkError && error.networkError.bodyText && error.networkError.bodyText.indexOf('JWT::ExpiredSignature') >= 0) {
-              return _ref3;
-            }
-
-            return _react2.default.createElement(_inline_error2.default, { error: error.message });
-          }
-          if (!_this2.dataReady) {
-            _this2.props.onDataReady(result.data);
-            _this2.dataReady = true;
-          }
-          return _this2.props.children(result);
+          return _react["default"].createElement("div", {
+            className: "text--centered"
+          }, _react["default"].createElement(_atomicjolt_loader["default"], null), _react["default"].createElement("h1", {
+            className: "c-title"
+          }, _this2.props.loadingMessage));
         }
-      );
+
+        if (error) {
+          if (error.networkError && error.networkError.result && error.networkError.result.canvas_authorization_required) {
+            // This error will be handled by a Canvas reauth. Don't output an error.
+            return null;
+          }
+
+          if (error.networkError && error.networkError.bodyText && error.networkError.bodyText.indexOf('JWT::ExpiredSignature') >= 0) {
+            return _react["default"].createElement(_inline_error["default"], {
+              error: "Your authentication token has expired. Please refresh the page to enable authentication."
+            });
+          }
+
+          return _react["default"].createElement(_inline_error["default"], {
+            error: error.message
+          });
+        }
+
+        if (!_this2.dataReady) {
+          _this2.props.onDataReady(result.data);
+
+          _this2.dataReady = true;
+        }
+
+        return _this2.props.children(result);
+      });
     }
   }]);
+
   return AtomicQuery;
-}(_react2.default.Component), _class.defaultProps = {
+}(_react["default"].Component);
+
+exports["default"] = AtomicQuery;
+
+_defineProperty(AtomicQuery, "propTypes", {
+  children: _propTypes["default"].func.isRequired,
+  loadingMessage: _propTypes["default"].string,
+  hideLoader: _propTypes["default"].bool,
+  // the base Query component has an onCompleted function, but it's only
+  // called after the initial request for data returns, and not if you visit
+  // the page again
+  onDataReady: _propTypes["default"].func
+});
+
+_defineProperty(AtomicQuery, "defaultProps", {
   onDataReady: function onDataReady() {}
-}, _temp2);
-exports.default = AtomicQuery;
+});

@@ -1,33 +1,28 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Constants = undefined;
 exports.refreshJwt = refreshJwt;
+exports.Constants = void 0;
 
-var _wrapper = require('../constants/wrapper');
+var _wrapper = _interopRequireDefault(require("../constants/wrapper"));
 
-var _wrapper2 = _interopRequireDefault(_wrapper);
+var _network = _interopRequireDefault(require("../constants/network"));
 
-var _network = require('../constants/network');
-
-var _network2 = _interopRequireDefault(_network);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 // Local actions
-var actions = [];
+var actions = []; // Actions that make an api request
 
-// Actions that make an api request
 var requests = ['REFRESH_JWT'];
-
-var Constants = exports.Constants = (0, _wrapper2.default)(actions, requests);
+var Constants = (0, _wrapper["default"])(actions, requests);
+exports.Constants = Constants;
 
 function refreshJwt(userId) {
   return {
     type: Constants.REFRESH_JWT,
-    method: _network2.default.GET,
-    url: 'api/jwts/' + userId
+    method: _network["default"].GET,
+    url: "api/jwts/".concat(userId)
   };
 }

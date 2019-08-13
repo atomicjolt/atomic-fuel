@@ -1,37 +1,32 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Constants = undefined;
 exports.clearErrors = clearErrors;
 exports.addError = addError;
+exports.Constants = void 0;
 
-var _wrapper = require('../constants/wrapper');
+var _wrapper = _interopRequireDefault(require("../constants/wrapper"));
 
-var _wrapper2 = _interopRequireDefault(_wrapper);
+var _network = _interopRequireDefault(require("../constants/network"));
 
-var _network = require('../constants/network');
-
-var _network2 = _interopRequireDefault(_network);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 // Local actions
-var actions = ['CLEAR_ERRORS', 'ADD_ERROR'];
+var actions = ['CLEAR_ERRORS', 'ADD_ERROR']; // Actions that make an api request
 
-// Actions that make an api request
 var requests = [];
-
-var Constants = exports.Constants = (0, _wrapper2.default)(actions, requests);
+var Constants = (0, _wrapper["default"])(actions, requests);
+exports.Constants = Constants;
 
 function clearErrors() {
   return {
     type: Constants.CLEAR_ERRORS
   };
-}
+} // Error should be the original error, usually from a network response.
 
-// Error should be the original error, usually from a network response.
+
 function addError(error, message, context) {
   return {
     type: Constants.ADD_ERROR,
