@@ -183,7 +183,7 @@ export default class Api {
       .map((val, key) => {
         if (val) {
           if (_.isArray(val)) {
-            return _.map(val, subVal => `${key}[]=${subVal}`).join('&');
+            return _.map(val, (subVal) => `${key}[]=${subVal}`).join('&');
           }
           return `${key}=${val}`;
         }

@@ -1,74 +1,75 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = undefined;
+exports["default"] = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+var _react = _interopRequireDefault(require("react"));
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+var _reactApollo = require("react-apollo");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inline_error = _interopRequireDefault(require("../components/common/errors/inline_error"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-var _react = require('react');
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-var _react2 = _interopRequireDefault(_react);
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var _reactApollo = require('react-apollo');
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-var _propTypes = require('prop-types');
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var _inline_error = require('../components/common/errors/inline_error');
-
-var _inline_error2 = _interopRequireDefault(_inline_error);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var AtomicMutation = function (_React$Component) {
-  (0, _inherits3.default)(AtomicMutation, _React$Component);
+var AtomicMutation =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(AtomicMutation, _React$Component);
 
   function AtomicMutation() {
-    (0, _classCallCheck3.default)(this, AtomicMutation);
-    return (0, _possibleConstructorReturn3.default)(this, (AtomicMutation.__proto__ || (0, _getPrototypeOf2.default)(AtomicMutation)).apply(this, arguments));
+    _classCallCheck(this, AtomicMutation);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(AtomicMutation).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(AtomicMutation, [{
-    key: 'render',
+  _createClass(AtomicMutation, [{
+    key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this = this;
 
-      return _react2.default.createElement(
-        _reactApollo.Mutation,
-        this.props,
-        function (method, result) {
-          var error = result.error;
+      return _react["default"].createElement(_reactApollo.Mutation, this.props, function (method, result) {
+        var error = result.error;
 
-          if (error) {
-            return _react2.default.createElement(_inline_error2.default, { error: error.message });
-          }
-          return _this2.props.children(method, result);
+        if (error) {
+          return _react["default"].createElement(_inline_error["default"], {
+            error: error.message
+          });
         }
-      );
+
+        return _this.props.children(method, result);
+      });
     }
   }]);
-  return AtomicMutation;
-}(_react2.default.Component);
 
-exports.default = AtomicMutation;
+  return AtomicMutation;
+}(_react["default"].Component);
+
+exports["default"] = AtomicMutation;
+
+_defineProperty(AtomicMutation, "propTypes", {
+  children: _propTypes["default"].func.isRequired
+});

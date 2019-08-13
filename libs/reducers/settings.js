@@ -1,37 +1,40 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _extends2 = require('babel-runtime/helpers/extends');
-
-var _extends3 = _interopRequireDefault(_extends2);
-
 exports.getInitialSettings = getInitialSettings;
+exports["default"] = void 0;
 
-var _lodash = require('lodash');
+var _lodash = _interopRequireDefault(require("lodash"));
 
-var _lodash2 = _interopRequireDefault(_lodash);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 // Just return state. Don't let settings from the server mutate.
-exports.default = function () {
+var _default = function _default() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   return state;
 };
+
+exports["default"] = _default;
 
 function getInitialSettings() {
   // Add default settings that can be overridden by values in serverSettings
   var settings = {};
 
-  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
     args[_key] = arguments[_key];
   }
 
-  _lodash2.default.forEach(args, function (arg) {
-    return settings = (0, _extends3.default)({}, settings, arg);
+  _lodash["default"].forEach(args, function (arg) {
+    return settings = _objectSpread({}, settings, {}, arg);
   });
+
   return settings;
 }

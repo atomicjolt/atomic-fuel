@@ -1,32 +1,27 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.SettingsContext = undefined;
-
-var _extends2 = require('babel-runtime/helpers/extends');
-
-var _extends3 = _interopRequireDefault(_extends2);
-
 exports.withSettings = withSettings;
+exports.SettingsContext = void 0;
 
-var _react = require('react');
+var _react = _interopRequireDefault(require("react"));
 
-var _react2 = _interopRequireDefault(_react);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-var SettingsContext = exports.SettingsContext = _react2.default.createContext(window.DEFAULT_SETTINGS);
+var SettingsContext = _react["default"].createContext(window.DEFAULT_SETTINGS);
+
+exports.SettingsContext = SettingsContext;
 
 function withSettings(Component) {
   return function SettingsComponent(props) {
-    return _react2.default.createElement(
-      SettingsContext.Consumer,
-      null,
-      function (settings) {
-        return _react2.default.createElement(Component, (0, _extends3.default)({}, props, { settings: settings }));
-      }
-    );
+    return _react["default"].createElement(SettingsContext.Consumer, null, function (settings) {
+      return _react["default"].createElement(Component, _extends({}, props, {
+        settings: settings
+      }));
+    });
   };
 }

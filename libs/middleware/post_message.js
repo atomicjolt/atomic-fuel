@@ -1,38 +1,34 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.HandlerSingleton = undefined;
+exports["default"] = exports.HandlerSingleton = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _lodash = _interopRequireDefault(require("lodash"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _communicator = _interopRequireDefault(require("../communications/communicator"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _class, _temp;
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-var _lodash = require('lodash');
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var _lodash2 = _interopRequireDefault(_lodash);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var _communicator = require('../communications/communicator');
-
-var _communicator2 = _interopRequireDefault(_communicator);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var HandlerSingleton = exports.HandlerSingleton = (_temp = _class = function () {
-  (0, _createClass3.default)(HandlerSingleton, null, [{
-    key: 'prepareInstance',
+var HandlerSingleton =
+/*#__PURE__*/
+function () {
+  _createClass(HandlerSingleton, null, [{
+    key: "prepareInstance",
     value: function prepareInstance(dispatch) {
       var domain = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '*';
 
       if (!HandlerSingleton.instance) {
-        HandlerSingleton.communicator = new _communicator2.default(domain);
+        HandlerSingleton.communicator = new _communicator["default"](domain);
         HandlerSingleton.instance = new HandlerSingleton(dispatch);
         HandlerSingleton.communicator.enableListener(HandlerSingleton.instance);
       }
@@ -42,11 +38,12 @@ var HandlerSingleton = exports.HandlerSingleton = (_temp = _class = function () 
   function HandlerSingleton(dispatch) {
     var _this = this;
 
-    (0, _classCallCheck3.default)(this, HandlerSingleton);
+    _classCallCheck(this, HandlerSingleton);
 
-    this.handleComm = function (e) {
+    _defineProperty(this, "handleComm", function (e) {
       var message = e.data;
-      if (_lodash2.default.isString(e.data)) {
+
+      if (_lodash["default"].isString(e.data)) {
         try {
           message = JSON.parse(e.data);
         } catch (ex) {
@@ -54,37 +51,47 @@ var HandlerSingleton = exports.HandlerSingleton = (_temp = _class = function () 
           message = e.data;
         }
       }
+
       _this.dispatch({
         communication: true,
         type: 'POST_MESSAGE_RECIEVED',
         message: message,
         data: e.data
       });
-    };
+    });
 
     this.dispatch = dispatch;
   }
 
   return HandlerSingleton;
-}(), _class.communicator = null, _class.instance = null, _temp);
+}();
 
-exports.default = function (store) {
+exports.HandlerSingleton = HandlerSingleton;
+
+_defineProperty(HandlerSingleton, "communicator", null);
+
+_defineProperty(HandlerSingleton, "instance", null);
+
+var _default = function _default(store) {
   return function (next) {
     return function (action) {
       if (action.postMessage) {
         // You have to call a post message action first before you will recieve messages
         HandlerSingleton.prepareInstance(store.dispatch);
+
         try {
           if (action.broadcast) {
             HandlerSingleton.communicator.broadcast(action.message);
           } else {
             HandlerSingleton.communicator.comm(action.message);
           }
-        } catch (e) {
-          // do nothing
+        } catch (e) {// do nothing
         }
       }
+
       next(action);
     };
   };
 };
+
+exports["default"] = _default;

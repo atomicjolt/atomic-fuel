@@ -1,24 +1,23 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports["default"] = void 0;
 
-var _testUtils = require('react-dom/test-utils');
+var _testUtils = _interopRequireDefault(require("react-dom/test-utils"));
 
-var _testUtils2 = _interopRequireDefault(_testUtils);
+var _lodash = _interopRequireDefault(require("lodash"));
 
-var _lodash = require('lodash');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var _lodash2 = _interopRequireDefault(_lodash);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
+var _default = {
   findTextField: function findTextField(textFields, labelText) {
-    return _lodash2.default.find(textFields, function (field) {
-      var label = _testUtils2.default.findRenderedDOMComponentWithTag(field, 'label');
+    return _lodash["default"].find(textFields, function (field) {
+      var label = _testUtils["default"].findRenderedDOMComponentWithTag(field, 'label');
+
       return label.getDOMNode().textContent.toLowerCase() === labelText;
     });
   }
 };
+exports["default"] = _default;

@@ -1,33 +1,34 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = undefined;
-
-var _extends2 = require('babel-runtime/helpers/extends');
-
-var _extends3 = _interopRequireDefault(_extends2);
-
 exports.apiRequest = apiRequest;
+exports["default"] = void 0;
 
-var _api = require('../api/api');
+var _api = _interopRequireDefault(require("../api/api"));
 
-var _api2 = _interopRequireDefault(_api);
+var _wrapper = require("../constants/wrapper");
 
-var _wrapper = require('../constants/wrapper');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function apiRequest(store, action) {
   var state = store.getState();
-  var updatedParams = (0, _extends3.default)({
+
+  var updatedParams = _objectSpread({
     // Add the context id from the lti launch
     context_id: state.settings.context_id,
     // Add consumer key to requests to indicate which lti app requests are originating from.
     oauth_consumer_key: state.settings.oauth_consumer_key
   }, action.params);
-  var promise = _api2.default.execRequest(action.method, action.url, state.settings.api_url, state.jwt, state.settings.csrf_token, updatedParams, action.body, action.headers, action.timeout);
+
+  var promise = _api["default"].execRequest(action.method, action.url, state.settings.api_url, state.jwt, state.settings.csrf_token, updatedParams, action.body, action.headers, action.timeout);
 
   if (promise) {
     promise.then(function (response) {
@@ -53,15 +54,14 @@ function apiRequest(store, action) {
 var API = function API(store) {
   return function (next) {
     return function (action) {
-
       if (action.method) {
         apiRequest(store, action);
-      }
+      } // call the next middleWare
 
-      // call the next middleWare
+
       next(action);
     };
   };
 };
 
-exports.default = API;
+exports["default"] = API;

@@ -1,39 +1,34 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DONE = undefined;
+exports["default"] = _default;
+exports.DONE = void 0;
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _lodash = _interopRequireDefault(require("lodash"));
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var _extends4 = require('babel-runtime/helpers/extends');
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-var _extends5 = _interopRequireDefault(_extends4);
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-exports.default = function (actionTypes, asyncActionTypes) {
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var types = _lodash2.default.reduce(actionTypes, function (result, key) {
-    return (0, _extends5.default)({}, result, (0, _defineProperty3.default)({}, key, key));
+var DONE = '_DONE';
+exports.DONE = DONE;
+
+function _default(actionTypes, asyncActionTypes) {
+  var types = _lodash["default"].reduce(actionTypes, function (result, key) {
+    return _objectSpread({}, result, _defineProperty({}, key, key));
   }, {});
 
-  types = _lodash2.default.reduce(asyncActionTypes, function (result, key) {
-    var _extends3;
+  types = _lodash["default"].reduce(asyncActionTypes, function (result, key) {
+    var _objectSpread3;
 
-    return (0, _extends5.default)({}, result, (_extends3 = {}, (0, _defineProperty3.default)(_extends3, key, key), (0, _defineProperty3.default)(_extends3, '' + key + DONE, '' + key + DONE), _extends3));
+    return _objectSpread({}, result, (_objectSpread3 = {}, _defineProperty(_objectSpread3, key, key), _defineProperty(_objectSpread3, "".concat(key).concat(DONE), "".concat(key).concat(DONE)), _objectSpread3));
   }, types);
-
   types.DONE = DONE;
-
   return types;
-};
-
-var _lodash = require('lodash');
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var DONE = exports.DONE = '_DONE';
+}

@@ -1,110 +1,93 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = undefined;
+exports["default"] = void 0;
 
-var _stringify = require('babel-runtime/core-js/json/stringify');
+var _lodash = _interopRequireDefault(require("lodash"));
 
-var _stringify2 = _interopRequireDefault(_stringify);
+var _redux = require("redux");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _nock = _interopRequireDefault(require("nock"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _api = _interopRequireDefault(require("../middleware/api"));
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _settings = _interopRequireDefault(require("../reducers/settings"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _configure_store = _interopRequireDefault(require("../store/configure_store"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-var _lodash = require('lodash');
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-var _lodash2 = _interopRequireDefault(_lodash);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var _redux = require('redux');
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _nock = require('nock');
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-var _nock2 = _interopRequireDefault(_nock);
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var _api = require('../middleware/api');
-
-var _api2 = _interopRequireDefault(_api);
-
-var _settings = require('../reducers/settings');
-
-var _settings2 = _interopRequireDefault(_settings);
-
-var _configure_store = require('../store/configure_store');
-
-var _configure_store2 = _interopRequireDefault(_configure_store);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Helper = function () {
+var Helper =
+/*#__PURE__*/
+function () {
   function Helper() {
-    (0, _classCallCheck3.default)(this, Helper);
+    _classCallCheck(this, Helper);
   }
 
-  (0, _createClass3.default)(Helper, null, [{
-    key: 'mockStore',
-
-
+  _createClass(Helper, null, [{
+    key: "mockStore",
     // Create a fake store for testing
     value: function mockStore(state) {
       return {
         subscribe: function subscribe() {},
         dispatch: function dispatch() {},
         getState: function getState() {
-          return (0, _extends3.default)({}, state);
+          return _objectSpread({}, state);
         }
       };
-    }
-
-    // Create a real store that can be used for testing
+    } // Create a real store that can be used for testing
     // For any additional state provided you must also provide the corresponding
     // reducers.
 
   }, {
-    key: 'makeStore',
+    key: "makeStore",
     value: function makeStore(initialSettings, additionalState, additionalReducers) {
-      var initialState = _lodash2.default.merge({
-        settings: _lodash2.default.merge({
+      var initialState = _lodash["default"].merge({
+        settings: _lodash["default"].merge({
           csrf: 'csrf_token',
           apiUrl: 'http://www.example.com'
         }, initialSettings)
       }, additionalState);
-      var rootReducer = (0, _redux.combineReducers)((0, _extends3.default)({
-        settings: _settings2.default
+
+      var rootReducer = (0, _redux.combineReducers)(_objectSpread({
+        settings: _settings["default"]
       }, additionalReducers));
-      var middleware = [_api2.default];
-      return (0, _configure_store2.default)(initialState, rootReducer, middleware);
+      var middleware = [_api["default"]];
+      return (0, _configure_store["default"])(initialState, rootReducer, middleware);
     }
   }, {
-    key: 'testPayload',
+    key: "testPayload",
     value: function testPayload() {
-      return (0, _stringify2.default)([{
+      return JSON.stringify([{
         id: 1,
         name: 'Starter App'
       }]);
     }
   }, {
-    key: 'stubAjax',
+    key: "stubAjax",
     value: function stubAjax() {
       beforeEach(function () {
         jasmine.Ajax.install();
-
         jasmine.Ajax.stubRequest(RegExp('.*/api/test')).andReturn({
           status: 200,
           contentType: 'application/json',
           statusText: 'OK',
           responseText: Helper.testPayload()
         });
-
         jasmine.Ajax.stubRequest(RegExp('.*/api/test/.+')).andReturn({
           status: 200,
           contentType: 'application/json',
@@ -112,46 +95,52 @@ var Helper = function () {
           responseText: Helper.testPayload()
         });
       });
-
       afterEach(function () {
         jasmine.Ajax.uninstall();
       });
     }
   }, {
-    key: 'mockRequest',
+    key: "mockRequest",
     value: function mockRequest(method, apiUrl, url, expectedHeaders) {
-      return (0, _nock2.default)(apiUrl, expectedHeaders).intercept(url, method).reply(200, Helper.testPayload(), { 'content-type': 'application/json' });
+      return (0, _nock["default"])(apiUrl, expectedHeaders).intercept(url, method).reply(200, Helper.testPayload(), {
+        'content-type': 'application/json'
+      });
     }
   }, {
-    key: 'mockAllAjax',
+    key: "mockAllAjax",
     value: function mockAllAjax() {
       beforeEach(function () {
-        (0, _nock2.default)('http://www.example.com').persist().get(RegExp('.*')).reply(200, Helper.testPayload(), { 'content-type': 'application/json' });
-        (0, _nock2.default)('http://www.example.com').persist().post(RegExp('.*')).reply(200, Helper.testPayload(), { 'content-type': 'application/json' });
-        (0, _nock2.default)('http://www.example.com').persist().put(RegExp('.*')).reply(200, Helper.testPayload(), { 'content-type': 'application/json' });
-        (0, _nock2.default)('http://www.example.com').persist().delete(RegExp('.*')).reply(200, Helper.testPayload(), { 'content-type': 'application/json' });
+        (0, _nock["default"])('http://www.example.com').persist().get(RegExp('.*')).reply(200, Helper.testPayload(), {
+          'content-type': 'application/json'
+        });
+        (0, _nock["default"])('http://www.example.com').persist().post(RegExp('.*')).reply(200, Helper.testPayload(), {
+          'content-type': 'application/json'
+        });
+        (0, _nock["default"])('http://www.example.com').persist().put(RegExp('.*')).reply(200, Helper.testPayload(), {
+          'content-type': 'application/json'
+        });
+        (0, _nock["default"])('http://www.example.com').persist()["delete"](RegExp('.*')).reply(200, Helper.testPayload(), {
+          'content-type': 'application/json'
+        });
       });
-
       afterEach(function () {
-        _nock2.default.cleanAll();
+        _nock["default"].cleanAll();
       });
     }
   }, {
-    key: 'mockClock',
+    key: "mockClock",
     value: function mockClock() {
       beforeEach(function () {
         jasmine.clock().install(); // Mock out the built in timers
       });
-
       afterEach(function () {
         jasmine.clock().uninstall();
       });
     }
   }, {
-    key: 'wrapMiddleware',
+    key: "wrapMiddleware",
     value: function wrapMiddleware(middleware) {
       var state = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
       var calledWithState = {
         dispatchedActions: []
       };
@@ -164,35 +153,45 @@ var Helper = function () {
         })
       };
       var next = jest.fn();
+
       var invoke = function invoke(action) {
         return middleware(store)(next)(action);
       };
+
       var getCalledWithState = function getCalledWithState() {
         return calledWithState;
       };
 
-      return { store: store, next: next, invoke: invoke, getCalledWithState: getCalledWithState };
+      return {
+        store: store,
+        next: next,
+        invoke: invoke,
+        getCalledWithState: getCalledWithState
+      };
     }
   }, {
-    key: 'indicies',
+    key: "indicies",
     value: function indicies(arr, a, b) {
-      return _lodash2.default.map([a, b], function (i) {
-        return _lodash2.default.indexOf(arr, i);
+      return _lodash["default"].map([a, b], function (i) {
+        return _lodash["default"].indexOf(arr, i);
       });
     }
   }, {
-    key: 'isBefore',
+    key: "isBefore",
     value: function isBefore() {
       var ind = Helper.indicies(arguments.length <= 0 ? undefined : arguments[0], arguments.length <= 1 ? undefined : arguments[1], arguments.length <= 2 ? undefined : arguments[2]);
-      if (_lodash2.default.some(ind, function (i) {
-        return _lodash2.default.isNil(i);
+
+      if (_lodash["default"].some(ind, function (i) {
+        return _lodash["default"].isNil(i);
       })) {
         throw new Error('Not found in arr');
       }
+
       return ind[0] < ind[1];
     }
   }]);
+
   return Helper;
 }();
 
-exports.default = Helper;
+exports["default"] = Helper;

@@ -4,6 +4,7 @@ import Communicator from '../communications/communicator';
 export class HandlerSingleton {
 
   static communicator = null;
+
   static instance = null;
 
   static prepareInstance(dispatch, domain = '*') {
@@ -37,7 +38,7 @@ export class HandlerSingleton {
   }
 }
 
-export default store => next => (action) => {
+export default (store) => (next) => (action) => {
   if (action.postMessage) {
     // You have to call a post message action first before you will recieve messages
     HandlerSingleton.prepareInstance(store.dispatch);

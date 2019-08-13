@@ -46,7 +46,7 @@ export function apiRequest(store, action) {
   return promise;
 }
 
-const API = store => next => (action) => {
+const API = (store) => (next) => (action) => {
 
   if (action.method) {
     apiRequest(store, action);
