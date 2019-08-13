@@ -35,8 +35,8 @@ module.exports = [{
 
 
     if (match[1] === '/hero') {
-      if (params['superhero']) {
-        return 'Your hero:' + params['superhero'];
+      if (params.superhero) {
+        return "Your hero:".concat(params.superhero);
       }
 
       return 'You didnt choose a hero';
@@ -132,6 +132,8 @@ module.exports = [{
       };
       return 'Hundred percent!';
     }
+
+    return null;
   },
 
   /**

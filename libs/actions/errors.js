@@ -9,8 +9,6 @@ exports.Constants = void 0;
 
 var _wrapper = _interopRequireDefault(require("../constants/wrapper"));
 
-var _network = _interopRequireDefault(require("../constants/network"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 // Local actions
