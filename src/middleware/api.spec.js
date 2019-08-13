@@ -54,13 +54,14 @@ describe('apiRequest', () => {
     class Store {
       getState() {
         return (
-        {
-          settings: {
-            api_url: 'http://www.something.com/asdfaoer'
+          {
+            settings: {
+              api_url: 'http://www.something.com/asdfaoer'
+            }
           }
-        }
         );
       }
+
       dispatch() {}
     }
     const store = new Store();

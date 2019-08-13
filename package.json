@@ -8,6 +8,7 @@
     "build": "cross-env BABEL_ENV=production babel src --out-dir libs",
     "clean": "rimraf libs",
     "lint": "eslint src",
+    "lint_fix": "eslint src --fix",
     "prepare": "yarn clean && yarn build"
   },
   "repository": {

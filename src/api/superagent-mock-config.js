@@ -34,8 +34,8 @@ module.exports = [
        */
 
       if (match[1] === '/hero') {
-        if (params['superhero']) {
-          return 'Your hero:' + params['superhero'];
+        if (params.superhero) {
+          return `Your hero:${params.superhero}`;
         }
         return 'You didnt choose a hero';
       }
@@ -109,22 +109,24 @@ module.exports = [
 
       if (match[1] === '/progress_test') {
         context.progress = {
-          parts: 3,               // The number of progress events to emit one after the other with
-                                  // linear progress
-                                  //   (Meaning, loaded will be [total/parts])
-          delay: 1000,            // [optional] The delay of emitting each of the progress events
-                                  // by ms
-                                  //   (default is 0 unless context.delay specified, then it's
-                                  // [delay/parts])
-          total: 100,             // [optional] The total as it will appear in the progress
-                                  // event (default is 100)
+          parts: 3, // The number of progress events to emit one after the other with
+          // linear progress
+          //   (Meaning, loaded will be [total/parts])
+          delay: 1000, // [optional] The delay of emitting each of the progress events
+          // by ms
+          //   (default is 0 unless context.delay specified, then it's
+          // [delay/parts])
+          total: 100, // [optional] The total as it will appear in the progress
+          // event (default is 100)
           lengthComputable: true, // [optional] The same as it will appear in the progress
-                                  // event (default is true)
-          direction: 'upload'     // [optional] superagent adds 'download'/'upload' direction
-                                  // to the event (default is 'upload')
+          // event (default is true)
+          direction: 'upload' // [optional] superagent adds 'download'/'upload' direction
+          // to the event (default is 'upload')
         };
         return 'Hundred percent!';
       }
+
+      return null;
     },
 
     /**

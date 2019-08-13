@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
 
     default:
       if (action.error) {
-        let message = action.error.message;
+        let { message } = action.error;
         if (action.error.response && action.error.response.text) {
           try {
             const json = JSON.parse(action.error.response.text);

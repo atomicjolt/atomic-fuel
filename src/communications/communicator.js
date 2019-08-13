@@ -45,7 +45,7 @@ export default class Communicator {
     const eventer = window[eventMethod];
     this.messageEvent = eventMethod === 'attachEvent' ? 'onmessage' : 'message';
     // Listen to message from child window
-    this.handleCommFunc = e => handler.handleComm(e);
+    this.handleCommFunc = (e) => handler.handleComm(e);
     eventer(this.messageEvent, this.handleCommFunc, false);
   }
 
