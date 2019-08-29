@@ -16,29 +16,37 @@ export class Jwt {
 
     this.oauthConsumerKey = oauthConsumerKey;
 
-    const base64Url = this.jwt.split('.')[1];
-    const base64 = base64Url.replace('-', '+').replace('_', '/');
-    this._decodedJwt = JSON.parse(window.atob(base64));
+    if (this.jwt) {
+      const base64Url = this.jwt.split('.')[1];
+      const base64 = base64Url.replace('-', '+').replace('_', '/');
+      this._decodedJwt = JSON.parse(window.atob(base64));
 
-    this.userId = this._decodedJwt.user_id;
-    this.contextId = this._decodedJwt.context_id;
-    this.oauthConsumerKey = this._decodedJwt.kid || oauthConsumerKey;
+      this.userId = this._decodedJwt.user_id;
+      this.contextId = this._decodedJwt.context_id;
+      this.oauthConsumerKey = this._decodedJwt.kid || oauthConsumerKey;
+    }
+
     this.refresh = refresh;
   }
 
   enableRefresh() {
-    const url = `api/jwts/${this.userId}`;
-    const params = {
+    if (this.jwt) {
+      const url = `api/jwts/${this.userId}`;
+      setInterval(() => {
+        api.get(url, this.apiUrl, this.jwt, null, this.params, null).then((response) => {
+          this.jwt = response.body.jwt;
+        });
+      }, this.refresh);
+    }
+  }
+
+  get params() {
+    return {
       // Add the context id from the lti launch
       context_id: this.contextId,
       // Add consumer key to requests to indicate which lti app requests are originating from.
       oauth_consumer_key: this.oauthConsumerKey,
     };
-    setInterval(() => {
-      api.get(url, this.apiUrl, this.jwt, null, params, null).then((response) => {
-        this.jwt = response.body.jwt;
-      });
-    }, this.refresh);
   }
 
   get currentJwt() {

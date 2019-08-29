@@ -39,12 +39,16 @@ function () {
     this.jwt = jwt;
     this.apiUrl = apiUrl;
     this.oauthConsumerKey = oauthConsumerKey;
-    var base64Url = this.jwt.split('.')[1];
-    var base64 = base64Url.replace('-', '+').replace('_', '/');
-    this._decodedJwt = JSON.parse(window.atob(base64));
-    this.userId = this._decodedJwt.user_id;
-    this.contextId = this._decodedJwt.context_id;
-    this.oauthConsumerKey = this._decodedJwt.kid || oauthConsumerKey;
+
+    if (this.jwt) {
+      var base64Url = this.jwt.split('.')[1];
+      var base64 = base64Url.replace('-', '+').replace('_', '/');
+      this._decodedJwt = JSON.parse(window.atob(base64));
+      this.userId = this._decodedJwt.user_id;
+      this.contextId = this._decodedJwt.context_id;
+      this.oauthConsumerKey = this._decodedJwt.kid || oauthConsumerKey;
+    }
+
     this.refresh = refresh;
   }
 
@@ -53,18 +57,24 @@ function () {
     value: function enableRefresh() {
       var _this = this;
 
-      var url = "api/jwts/".concat(this.userId);
-      var params = {
+      if (this.jwt) {
+        var url = "api/jwts/".concat(this.userId);
+        setInterval(function () {
+          _api["default"].get(url, _this.apiUrl, _this.jwt, null, _this.params, null).then(function (response) {
+            _this.jwt = response.body.jwt;
+          });
+        }, this.refresh);
+      }
+    }
+  }, {
+    key: "params",
+    get: function get() {
+      return {
         // Add the context id from the lti launch
         context_id: this.contextId,
         // Add consumer key to requests to indicate which lti app requests are originating from.
         oauth_consumer_key: this.oauthConsumerKey
       };
-      setInterval(function () {
-        _api["default"].get(url, _this.apiUrl, _this.jwt, null, params, null).then(function (response) {
-          _this.jwt = response.body.jwt;
-        });
-      }, this.refresh);
     }
   }, {
     key: "currentJwt",

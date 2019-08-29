@@ -14,12 +14,24 @@ describe('Jwt', () => {
     });
 
     // Wait for the jwt to expire and then uncomment this test
-    // it('indicates jwt has expired', () => {
-    //   expect(jwt.isjwtExpired).toEqual(true);
-    // });
+    it('indicates jwt has expired', () => {
+      expect(jwt.isjwtExpired).toEqual(true);
+    });
 
     it('provides the current jwt token', () => {
       expect(jwt.currentJwt).toEqual(JWT);
+    });
+
+    it('provides params using the current jwt token', () => {
+      const decoded = jwt.decodedJwt;
+      expect(jwt.params.context_id).toEqual('a8a76fb8fbcc2d09787dafd28564e2ecdab51f11');
+      expect(jwt.params.oauth_consumer_key).toEqual(decoded.kid);
+    });
+
+    it('handles an empty jwt token', () => {
+      const emptyJwt = new Jwt('', apiUrl);
+      expect(emptyJwt.currentJwt).toEqual('');
+      expect(emptyJwt.decodedJwt).toEqual(undefined);
     });
 
   });
