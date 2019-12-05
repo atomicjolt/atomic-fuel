@@ -1,5 +1,9 @@
 # Change Log
 
+## 4.1.0
+* Changes marging to padding in loader
+* Update eslint-utils
+
 ## 3.3.0
 ### Features
 * Allow customization of JWT refresh time

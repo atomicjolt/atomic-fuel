@@ -74,11 +74,9 @@ function (_React$Component) {
             return null;
           }
 
-          return _react["default"].createElement("div", {
-            className: "text--centered"
-          }, _react["default"].createElement(_atomicjolt_loader["default"], null), _react["default"].createElement("h1", {
-            className: "c-title"
-          }, _this2.props.loadingMessage));
+          return _react["default"].createElement(_atomicjolt_loader["default"], {
+            message: _this2.props.loadingMessage
+          });
         }
 
         if (error) {

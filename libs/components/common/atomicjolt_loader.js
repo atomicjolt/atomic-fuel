@@ -39,15 +39,15 @@ function renderStyles() {
   var logoColor = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '#444';
   var backgroundColor1 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '#FFEA00';
   var backgroundColor2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '#FFFF56';
-  (0, _styles["default"])(".aj-loader{\n    position: relative;\n  }");
-  (0, _styles["default"])(".atomicjolt-loading-animation {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-direction: column;\n    margin: 48px auto;\n    width: 72px;\n    height: 72px;\n    border-radius: 50%;\n    background-image: linear-gradient(to top right, ".concat(backgroundColor1, ", ").concat(backgroundColor2, ");\n    box-shadow: -2px 3px 6px rgba(0,0,0,0.25);\n  }"));
+  (0, _styles["default"])(".aj-loader{\n    position: relative;\n    padding: 48px 0;\n  }");
+  (0, _styles["default"])(".atomicjolt-loading-animation {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-direction: column;\n    margin: 0 auto;\n    width: 72px;\n    height: 72px;\n    border-radius: 50%;\n    background-image: linear-gradient(to top right, ".concat(backgroundColor1, ", ").concat(backgroundColor2, ");\n    box-shadow: -2px 3px 6px rgba(0,0,0,0.25);\n  }"));
   (0, _styles["default"])(".atomicjolt-loading-animation svg {\n    width: 38px;\n    position: relative;\n    left: -2px;\n    top: -1px;\n  }");
   (0, _styles["default"])(".atomicjolt-loading-animation svg polygon, .atomicjolt-loading-animation svg polyline {\n    fill: none;\n    stroke: ".concat(logoColor, ";\n    stroke-linecap: round;\n    stroke-linejoin: round;\n    stroke-width: 8px;\n  }"));
   (0, _styles["default"])(".atomicjolt-loading-animation svg .cls-1 {\n    stroke-dasharray: 0 250;\n    animation: line1 1.5s infinite cubic-bezier(0.455, 0.03, 0.515, 0.955);\n  }");
   (0, _styles["default"])(".atomicjolt-loading-animation svg .cls-2 {\n    stroke-dasharray: 0 270;\n    animation: line2 1.5s infinite cubic-bezier(0.455, 0.03, 0.515, 0.955);\n  }");
   (0, _styles["default"])("@keyframes line1 {\n    0% {\n      stroke-dasharray: 0 250;\n   }\n    40% {\n      stroke-dasharray: 250 250;\n   }\n    60% {\n      stroke-dasharray: 250 250;\n   }\n    100% {\n      stroke-dasharray: 0 250;\n   }\n  }");
   (0, _styles["default"])("@keyframes line2 {\n    0% {\n      stroke-dasharray: 0 270;\n   }\n    40% {\n      stroke-dasharray: 270 270;\n   }\n    60% {\n      stroke-dasharray: 270 270;\n   }\n    100% {\n      stroke-dasharray: 0 270;\n   }\n  }");
-  (0, _styles["default"])(".loader-text{\n    font-size: 24px;\n    font-family: 'Lato', Arial, Helvetica, sans-serif;\n    font-weight: 500;\n    color: #222;\n    text-align: center;\n    margin: 0 0 48px;\n  }");
+  (0, _styles["default"])(".loader-text{\n    font-size: 24px;\n    font-family: 'Lato', Arial, Helvetica, sans-serif;\n    font-weight: 500;\n    color: #222;\n    text-align: center;\n    padding-top: 48px;\n    margin: 0;\n  }");
 }
 
 var Loader =
