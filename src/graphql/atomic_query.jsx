@@ -33,10 +33,7 @@ export default class AtomicQuery extends React.Component {
               return null;
             }
             return (
-              <div className="text--centered">
-                <AtomicJoltLoader />
-                <h1 className="c-title">{this.props.loadingMessage}</h1>
-              </div>
+              <AtomicJoltLoader message={this.props.loadingMessage}/>
             );
           }
           if (error) {
