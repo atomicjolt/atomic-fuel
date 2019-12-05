@@ -7,13 +7,14 @@ import { withSettings } from '../settings';
 function renderStyles(logoColor = '#444', backgroundColor1 = '#FFEA00', backgroundColor2 = '#FFFF56') {
   addStyles(`.aj-loader{
     position: relative;
+    padding: 48px 0;
   }`);
   addStyles(`.atomicjolt-loading-animation {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin: 48px auto;
+    margin: 0 auto;
     width: 72px;
     height: 72px;
     border-radius: 50%;
@@ -75,7 +76,8 @@ function renderStyles(logoColor = '#444', backgroundColor1 = '#FFEA00', backgrou
     font-weight: 500;
     color: #222;
     text-align: center;
-    margin: 0 0 48px;
+    padding-top: 48px;
+    margin: 0;
   }`);
 }
 
