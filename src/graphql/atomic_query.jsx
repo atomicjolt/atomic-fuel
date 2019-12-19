@@ -15,13 +15,17 @@ export default class AtomicQuery extends React.Component {
     // called after the initial request for data returns, and not if you visit
     // the page again
     onDataReady: PropTypes.func,
+    onDataLoading: PropTypes.func,
   };
 
   static defaultProps = {
     onDataReady: () => {},
+    onDataLoading: () => {},
   };
 
   dataReady = false;
+
+  dataLoading = false;
 
   render() {
     return (
@@ -29,6 +33,12 @@ export default class AtomicQuery extends React.Component {
         {(result) => {
           const { loading, error } = result;
           if (loading) {
+            if (!this.dataLoading) {
+              this.props.onDataLoading();
+              this.dataLoading = true;
+              this.dataReady = false;
+            }
+
             if (this.props.hideLoader) {
               return null;
             }
@@ -59,6 +69,7 @@ export default class AtomicQuery extends React.Component {
           if (!this.dataReady) {
             this.props.onDataReady(result.data);
             this.dataReady = true;
+            this.dataLoading = false;
           }
           return this.props.children(result);
         }}

@@ -57,6 +57,8 @@ function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "dataReady", false);
 
+    _defineProperty(_assertThisInitialized(_this), "dataLoading", false);
+
     return _this;
   }
 
@@ -70,6 +72,13 @@ function (_React$Component) {
             error = result.error;
 
         if (loading) {
+          if (!_this2.dataLoading) {
+            _this2.props.onDataLoading();
+
+            _this2.dataLoading = true;
+            _this2.dataReady = false;
+          }
+
           if (_this2.props.hideLoader) {
             return null;
           }
@@ -100,6 +109,7 @@ function (_React$Component) {
           _this2.props.onDataReady(result.data);
 
           _this2.dataReady = true;
+          _this2.dataLoading = false;
         }
 
         return _this2.props.children(result);
@@ -119,9 +129,11 @@ _defineProperty(AtomicQuery, "propTypes", {
   // the base Query component has an onCompleted function, but it's only
   // called after the initial request for data returns, and not if you visit
   // the page again
-  onDataReady: _propTypes["default"].func
+  onDataReady: _propTypes["default"].func,
+  onDataLoading: _propTypes["default"].func
 });
 
 _defineProperty(AtomicQuery, "defaultProps", {
-  onDataReady: function onDataReady() {}
+  onDataReady: function onDataReady() {},
+  onDataLoading: function onDataLoading() {}
 });
