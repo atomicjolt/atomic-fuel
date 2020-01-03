@@ -88,11 +88,11 @@ export class Loader extends React.PureComponent {
     logoColor: PropTypes.string,
     backgroundColor1: PropTypes.string,
     backgroundColor2: PropTypes.string,
-    aj_loader: {
+    aj_loader: PropTypes.shape({
       logoColor: PropTypes.string,
       backgroundColor1: PropTypes.string,
       backgroundColor2: PropTypes.string,
-    }
+    }),
   };
 
   render() {
