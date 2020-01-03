@@ -101,11 +101,11 @@ _defineProperty(Loader, "propTypes", {
   logoColor: _propTypes["default"].string,
   backgroundColor1: _propTypes["default"].string,
   backgroundColor2: _propTypes["default"].string,
-  aj_loader: {
+  aj_loader: _propTypes["default"].shape({
     logoColor: _propTypes["default"].string,
     backgroundColor1: _propTypes["default"].string,
     backgroundColor2: _propTypes["default"].string
-  }
+  })
 });
 
 var _default = (0, _settings.withSettings)(Loader);
