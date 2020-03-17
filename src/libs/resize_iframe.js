@@ -1,4 +1,4 @@
-import { broadcastMessage } from 'atomic-fuel/libs/communications/communicator';
+import { broadcastMessage } from '../communications/communicator';
 
 let currentHeight = 0;
 
