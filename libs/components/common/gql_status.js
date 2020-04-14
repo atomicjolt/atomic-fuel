@@ -17,13 +17,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function GqlStatus(props) {
   if (props.loading) {
-    return _react["default"].createElement(_atomicjolt_loader["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_atomicjolt_loader["default"], {
       message: props.loadMessage
     });
   }
 
   if (props.error) {
-    return _react["default"].createElement(_inline_error["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_inline_error["default"], {
       error: props.error.message
     });
   }

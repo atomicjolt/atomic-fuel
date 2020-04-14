@@ -21,9 +21,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 var pendingRequests = {};
 
-var Api =
-/*#__PURE__*/
-function () {
+var Api = /*#__PURE__*/function () {
   function Api() {
     _classCallCheck(this, Api);
   }

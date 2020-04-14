@@ -27,9 +27,7 @@ function _default(dispatch, currentUserId) {
   }, refresh);
 }
 
-var Jwt =
-/*#__PURE__*/
-function () {
+var Jwt = /*#__PURE__*/function () {
   function Jwt(jwt, apiUrl) {
     var oauthConsumerKey = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
     var refresh = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : REFRESH;
