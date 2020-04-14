@@ -17,7 +17,7 @@ var _inline_error = _interopRequireDefault(require("../components/common/errors/
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -25,26 +25,28 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var AtomicQuery =
-/*#__PURE__*/
-function (_React$Component) {
+var AtomicQuery = /*#__PURE__*/function (_React$Component) {
   _inherits(AtomicQuery, _React$Component);
 
-  function AtomicQuery() {
-    var _getPrototypeOf2;
+  var _super = _createSuper(AtomicQuery);
 
+  function AtomicQuery() {
     var _this;
 
     _classCallCheck(this, AtomicQuery);
@@ -53,7 +55,7 @@ function (_React$Component) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AtomicQuery)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "dataReady", false);
 
@@ -67,7 +69,7 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      return _react["default"].createElement(_reactApollo.Query, this.props, function (result) {
+      return /*#__PURE__*/_react["default"].createElement(_reactApollo.Query, this.props, function (result) {
         var loading = result.loading,
             error = result.error;
 
@@ -83,7 +85,7 @@ function (_React$Component) {
             return null;
           }
 
-          return _react["default"].createElement(_atomicjolt_loader["default"], {
+          return /*#__PURE__*/_react["default"].createElement(_atomicjolt_loader["default"], {
             message: _this2.props.loadingMessage
           });
         }
@@ -95,12 +97,12 @@ function (_React$Component) {
           }
 
           if (error.networkError && error.networkError.bodyText && error.networkError.bodyText.indexOf('JWT::ExpiredSignature') >= 0) {
-            return _react["default"].createElement(_inline_error["default"], {
+            return /*#__PURE__*/_react["default"].createElement(_inline_error["default"], {
               error: "Your authentication token has expired. Please refresh the page to enable authentication."
             });
           }
 
-          return _react["default"].createElement(_inline_error["default"], {
+          return /*#__PURE__*/_react["default"].createElement(_inline_error["default"], {
             error: error.message
           });
         }

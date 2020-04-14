@@ -18,8 +18,8 @@ exports.SettingsContext = SettingsContext;
 
 function withSettings(Component) {
   return function SettingsComponent(props) {
-    return _react["default"].createElement(SettingsContext.Consumer, null, function (settings) {
-      return _react["default"].createElement(Component, _extends({}, props, {
+    return /*#__PURE__*/_react["default"].createElement(SettingsContext.Consumer, null, function (settings) {
+      return /*#__PURE__*/_react["default"].createElement(Component, _extends({}, props, {
         settings: settings
       }));
     });

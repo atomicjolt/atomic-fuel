@@ -15,7 +15,7 @@ var _settings = require("../settings");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23,15 +23,19 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -50,15 +54,15 @@ function renderStyles() {
   (0, _styles["default"])(".loader-text{\n    font-size: 24px;\n    font-family: 'Lato', Arial, Helvetica, sans-serif;\n    font-weight: 500;\n    color: #222;\n    text-align: center;\n    padding-top: 48px;\n    margin: 0;\n  }");
 }
 
-var Loader =
-/*#__PURE__*/
-function (_React$PureComponent) {
+var Loader = /*#__PURE__*/function (_React$PureComponent) {
   _inherits(Loader, _React$PureComponent);
+
+  var _super = _createSuper(Loader);
 
   function Loader() {
     _classCallCheck(this, Loader);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Loader).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(Loader, [{
@@ -68,24 +72,24 @@ function (_React$PureComponent) {
       var backgroundColor1 = this.props.settings.aj_loader.backgroundColor1 || this.props.backgroundColor1 || '#FFEA00';
       var backgroundColor2 = this.props.settings.aj_loader.backgroundColor2 || this.props.backgroundColor2 || '#FFFF56';
       renderStyles(logoColor, backgroundColor1, backgroundColor2);
-      return _react["default"].createElement("div", {
+      return /*#__PURE__*/_react["default"].createElement("div", {
         className: "aj-loader"
-      }, _react["default"].createElement("div", {
+      }, /*#__PURE__*/_react["default"].createElement("div", {
         className: "atomicjolt-loading-animation"
-      }, _react["default"].createElement("svg", {
+      }, /*#__PURE__*/_react["default"].createElement("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         viewBox: "0 0 91.87 114.09",
         role: "img",
         "aria-label": "loading"
-      }, _react["default"].createElement("g", {
+      }, /*#__PURE__*/_react["default"].createElement("g", {
         "data-name": "Layer 2"
-      }, _react["default"].createElement("polygon", {
+      }, /*#__PURE__*/_react["default"].createElement("polygon", {
         className: "cls-1",
         points: "40.45 111.32 89.11 99.26 71.35 19.9 21.1 89.71 40.45 111.32"
-      }), _react["default"].createElement("polyline", {
+      }), /*#__PURE__*/_react["default"].createElement("polyline", {
         className: "cls-2",
         points: "50.67 2.77 2.77 69.96 25.47 94.65 66.36 84.13 50.67 2.77 71.35 19.9"
-      })))), _react["default"].createElement("p", {
+      })))), /*#__PURE__*/_react["default"].createElement("p", {
         className: "loader-text"
       }, this.props.message));
     }

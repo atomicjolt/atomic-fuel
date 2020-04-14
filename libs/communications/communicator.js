@@ -43,9 +43,7 @@ function broadcastMessage(payload) {
   broadcastRawMessage(JSON.stringify(payload), domain);
 }
 
-var Communicator =
-/*#__PURE__*/
-function () {
+var Communicator = /*#__PURE__*/function () {
   function Communicator() {
     var domain = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '*';
 

@@ -19,9 +19,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var HandlerSingleton =
-/*#__PURE__*/
-function () {
+var HandlerSingleton = /*#__PURE__*/function () {
   _createClass(HandlerSingleton, null, [{
     key: "prepareInstance",
     value: function prepareInstance(dispatch) {
