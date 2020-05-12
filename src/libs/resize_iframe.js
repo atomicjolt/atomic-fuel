@@ -23,6 +23,7 @@ export default function initResizeHandler(getSize = defaultGetSize) {
   };
 
   const mObserver = new MutationObserver(handleResize);
+  window.addEventListener('resize', handleResize);
   mObserver.observe(
     document.documentElement,
     {
