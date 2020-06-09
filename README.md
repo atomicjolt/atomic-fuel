@@ -24,6 +24,8 @@ If you wanted to use, for example, `libs/store/configure_store.js` you would wri
 ```Javascript
 import configureStore from 'atomic-fuel/libs/configure_store.js';
 ```
-## Notes
-Currently there is not any default export for this package so doing something like `import thing from 'atomic-fuel';` won't do anything. In the future though we maybe could come up with some intelligent default export.
-
+Alternatively, there is an index file which simply exports everything for
+convenience, so you can do this:
+```Javascript
+import { configureStore } from 'atomic-fuel';
+```
