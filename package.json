@@ -26,6 +26,7 @@
     "url": "https://github.com/atomicjolt/atomic-fuel/issues"
   },
   "homepage": "https://github.com/atomicjolt/atomic-fuel",
+  "main": "libs/index.js",
   "peerDependencies": {
     "@babel/preset-react": "^7.0.0",
     "lodash": "^4.17.15",
