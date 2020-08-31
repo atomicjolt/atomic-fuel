@@ -1,12 +1,14 @@
 import React from 'react';
-
-export const SettingsContext = React.createContext(window.DEFAULT_SETTINGS);
-
+const updateGlobalSetting = () => {};
+export const SettingsContext = React.createContext({
+  ...window.DEFAULT_SETTINGS,
+  updateGlobalSetting
+});
 export function withSettings(Component) {
   return function SettingsComponent(props) {
     return (
       <SettingsContext.Consumer>
-        {settings => <Component {...props} settings={settings} />}
+        {(settings) => <Component {...props} settings={settings} />}
       </SettingsContext.Consumer>
     );
   };
