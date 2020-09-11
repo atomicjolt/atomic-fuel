@@ -19,18 +19,23 @@ export class Jwt {
     if (this.jwt) {
       const base64Url = this.jwt.split('.')[1];
       const base64 = base64Url.replace('-', '+').replace('_', '/');
-      this._decodedJwt = JSON.parse(window.atob(base64));
-
-      this.userId = this._decodedJwt.user_id;
-      this.contextId = this._decodedJwt.context_id;
-      this.oauthConsumerKey = this._decodedJwt.kid || oauthConsumerKey;
+      try {
+        this._decodedJwt = JSON.parse(window.atob(base64));
+        this.userId = this._decodedJwt.user_id;
+        this.contextId = this._decodedJwt.context_id;
+        this.oauthConsumerKey = this._decodedJwt.kid || oauthConsumerKey;
+      } catch(e) {
+        if (typeof Rollbar !== 'undefined' && Rollbar.options.enabled) {
+          Rollbar.error('Failed to decode JWT for refresh', { error: e, encodedJwt: base64 });
+        }
+      }
     }
 
     this.refresh = refresh;
   }
 
   enableRefresh() {
-    if (this.jwt) {
+    if (this.jwt && this.userId) {
       const url = `api/jwts/${this.userId}`;
       setInterval(() => {
         api.get(url, this.apiUrl, this.jwt, null, this.params, null).then((response) => {

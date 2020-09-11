@@ -41,10 +41,20 @@ var Jwt = /*#__PURE__*/function () {
     if (this.jwt) {
       var base64Url = this.jwt.split('.')[1];
       var base64 = base64Url.replace('-', '+').replace('_', '/');
-      this._decodedJwt = JSON.parse(window.atob(base64));
-      this.userId = this._decodedJwt.user_id;
-      this.contextId = this._decodedJwt.context_id;
-      this.oauthConsumerKey = this._decodedJwt.kid || oauthConsumerKey;
+
+      try {
+        this._decodedJwt = JSON.parse(window.atob(base64));
+        this.userId = this._decodedJwt.user_id;
+        this.contextId = this._decodedJwt.context_id;
+        this.oauthConsumerKey = this._decodedJwt.kid || oauthConsumerKey;
+      } catch (e) {
+        if (typeof Rollbar !== 'undefined' && Rollbar.options.enabled) {
+          Rollbar.error('Failed to decode JWT for refresh', {
+            error: e,
+            encodedJwt: base64
+          });
+        }
+      }
     }
 
     this.refresh = refresh;
@@ -55,7 +65,7 @@ var Jwt = /*#__PURE__*/function () {
     value: function enableRefresh() {
       var _this = this;
 
-      if (this.jwt) {
+      if (this.jwt && this.userId) {
         var url = "api/jwts/".concat(this.userId);
         setInterval(function () {
           _api["default"].get(url, _this.apiUrl, _this.jwt, null, _this.params, null).then(function (response) {
