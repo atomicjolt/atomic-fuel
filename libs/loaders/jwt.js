@@ -40,7 +40,7 @@ var Jwt = /*#__PURE__*/function () {
 
     if (this.jwt) {
       var base64Url = this.jwt.split('.')[1];
-      var base64 = base64Url.replaceAll('-', '+').replaceAll('_', '/');
+      var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
 
       try {
         this._decodedJwt = JSON.parse(window.atob(base64));
