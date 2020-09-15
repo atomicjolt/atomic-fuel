@@ -18,7 +18,7 @@ export class Jwt {
 
     if (this.jwt) {
       const base64Url = this.jwt.split('.')[1];
-      const base64 = base64Url.replace('-', '+').replace('_', '/');
+      const base64 = base64Url.replaceAll('-', '+').replaceAll('_', '/');
       try {
         this._decodedJwt = JSON.parse(window.atob(base64));
         this.userId = this._decodedJwt.user_id;
