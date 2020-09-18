@@ -141,6 +141,18 @@ describe('api', () => {
     expect(nockRequest.isDone()).toBeTruthy();
   });
 
+  it('calls execRequest on a Delete with body', () => {
+    const url = '/api/test/8';
+    const nockRequest = Helper.mockRequest('delete', apiUrl, url, expectedHeaders);
+
+    api.execRequest(Network.DEL, url, apiUrl, null, null, {}, {foo: 'bar'}).then((result) => {
+      expect(result.statusCode).toBe(200);
+      expect(result.text).toEqual(Helper.testPayload());
+    });
+
+    expect(nockRequest.isDone()).toBeTruthy();
+  });
+
   describe('Pending Requests', () => {
     const url = 'http://www.example.com';
     const requestMethod = () => {};

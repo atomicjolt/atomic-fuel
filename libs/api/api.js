@@ -71,7 +71,12 @@ var Api = /*#__PURE__*/function () {
             break;
 
           case _network["default"].DEL:
-            request = _superagent["default"].del(fullUrl);
+            if (body) {
+              request = _superagent["default"].del(fullUrl).send(body);
+            } else {
+              request = _superagent["default"].del(fullUrl);
+            }
+
             break;
 
           default:

@@ -88,7 +88,11 @@ export default class Api {
           request = Request.put(fullUrl).send(body);
           break;
         case NetworkConstants.DEL:
-          request = Request.del(fullUrl);
+          if (_.isEmpty(body)) {
+            request = Request.del(fullUrl);
+          } else {
+            request = Request.del(fullUrl).send(body);
+          }
           break;
         default:
           break;
