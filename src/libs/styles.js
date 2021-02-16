@@ -1,4 +1,4 @@
-const function getAddStyles() {
+function getAddStyles() {
   let styleEl = document.getElementById(id);
   const memo = {};
   const id = 'atomic-fuel-styles';
@@ -13,11 +13,11 @@ const function getAddStyles() {
     const classes = styles.match(/.*[^{]/)[0];
 
     if (memo[classes] === undefined) {
-      styleEl.sheet.insertRule(styles, styleSheet.cssRules.length);
-    } else {
+      const styleSheet = styleEl.sheet;
+      styleSheet.insertRule(styles, styleSheet.cssRules.length);
       memo[classes] = 1;
     }
   };
 }
 
-export getAddStyles();
+export default getAddStyles();
