@@ -3,12 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.getAddStyles = getAddStyles;
 exports["default"] = void 0;
 
 function getAddStyles() {
-  var styleEl = document.getElementById(id);
   var memo = {};
   var id = 'atomic-fuel-styles';
+  var styleEl = document.getElementById(id);
   return function (styles) {
     if (!styleEl) {
       styleEl = document.createElement('style');
