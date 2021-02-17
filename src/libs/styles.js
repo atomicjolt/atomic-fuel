@@ -1,4 +1,4 @@
-export function getAddStyles() {
+function getAddStyles() {
   const memo = {};
   const id = 'atomic-fuel-styles';
 
