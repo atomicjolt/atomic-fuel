@@ -3,10 +3,10 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getAddStyles = getAddStyles;
 exports["default"] = void 0;
 
 function getAddStyles() {
+  var selectorTextRegex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : /[^{]*/;
   var memo = {};
   var id = 'atomic-fuel-styles';
   var styleEl = document.getElementById(id);
@@ -16,8 +16,14 @@ function getAddStyles() {
       styleEl.id = id;
       document.head.appendChild(styleEl);
     }
+    /*
+     * The RegEx below extracts the selectorText from the styles
+     * string. For example running this regex on the styles string
+     * ".myClass > h1 .myclassTwo {...}" would yield ".myClass > h1 .myclassTwo"
+     */
 
-    var classes = styles.match(/.*[^{]/)[0];
+
+    var classes = styles.match(selectorTextRegex)[0].trim();
 
     if (memo[classes] === undefined) {
       var styleSheet = styleEl.sheet;
