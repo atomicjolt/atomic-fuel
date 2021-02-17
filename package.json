@@ -4,6 +4,7 @@
   "description": "Atomic Jolt's front-end library code",
   "scripts": {
     "test": "jest --no-cache  --config package.json",
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand --watch --config package.json",
     "jest_version": "which jest && jest --version",
     "build": "cross-env BABEL_ENV=production babel src --out-dir libs",
     "clean": "rimraf libs",

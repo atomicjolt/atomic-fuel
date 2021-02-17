@@ -71,10 +71,10 @@ var Api = /*#__PURE__*/function () {
             break;
 
           case _network["default"].DEL:
-            if (body) {
-              request = _superagent["default"].del(fullUrl).send(body);
-            } else {
+            if (_lodash["default"].isEmpty(body)) {
               request = _superagent["default"].del(fullUrl);
+            } else {
+              request = _superagent["default"].del(fullUrl).send(body);
             }
 
             break;
