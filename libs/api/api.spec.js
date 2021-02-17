@@ -133,18 +133,6 @@ describe('api', function () {
 
     expect(nockRequest.isDone()).toBeTruthy();
   });
-  it('calls execRequest on a Delete with body', function () {
-    var url = '/api/test/8';
-
-    var nockRequest = _helper["default"].mockRequest('delete', apiUrl, url, expectedHeaders);
-
-    _api["default"].execRequest(_network["default"].DEL, url, apiUrl, null, null).then(function (result) {
-      expect(result.statusCode).toBe(200);
-      expect(result.text).toEqual(_helper["default"].testPayload());
-    });
-
-    expect(nockRequest.isDone()).toBeTruthy();
-  });
   it('calls execRequest with optional timeout', function () {
     var url = '/api/test/7';
     var timeout = 1000;
@@ -152,6 +140,20 @@ describe('api', function () {
     var nockRequest = _helper["default"].mockRequest('get', apiUrl, url, expectedHeaders);
 
     _api["default"].execRequest(_network["default"].GET, url, apiUrl, null, null, {}, {}, {}, timeout).then(function (result) {
+      expect(result.statusCode).toBe(200);
+      expect(result.text).toEqual(_helper["default"].testPayload());
+    });
+
+    expect(nockRequest.isDone()).toBeTruthy();
+  });
+  it('calls execRequest on a Delete with body', function () {
+    var url = '/api/test/8';
+
+    var nockRequest = _helper["default"].mockRequest('delete', apiUrl, url, expectedHeaders);
+
+    _api["default"].execRequest(_network["default"].DEL, url, apiUrl, null, null, {}, {
+      foo: 'bar'
+    }).then(function (result) {
       expect(result.statusCode).toBe(200);
       expect(result.text).toEqual(_helper["default"].testPayload());
     });

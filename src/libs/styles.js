@@ -1,7 +1,8 @@
-function getAddStyles() {
-  let styleEl = document.getElementById(id);
+export function getAddStyles() {
   const memo = {};
   const id = 'atomic-fuel-styles';
+
+  let styleEl = document.getElementById(id);
 
   return (styles) => {
     if (!styleEl) {
