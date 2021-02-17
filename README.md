@@ -29,3 +29,14 @@ convenience, so you can do this:
 ```Javascript
 import { configureStore } from 'atomic-fuel';
 ```
+
+## Testing
+Run tests:
+`yarn test`
+
+Run tests with Chrome DevTools (i.e. use debugger in your tests):
+1. Open a Chromium browser at `chrome://inspect`
+2. Click on the "Open dedicated DevTools for Node"
+
+Then you can run tests using:
+`yarn test:debug`
