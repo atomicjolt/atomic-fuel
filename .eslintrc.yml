@@ -8,6 +8,7 @@ plugins:
   - react
   - jsx-a11y
   - import
+  - react-hooks
 globals:
   describe: false
   beforeAll: false
@@ -51,6 +52,7 @@ rules:
     - 2
     - as-needed
   react/prefer-stateless-function: 0
+  react/jsx-props-no-spreading: false
   react/forbid-prop-types:
     - 2
     - forbid:

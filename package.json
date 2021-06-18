@@ -10,7 +10,9 @@
     "clean": "rimraf libs",
     "lint": "eslint src",
     "lint_fix": "eslint src --fix",
-    "prepare": "yarn clean && yarn build"
+    "prepare": "yarn clean && yarn build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -45,8 +47,13 @@
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/react": "^6.2.9",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.3.0",
+    "babel-loader": "^8.2.2",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
@@ -66,5 +73,6 @@
     "redux": "^4.0.5",
     "rimraf": "^3.0.2",
     "superagent": "^5.2.2"
-  }
+  },
+  "dependencies": {}
 }
