@@ -1,7 +1,6 @@
 import React from 'react';
-
 import Banner, { types } from './index.jsx';
-import StoryWrapper from '../_StoryWrapper';
+import StoryWrapper from '../StoryWrapper';
 
 export default {
   title: 'Banner',
