@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { Default } from './index.stories.js';
+import { Default } from './index.stories.jsx';
 
 describe('Banner Component', () => {
   it('should render a message given a message props', () => {
