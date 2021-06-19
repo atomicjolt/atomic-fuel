@@ -7,6 +7,7 @@
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand --watch --config package.json",
     "jest_version": "which jest && jest --version",
     "build": "cross-env BABEL_ENV=production babel src --out-dir libs",
+    "nuke": "rm -rf node_modules",
     "clean": "rimraf libs",
     "lint": "eslint src",
     "lint_fix": "eslint src --fix",
@@ -75,6 +76,9 @@
     "superagent": "^5.2.2"
   },
   "dependencies": {
-    "sass": "^1.35.1"
+    "add": "^2.0.6",
+    "babel-plugin-transform-scss": "^1.0.11",
+    "sass": "^1.35.1",
+    "yarn": "^1.22.10"
   }
 }

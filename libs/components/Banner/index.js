@@ -3,8 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = Banner;
-exports.types = void 0;
+exports.Banner = Banner;
+exports.BannerTypes = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -12,18 +12,31 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-require("./style.scss");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var types = Object.freeze({
+(function _() {
+  var styles = ".Banner {\n  background: gray;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-align-items: center;\n  align-items: center;\n  min-height: 4rem;\n  padding: 0.8rem 1.2rem;\n  border-radius: 0.3rem;\n  margin: 20px 0; }\n  .Banner > i {\n    font-size: 2.4rem;\n    color: #fff;\n    margin-right: 1.2rem; }\n  .Banner h3 {\n    color: #fff;\n    font-size: 1.4rem;\n    font-family: 'Lato', sans-serif;\n    font-weight: 700;\n    margin: 0;\n    margin-right: .5rem; }\n  .Banner__content {\n    color: #fff;\n    font-family: 'Lato', sans-serif;\n    font-weight: normal;\n    font-size: 1.4rem; }\n    .Banner__content span {\n      margin-right: 0.8rem; }\n  .Banner--error {\n    background: #f00; }\n  .Banner--warning {\n    background: #ff8300; }\n  .Banner--relief {\n    background: #1ea7fd; }\n";
+  var fileName = "reph_style";
+  var element = document.querySelector("style[data-sass-component='reph_style']");
+
+  if (!element) {
+    var styleBlock = document.createElement("style");
+    styleBlock.innerHTML = styles;
+    styleBlock.setAttribute("data-sass-component", fileName);
+    document.head.appendChild(styleBlock);
+  } else {
+    element.innerHTML = styles;
+  }
+})();
+
+var BannerTypes = Object.freeze({
   ERROR: 'error',
   RELIEF: 'relief',
   WARNING: 'warning'
 });
-exports.types = types;
+exports.BannerTypes = BannerTypes;
 
 function Banner(props) {
   var heading = props.heading,

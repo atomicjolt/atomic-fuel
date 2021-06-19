@@ -68,9 +68,10 @@ var Loader = /*#__PURE__*/function (_React$PureComponent) {
   _createClass(Loader, [{
     key: "render",
     value: function render() {
-      var logoColor = this.props.settings.aj_loader.logoColor || this.props.logoColor || '#444';
-      var backgroundColor1 = this.props.settings.aj_loader.backgroundColor1 || this.props.backgroundColor1 || '#FFEA00';
-      var backgroundColor2 = this.props.settings.aj_loader.backgroundColor2 || this.props.backgroundColor2 || '#FFFF56';
+      var ajLoader = 'aj_loader' in this.props.settings ? this.props.settings.aj_loader : null;
+      var logoColor = ajLoader || this.props.logoColor || '#444';
+      var backgroundColor1 = ajLoader && ajLoader.backgroundColor1 || this.props.backgroundColor1 || '#FFEA00';
+      var backgroundColor2 = ajLoader && ajLoader.backgroundColor2 || this.props.backgroundColor2 || '#FFFF56';
       renderStyles(logoColor, backgroundColor1, backgroundColor2);
       return /*#__PURE__*/_react["default"].createElement("div", {
         className: "aj-loader"

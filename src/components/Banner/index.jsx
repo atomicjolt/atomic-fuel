@@ -4,13 +4,13 @@ import cn from 'classnames';
 
 import './style.scss';
 
-export const types = Object.freeze({
+export const BannerTypes = Object.freeze({
   ERROR: 'error',
   RELIEF: 'relief',
   WARNING: 'warning',
 });
 
-export default function Banner(props) {
+export function Banner(props) {
   const { heading, message, type, icon, overrideClass } = props;
   const baseClass = Boolean(overrideClass) ? overrideClass : 'Banner';
 

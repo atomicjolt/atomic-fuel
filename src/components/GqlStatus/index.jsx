@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AtomicJoltLoader from '../../common/atomicjolt_loader';
-import InlineError from '../../common/errors/inline_error';
+import AtomicJoltLoader from '../common/atomicjolt_loader';
+import InlineError from '../common/errors/inline_error';
 
 export default function GqlStatus(props) {
   if (props.loading) {
