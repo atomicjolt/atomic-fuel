@@ -3,7 +3,7 @@
   "version": "4.9.1",
   "description": "Atomic Jolt's front-end library code",
   "scripts": {
-    "test": "jest --no-cache  --config package.json",
+    "test": "cross-env BABEL_ENV=test jest --no-cache --config package.json",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand --watch --config package.json",
     "jest_version": "which jest && jest --version",
     "build": "cross-env BABEL_ENV=production babel src --out-dir libs",
@@ -52,6 +52,7 @@
     "@storybook/addon-essentials": "^6.2.9",
     "@storybook/addon-links": "^6.2.9",
     "@storybook/react": "^6.2.9",
+    "@testing-library/react": "^11.2.7",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.3.0",
     "babel-loader": "^8.2.2",
@@ -73,12 +74,12 @@
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "rimraf": "^3.0.2",
-    "superagent": "^5.2.2"
+    "superagent": "^5.2.2",
+    "babel-plugin-transform-scss": "^1.0.11",
+    "sass": "^1.35.1"
   },
   "dependencies": {
     "add": "^2.0.6",
-    "babel-plugin-transform-scss": "^1.0.11",
-    "sass": "^1.35.1",
     "yarn": "^1.22.10"
   }
 }

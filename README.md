@@ -1,12 +1,12 @@
-# Atomic Fuel 🔋
+# 🔋 Atomic Fuel
 This package contains all of the front-end library code for Atomic Jolt apps. It includes all front-end code that was previously in the `client/libs` directory.
 
-## Installation 🔌
+## 🧱 Installation
 You should install atomic fuel into each individual app not in the client directory. Just add as a regular dependency.
 
 `b add atomic-fuel`
 
-## Usage 🧑‍🔬
+## 🧑‍🔬 Usage
 All of the code is found in the libs folder which has the following structure
 ```
 libs/
@@ -34,13 +34,13 @@ convenience, so you can do this:
 import { configureStore } from 'atomic-fuel';
 ```
 
-## Development 🛠️
+## 🛠️ Development
 Develop using Storybook, which features hot-reloading, browsing, and testing of React Components.
 
 Run Storybook:
 `yarn storybook`
 
-#### Note 📝
+#### 📝 Note
 Component file structure should be organized in the following structure.
 ```
 src/components/
