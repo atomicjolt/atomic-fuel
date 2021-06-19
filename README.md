@@ -35,7 +35,7 @@ import { configureStore } from 'atomic-fuel';
 ```
 
 ## 🛠️ Development
-Develop using Storybook, which features hot-reloading, browsing, and testing of React Components.
+Develop using Storybook, which features hot-reloading, component browsing, and testing of React Components.
 
 Run Storybook:
 `yarn storybook`
