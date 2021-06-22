@@ -20,19 +20,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var HandlerSingleton = /*#__PURE__*/function () {
-  _createClass(HandlerSingleton, null, [{
-    key: "prepareInstance",
-    value: function prepareInstance(dispatch) {
-      var domain = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '*';
-
-      if (!HandlerSingleton.instance) {
-        HandlerSingleton.communicator = new _communicator["default"](domain);
-        HandlerSingleton.instance = new HandlerSingleton(dispatch);
-        HandlerSingleton.communicator.enableListener(HandlerSingleton.instance);
-      }
-    }
-  }]);
-
   function HandlerSingleton(dispatch) {
     var _this = this;
 
@@ -60,6 +47,19 @@ var HandlerSingleton = /*#__PURE__*/function () {
 
     this.dispatch = dispatch;
   }
+
+  _createClass(HandlerSingleton, null, [{
+    key: "prepareInstance",
+    value: function prepareInstance(dispatch) {
+      var domain = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '*';
+
+      if (!HandlerSingleton.instance) {
+        HandlerSingleton.communicator = new _communicator["default"](domain);
+        HandlerSingleton.instance = new HandlerSingleton(dispatch);
+        HandlerSingleton.communicator.enableListener(HandlerSingleton.instance);
+      }
+    }
+  }]);
 
   return HandlerSingleton;
 }();

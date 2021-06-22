@@ -1,0 +1,51 @@
+.Banner {
+  background: gray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  min-height: 4rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.3rem;
+  margin: 20px 0;
+
+  & > i {
+    font-size: 2.4rem;
+    color: #fff;
+    margin-right: 1.2rem;
+  }
+
+  & h3 {
+    color: #fff;
+    font-size: 1.4rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    margin: 0;
+    margin-right: .5rem;
+  }
+
+  &__content {
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    font-weight: normal;
+    font-size: 1.4rem;
+
+    & span {
+      margin-right: 0.8rem;
+    }
+  }
+
+  &--error {
+    background: #f00;
+  }
+
+  &--warning {
+    background: rgb(255, 131, 0);
+  }
+
+  &--relief {
+    background: rgb(30, 167, 253);
+  }
+}
