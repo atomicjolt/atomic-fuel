@@ -17,7 +17,10 @@
         "@babel/preset-typescript"
       ],
       "plugins": [
-        "@babel/plugin-proposal-class-properties"
+        "@babel/plugin-proposal-class-properties",
+        ["babel-plugin-react-css-modules", {
+          "generateScopedName": "[name]-[local]-[hash:base64:4]"
+        }]
       ]
     },
     "test": {
@@ -27,7 +30,10 @@
         "@babel/preset-typescript"
       ],
       "plugins": [
-        "@babel/plugin-proposal-class-properties"
+        "@babel/plugin-proposal-class-properties",
+        ["babel-plugin-react-css-modules", {
+          "generateScopedName": "[name]-[local]-[hash:base64:4]"
+        }]
       ]
     }
   }
