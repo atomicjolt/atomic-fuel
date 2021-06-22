@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 
-import './styles.scss';
+import './styles.css';
 
 export interface Props {
   classOverride?: string,

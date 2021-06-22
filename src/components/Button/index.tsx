@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 
-import './style.scss';
+import './styles.css';
 
 export interface Props {
   ariaOptions?: Object,
