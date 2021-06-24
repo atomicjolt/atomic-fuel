@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component Should match default snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="aj-card"
+  >
+    <div
+      class="aj-card__heading"
+    >
+      <h1
+        class="aj-card__heading-title"
+      >
+        Survey Process
+      </h1>
+      <h2
+        class="aj-card__heading-subtitle"
+      >
+        Step 1 of 2
+      </h2>
+    </div>
+    <section
+      class="aj-card__content"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Card component Should not render content if blank property is true 1`] = `
+<DocumentFragment>
+  <div
+    class="aj-card"
+  >
+    <div
+      data-testid="grace"
+    >
+      恵
+    </div>
+  </div>
+</DocumentFragment>
+`;
