@@ -4,9 +4,12 @@
 	],
 	"compilerOptions": {
 			"allowSyntheticDefaultImports": true,
-			"outDir": "build/dist",
+			"esModuleInterop": true,
+			"strict": true,
+			"outDir": "libs",
 			"module": "commonjs",
 			"target": "es5",
+			"declaration": true,
 			"lib": ["es6", "dom"],
 			"sourceMap": true,
 			"allowJs": true,

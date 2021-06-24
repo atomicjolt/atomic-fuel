@@ -26,7 +26,7 @@ export enum ButtonType {
   icon = 'icon',
 }
 
-const Button = React.forwardRef<HTMLButtonElement, Props>((props: Props, ref) => {
+export const Button = React.forwardRef<HTMLButtonElement, Props>((props: Props, ref) => {
   const {
     ariaOptions = {},
     children,
@@ -65,7 +65,3 @@ const Button = React.forwardRef<HTMLButtonElement, Props>((props: Props, ref) =>
     </button>
   );
 });
-
-
-
-export default Button;

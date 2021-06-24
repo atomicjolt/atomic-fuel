@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import StoryWrapper from '../StoryWrapper';
-import Button, { ButtonType, Props } from '.';
+import { Button, ButtonType, Props } from '.';
 
 export default {
   title: 'Button',
