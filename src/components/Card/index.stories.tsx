@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import StoryWrapper from '../StoryWrapper';
 import Card, { Props } from '.';
-import Button, { ButtonType } from '../Button';
+import { Button, ButtonType } from '../Button';
 
 export default {
   title: 'Card',
