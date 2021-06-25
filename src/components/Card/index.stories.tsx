@@ -17,20 +17,21 @@ const Template: Story<Props> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  title: 'Qualtrics Surveys Setup',
+  title: 'Welcome Message',
   subtitle: 'Step 1 of 2',
   children: (
     <>
       <p>
-        In order to use this LTI tool, we need your authorization to integrate
-        with Canvas. After authorizing your Canvas account, we'll prompt you to do the
-        same with your Qualtrics account.
+        Cras mattis consectetur purus sit amet fermentum. Integer
+        posuere erat a ante venenatis dapibus posuere velit aliquet.
+        Etiam porta sem malesuada magna mollis euismod. Curabitu
+        blandit tempus porttitor. Duis mollis.
       </p>
       <Button
         noBold
         buttonType={ButtonType.primary}
       >
-        Authorize Canvas
+        Continue
       </Button>
     </>
   ),
