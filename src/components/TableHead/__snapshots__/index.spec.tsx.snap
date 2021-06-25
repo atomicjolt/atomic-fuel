@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableHead Should match default Snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="aj-flex-cell is-asc"
+  >
+    <div>
+      <span>
+        Name
+      </span>
+      <button
+        aria-label="Sort by Name"
+        class="aj-btn--sort"
+      >
+        <i
+          aria-hidden="true"
+          class="material-icons-outlined sort-direction"
+        >
+          arrow_drop_up
+        </i>
+        <i
+          aria-hidden="true"
+          class="material-icons-outlined "
+        >
+          arrow_drop_down
+        </i>
+      </button>
+    </div>
+    <div
+      class="aj-input aj-input--search"
+      id="container-123"
+    >
+      <label
+        class="aj-hidden"
+        for="search-123"
+      />
+      <input
+        aria-controls="status-123"
+        id="search-123"
+        tabindex="-1"
+        value=""
+      />
+      <div
+        aria-live="polite"
+        class="aj-hidden"
+        id="status-123"
+        role="status"
+      />
+      <button
+        aria-controls="container-123"
+        aria-expanded="false"
+        type="button"
+      >
+        <i
+          aria-hidden="true"
+          class="material-icons-outlined"
+        >
+          search
+        </i>
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

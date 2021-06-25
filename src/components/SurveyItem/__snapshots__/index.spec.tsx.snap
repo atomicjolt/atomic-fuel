@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SurveyItem component Should match default snapshot 1`] = `
+<DocumentFragment>
+  <a
+    href="undefined/courses/1234/assignments/1234"
+    target="_top"
+  >
+    name
+  </a>
+  12/12/202012/12/202015
+  <a
+    class="qualtrics-link qualtrics-link__results"
+    href="https://ausurveys.co1.qualtrics.com/results/?surveyId=id"
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    Results
+  </a>
+  <button
+    class="aj-btn aj-btn--gray publish-btn unpublished"
+    type="button"
+  >
+    <i
+      class="material-icons"
+    >
+      do_not_disturb
+    </i>
+  </button>
+  <div
+    class="aj-menu-container "
+  >
+    <button
+      aria-expanded="false"
+      aria-haspopup="menu"
+      class="aj-btn aj-btn--gray aj-btn--icon"
+      type="button"
+    >
+      <i
+        arria-hidden="true"
+        class="material-icons-outlined"
+      >
+        more_vert
+      </i>
+    </button>
+    <ul
+      class="aj-menu"
+      role="menu"
+    >
+      <li>
+        <a
+          class="qualtrics-link qualtrics-link__edit"
+          href="https://ausurveys.co1.qualtrics.com/surveys/id/edit"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <i
+            class="material-icons-outlined"
+          >
+            mode_edit
+          </i>
+          Edit Content
+        </a>
+      </li>
+      <li>
+        <a
+          href="/11/settings"
+        >
+          <i
+            class="material-icons-outlined"
+          >
+            settings
+          </i>
+          Settings
+        </a>
+      </li>
+      <li>
+        <button>
+          <i
+            class="material-icons-outlined"
+          >
+            delete
+          </i>
+          Delete Survey
+        </button>
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;
