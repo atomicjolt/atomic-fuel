@@ -10,9 +10,7 @@ export default {
 
 const Template: Story<Props> = (args) => (
   <StoryWrapper>
-    <div style={{ display: 'grid', placeItems: 'center' }}>
-      <Button {...args} />
-    </div>
+    <Button {...args} />
   </StoryWrapper>
 );
 
