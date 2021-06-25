@@ -1,5 +1,6 @@
 import React from 'react';
-import SortableHeader, { SortDirection, Filter } from '../SortableHeader';
+import SortableHeader from '../SortableHeader';
+import { SortDirection, TableFilter } from '../Table';
 
 type Column = {
   dataName: string,
@@ -14,10 +15,10 @@ interface Props {
   searchTerm: string,
 
   onSearch: (searchTerm: string) => void,
-  onSort: (newSortDirection: SortDirection, newSortColumn: Filter) => void,
+  onSort: (newSortDirection: SortDirection, newSortColumn: TableFilter | string) => void,
 }
 
-function TableHead(props: Props) {
+export function TableHead(props: Props) {
 
   return (
     <thead>
@@ -46,5 +47,3 @@ function TableHead(props: Props) {
     </thead>
   );
 }
-
-export default TableHead;

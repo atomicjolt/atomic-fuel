@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import i18n from 'i18next';
-
+import { SortDirection } from '../Table';
 import Tooltip from '../common/tooltip';
-import withLiveMessenger from '../common/with_live_messanger';
+import withLiveMessenger from '../common/with-live-messenger';
 
 import { getID } from './utils';
-import './styles.scss';
+import './styles.css';
 
 const ID = getID();
 const eatClick = (e: any) => {
@@ -14,18 +14,6 @@ const eatClick = (e: any) => {
 
   return false;
 };
-
-export enum Filter {
-  createdAt = 'CREATED_AT',
-  dueAt = 'DUE_AT',
-  name = 'NAME',
-  completed = 'COMPLETED',
-}
-
-export enum SortDirection {
-  Asc = 'ASC',
-  Desc = 'DESC',
-}
 
 export interface Props {
   children: React.ReactNode,
@@ -136,7 +124,7 @@ function SortableHeader(props: Props) {
   function sortClassName() {
     if (!isCurrentPath) return '';
 
-    return currentDirection === SortDirection.Asc ? 'is-asc' : 'is-desc';
+    return currentDirection === SortDirection.asc ? 'is-asc' : 'is-desc';
   }
 
   function getTooltip() {
@@ -159,9 +147,9 @@ function SortableHeader(props: Props) {
   }
 
   function invertSort() {
-    return currentDirection === SortDirection.Asc
-      ? SortDirection.Desc
-      : SortDirection.Asc;
+    return currentDirection === SortDirection.asc
+      ? SortDirection.desc
+      : SortDirection.asc;
   }
 
   const sortClick = (e: any) => {
@@ -169,11 +157,11 @@ function SortableHeader(props: Props) {
       const { announceAssertive: announce } = props;
       e.stopPropagation();
 
-      const sortDirection = isCurrentPath() ? invertSort() : SortDirection.Asc;
+      const sortDirection = isCurrentPath() ? invertSort() : SortDirection.asc;
       announce(
         i18n.t('Sorting by {{name}}, {{direction}}', {
           name: ariaName,
-          direction: sortDirection === SortDirection.Asc ? 'ascending' : 'descending',
+          direction: sortDirection === SortDirection.asc ? 'ascending' : 'descending',
         }),
       );
       onSort(sortDirection, sortPath);
@@ -198,13 +186,13 @@ function SortableHeader(props: Props) {
             aria-label={`Sort by ${ariaName}`}
           >
             <i
-              className={`material-icons-outlined ${arrowClassName(SortDirection.Asc)}`}
+              className={`material-icons-outlined ${arrowClassName(SortDirection.asc)}`}
               aria-hidden="true"
             >
               arrow_drop_up
             </i>
             <i
-              className={`material-icons-outlined ${arrowClassName(SortDirection.Desc)}`}
+              className={`material-icons-outlined ${arrowClassName(SortDirection.desc)}`}
               aria-hidden="true"
             >
               arrow_drop_down

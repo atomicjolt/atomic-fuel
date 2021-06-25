@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
-import StoryWrapper from '../_StoryWrapper';
+import StoryWrapper from '../StoryWrapper';
 import SortableHeader, { Props, SortDirection } from '.';
 
 export default {

@@ -1,0 +1,27 @@
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+.aj-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  table-layout: fixed;
+  min-width: 800px; }
+  .aj-table tr {
+    border-bottom: 1px solid #DDD;
+    height: 45px; }
+  .aj-table thead .header-NAME {
+    width: 50%;
+    cursor: pointer; }
+  .aj-table thead .header-DUE_AT {
+    width: 10%;
+    cursor: pointer; }
+  .aj-table thead .header-CREATED_AT {
+    width: 10%;
+    cursor: pointer; }
+  .aj-table thead .header-COMPLETED {
+    width: 110px;
+    cursor: pointer; }

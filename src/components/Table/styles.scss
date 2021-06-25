@@ -1,0 +1,36 @@
+@import "../../styles/styles.scss";
+
+.aj-table {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+	table-layout: fixed;
+	min-width: 800px;
+
+	tr {
+		border-bottom: 1px solid $whiteDD;
+		height: 45px;
+	}
+
+	thead .header {
+		&-NAME {
+			width: 50%;
+			cursor: pointer;
+		}
+
+		&-DUE_AT {
+			width: 10%;
+			cursor: pointer;
+		}
+
+		&-CREATED_AT {
+			width: 10%;
+			cursor: pointer;
+		}
+
+		&-COMPLETED {
+			width: 110px;
+			cursor: pointer;
+		}
+	}
+}
