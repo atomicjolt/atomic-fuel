@@ -4,49 +4,45 @@
   100% {
     transform: rotate(360deg); } }
 
-th span {
+.aj-table__head-row:first-child {
+  width: 50%; }
+
+.aj-table__head-row span {
   font-size: 12px;
   text-transform: uppercase;
   color: #222; }
 
-th .aj-btn--sort {
-  background-color: transparent;
-  border: 1px solid transparent; }
-  th .aj-btn--sort:active, th .aj-btn--sort:focus {
-    outline: none; }
-  th .aj-btn--sort i {
-    display: block;
-    font-size: 20px;
-    color: #C6C6C6;
-    margin-bottom: -10px; }
-    th .aj-btn--sort i.sort-direction {
-      color: #595959; }
-
-th .aj-input--search {
+.aj-table__head-row .aj-input--search {
   display: flex;
   align-items: center;
   max-width: 235px; }
-  th .aj-input--search.is-expanded {
-    border: 1px solid #333;
-    border-radius: 2px;
-    animation: slide .3s ease-out;
-    animation-fill-mode: forwards; }
-  th .aj-input--search .aj-hidden {
-    display: none; }
-  th .aj-input--search button {
-    background-color: transparent;
-    border: 1px solid transparent; }
-    th .aj-input--search button i {
-      font-size: 18px;
-      line-height: 25px; }
-  th .aj-input--search input {
-    display: none;
-    border: none;
-    outline: none; }
-  th .aj-input--search.is-expanded input {
-    animation: slide 0.3s ease-out;
-    animation-fill-mode: forwards;
-    display: inline-block; }
+
+.aj-table__head-row .aj-input--search.is-expanded {
+  border: 1px solid #333;
+  border-radius: 2px;
+  animation: slide .3s ease-out;
+  animation-fill-mode: forwards; }
+
+.aj-table__head-row .aj-input--search .aj-hidden {
+  display: none; }
+
+.aj-table__head-row .aj-input--search button {
+  background-color: transparent;
+  border: 1px solid transparent; }
+
+.aj-table__head-row .aj-input--search button i {
+  font-size: 18px;
+  line-height: 25px; }
+
+.aj-table__head-row .aj-input--search input {
+  display: none;
+  border: none;
+  outline: none; }
+
+.aj-table__head-row .aj-input--search.is-expanded input {
+  animation: slide 0.3s ease-out;
+  animation-fill-mode: forwards;
+  display: inline-block; }
 
 @keyframes slide {
   from {

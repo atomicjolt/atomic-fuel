@@ -6,31 +6,26 @@
 	text-align: left;
 	table-layout: fixed;
 	min-width: 800px;
+	font-family: 'Lato', 'sans-serif';
 
-	tr {
+	&__row {
 		border-bottom: 1px solid $whiteDD;
 		height: 45px;
 	}
 
-	thead .header {
-		&-NAME {
-			width: 50%;
-			cursor: pointer;
-		}
+	&__head {
+		font-size: 12px;
+		font-weight: 700;
+		cursor: pointer;
+		border-bottom: 1px solid #DDD;
 
-		&-DUE_AT {
-			width: 10%;
-			cursor: pointer;
+		&-row {
+			height: 44px;
 		}
+	}
 
-		&-CREATED_AT {
-			width: 10%;
-			cursor: pointer;
-		}
-
-		&-COMPLETED {
-			width: 110px;
-			cursor: pointer;
-		}
+	&__flex-cell {
+		display: flex;
+		align-items: center;
 	}
 }

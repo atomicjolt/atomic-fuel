@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import i18n from 'i18next';
 import { SortDirection } from '../Table';
+import { Button, ButtonType } from '../Button'
 import Tooltip from '../common/tooltip';
 import withLiveMessenger from '../common/with-live-messenger';
 
@@ -170,36 +171,38 @@ function SortableHeader(props: Props) {
 
   return (
     <th
-      className={`header-${sortPath}`}
+      className="aj-table__head-row"
       rowSpan={rowSpan}
+      scope="col"
     >
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
       <div
-        className={`aj-flex-cell ${sortClassName()}`}
+        className="aj-table__flex-cell"
+        onClick={sortClick}
       >
-        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
-        <div onClick={sortClick}>
-          <span>{children}</span>
-          {getTooltip()}
-          <button
-            onClick={sortClick}
-            className="aj-btn--sort"
-            aria-label={`Sort by ${ariaName}`}
+        <span>{children}</span>
+        {getTooltip()}
+        <Button
+          onClick={sortClick}
+          buttonType={ButtonType.sort}
+          aria-options={{
+            "aria-label": `Sort by ${ariaName}`
+          }}
+        >
+          <i
+            className={`material-icons-outlined ${arrowClassName(SortDirection.asc)}`}
+            aria-hidden="true"
           >
-            <i
-              className={`material-icons-outlined ${arrowClassName(SortDirection.asc)}`}
-              aria-hidden="true"
-            >
-              arrow_drop_up
-            </i>
-            <i
-              className={`material-icons-outlined ${arrowClassName(SortDirection.desc)}`}
-              aria-hidden="true"
-            >
-              arrow_drop_down
-            </i>
-          </button>
-        </div>
-        {search()}
+            arrow_drop_up
+          </i>
+          <i
+            className={`material-icons-outlined ${arrowClassName(SortDirection.desc)}`}
+            aria-hidden="true"
+          >
+            arrow_drop_down
+          </i>
+        </Button>
+      {search()}
       </div>
     </th>
   );

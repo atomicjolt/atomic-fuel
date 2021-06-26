@@ -57,6 +57,41 @@ a.aj-btn {
     font-weight: 400 !important;
   }
 
+  &--sort {
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &:active,
+    &:focus {
+      outline: none;
+    }
+
+    i {
+      position: relative;
+      display: block;
+      height: 12px;
+      font-size: 24px;
+      color: $grayC6;
+
+      &.sort-direction {
+        color: $gray59;
+      }
+
+      &:nth-child(1) {
+        bottom: 4px;
+      }
+
+      &:nth-child(2) {
+        top: -9px;
+      }
+    }
+  }
+
   &--icon,
   a.aj-btn--icon {
     background-color: $white;

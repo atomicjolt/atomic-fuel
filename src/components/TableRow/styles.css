@@ -1,0 +1,37 @@
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+.assignment-item__name {
+  font-size: 15px; }
+
+.assignment-item__due, .assignment-item__date {
+  font-size: 13px;
+  color: #5A5A5A;
+  letter-spacing: 0px; }
+
+.assignment-item__actions {
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 45px; }
+  .assignment-item__actions .aj-menu-container .loadingSkeleton {
+    margin: auto;
+    width: 80% !important;
+    height: 30px; }
+  .assignment-item__actions .qualtrics-link__results {
+    font-size: 12px;
+    font-weight: bold; }
+  .assignment-item__actions span.qualtrics-link__results {
+    font-size: 12px;
+    font-weight: bold;
+    color: #aaaaaa; }
+  .assignment-item__actions .locked {
+    color: #595959;
+    padding: 5px;
+    margin: 0px 18px 0px 24px; }
+    .assignment-item__actions .locked:hover {
+      cursor: not-allowed; }
