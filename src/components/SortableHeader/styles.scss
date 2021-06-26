@@ -1,31 +1,14 @@
 @import "../../styles/styles.scss";
 
-th {
+.aj-table__head-row {
+  &:first-child {
+    width: 50%;
+  }
+
   span {
     font-size: 12px;
     text-transform: uppercase;
     color: #222;
-  }
-
-  .aj-btn--sort {
-    background-color: transparent;
-    border: 1px solid transparent;
-
-    &:active,
-    &:focus {
-      outline: none;
-    }
-
-    i {
-      display: block;
-      font-size: 20px;
-      color: $grayC6;
-      margin-bottom: -10px;
-
-      &.sort-direction {
-        color: $gray59;
-      }
-    }
   }
 
   .aj-input--search {

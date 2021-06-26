@@ -2,6 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import StoryWrapper from '../StoryWrapper';
 import { Table, TableFilter, Props } from '.';
+import { TableRow } from '../TableRow';
 
 export default {
   title: 'Table',

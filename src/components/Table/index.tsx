@@ -19,11 +19,14 @@ export type ColumnType = {
 	displayName: string
 	hidden?: boolean
 }
+
+type renderDataType = ColumnType & any;
 export interface Props {
 	columns: ColumnType[]
 	filter: TableFilter
 	searchTerm: string
 	searchColumn: TableFilter | string
+	headClasses: string
 	onSearch: <T>(arg: T) => any
 	renderTableContent: (...arg: any[]) => any
 }
@@ -32,16 +35,17 @@ export const Table = ({
 	columns,
 	searchTerm,
 	searchColumn,
+	headClasses,
 	onSearch,
 	renderTableContent,
 }: Props) => {
 	const [sortColumn, setSortColumn] = useState<TableFilter | string>(TableFilter.createdAt);
 	const [sortDirection, setSortDirection] = useState(SortDirection.asc);
-
 	return (
 		<table className="aj-table">
 			<TableHead
 				columns={columns}
+				classes={headClasses}
 				searchColumn={searchColumn}
 				sortColumn={sortColumn}
 				sortDirection={sortDirection}
