@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu component Should match snapshot when given renderChildren prop 1`] = `
+<DocumentFragment>
+  <div
+    class=""
+  >
+    <button
+      id="buttonToggle"
+    >
+      Open
+    </button>
+    <ul>
+      <li>
+        Menu Item
+      </li>
+      <li>
+        <button
+          id="buttonClose"
+        >
+          Close
+        </button>
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;

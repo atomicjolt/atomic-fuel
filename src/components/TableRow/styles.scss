@@ -1,0 +1,50 @@
+@import "../../styles/styles.scss";
+
+.assignment-item {
+  &__name {
+    font-size: 15px;
+  }
+
+  &__due,
+  &__date {
+    font-size: 13px;
+    color: $gray5A;
+    letter-spacing: 0px;
+  }
+
+  &__actions {
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 45px;
+
+    .aj-menu-container {
+      .loadingSkeleton {
+        margin: auto;
+        width: 80% !important;
+        height: 30px;
+      }
+    }
+
+    .qualtrics-link__results {
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    span.qualtrics-link__results {
+      font-size: 12px;
+      font-weight: bold;
+      color: #aaaaaa;
+    }
+
+    .locked {
+      color: $gray59;
+      padding: 5px;
+      margin: 0px 18px 0px 24px;
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+@import "../../styles/styles.scss";
+
+.aj-table__head-row {
+  &:first-child {
+    width: 50%;
+  }
+
+  span {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #222;
+  }
+
+  .aj-input--search {
+    display: flex;
+    align-items: center;
+    max-width: 235px;
+
+    &.is-expanded {
+      border: 1px solid #333;
+      border-radius: 2px;
+      animation: slide .3s ease-out;
+      animation-fill-mode: forwards;
+    }
+
+    .aj-hidden {
+      display: none;
+    }
+
+    button {
+      background-color: transparent;
+      border: 1px solid transparent;
+
+      i {
+        font-size: 18px;
+        line-height: 25px;
+      }
+    }
+
+    input {
+      display: none;
+      border: none;
+      outline: none;
+    }
+
+    &.is-expanded input {
+      animation: slide 0.3s ease-out;
+      animation-fill-mode: forwards;
+      display: inline-block;
+    }
+  }
+}
+
+@keyframes slide {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
