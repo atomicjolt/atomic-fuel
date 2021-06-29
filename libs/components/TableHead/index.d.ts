@@ -1,19 +1,14 @@
 /// <reference types="react" />
-import { SortDirection, TableFilter } from '../Table';
-declare type Column = {
-    dataName: string;
-    displayName: string;
-    hidden?: boolean;
-};
-interface Props {
-    columns: Column[];
-    searchColumn: string;
-    sortColumn: string;
+import { SortDirection, ColumnType } from '../Table';
+interface Props<T extends string | number> {
+    columns: ColumnType<T>[];
+    searchColumn: T;
+    sortColumn: T;
     sortDirection: SortDirection;
     searchTerm: string;
     classes?: string;
     onSearch: (searchTerm: string) => void;
-    onSort: (newSortDirection: SortDirection, newSortColumn: TableFilter | string) => void;
+    onSort: (newSortDirection: SortDirection, newSortColumn: T) => void;
 }
-export declare function TableHead({ columns, searchColumn, sortColumn, sortDirection, searchTerm, classes, onSearch, onSort, }: Props): JSX.Element;
+export declare const composeTableHead: <T extends string | number>() => ({ columns, searchColumn, sortColumn, sortDirection, searchTerm, classes, onSearch, onSort, }: Props<T>) => JSX.Element;
 export {};

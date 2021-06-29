@@ -1,27 +1,21 @@
 /// <reference types="react" />
 import './styles.css';
-export declare enum TableFilter {
-    createdAt = "CREATED_AT",
-    dueAt = "DUE_AT",
-    name = "NAME",
-    completed = "COMPLETED"
-}
 export declare enum SortDirection {
     asc = "ASC",
     desc = "DESC"
 }
-export declare type ColumnType = {
-    dataName: TableFilter | string;
+export declare type ColumnType<T extends string | number> = {
+    dataName: T;
     displayName: string;
     hidden?: boolean;
 };
-export interface Props {
-    columns: ColumnType[];
-    filter: TableFilter;
+export interface Props<T extends string | number> {
+    columns: ColumnType<T>[];
+    defaultSortColumn: T;
     searchTerm: string;
-    searchColumn: TableFilter | string;
-    headClasses: string;
-    onSearch: <T>(arg: T) => any;
+    searchColumn: T;
+    headClasses?: string;
+    onSearch: (arg: string) => void;
     renderTableContent: (...arg: any[]) => any;
 }
-export declare const Table: ({ columns, searchTerm, searchColumn, headClasses, onSearch, renderTableContent, }: Props) => JSX.Element;
+export declare const composeTable: <T extends string | number>() => ({ columns, searchTerm, searchColumn, headClasses, defaultSortColumn, onSearch, renderTableContent, }: Props<T>) => JSX.Element;

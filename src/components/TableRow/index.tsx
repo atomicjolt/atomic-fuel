@@ -2,17 +2,17 @@ import React from 'react';
 import { ColumnType } from '../Table';
 import './styles.scss';
 
-interface Props {
+interface Props<T extends string | number> {
   data: any,
-  renderData: (data: any, column: ColumnType) => React.ReactNode,
-  columns: ColumnType[]
+  renderData: (data: any, column: ColumnType<T>) => React.ReactNode,
+  columns: ColumnType<T>[]
 }
 
-export function TableRow({
+export function TableRow<T extends string | number>({
   data,
   columns,
   renderData,
-}: Props) {
+}: Props<T>) {
   return (
     <tr className="aj-table__row">
       { columns.map(columns => {
