@@ -26,6 +26,7 @@ exports.ButtonType = ButtonType;
   ButtonType["large"] = "large";
   ButtonType["primaryLarge"] = "primary-large";
   ButtonType["small"] = "small";
+  ButtonType["sort"] = "sort";
   ButtonType["gray"] = "gray";
   ButtonType["icon"] = "icon";
 })(ButtonType || (exports.ButtonType = ButtonType = {}));

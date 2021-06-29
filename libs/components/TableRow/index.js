@@ -13,13 +13,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function TableRow(_ref) {
   var data = _ref.data,
-      filters = _ref.filters,
+      columns = _ref.columns,
       renderData = _ref.renderData;
   return /*#__PURE__*/_react["default"].createElement("tr", {
     className: "aj-table__row"
-  }, filters.map(function (filter) {
+  }, columns.map(function (columns) {
     return /*#__PURE__*/_react["default"].createElement("td", {
       className: "aj-table__row-data"
-    }, renderData(data, filter));
+    }, renderData(data, columns));
   }));
 }

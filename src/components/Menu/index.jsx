@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { useListenOutsideClick } from '../../hooks';
-import './style.scss';
+import { useListenOutsideClick } from '../common/hooks';
+import './style.css';
 
 export default function Menu(props) {
   const [menuOpen, setMenuOpen] = useState(false);

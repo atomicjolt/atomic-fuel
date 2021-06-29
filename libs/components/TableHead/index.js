@@ -26,11 +26,16 @@ function TableHead(_ref) {
     className: (0, _classnames["default"])('aj-table__head', classes)
   }, /*#__PURE__*/_react["default"].createElement("tr", {
     className: (0, _classnames["default"])('aj-table__head-row')
-  }, columns.map(function (column) {
-    return column.hidden ? /*#__PURE__*/_react["default"].createElement("th", {
-      "aria-label": column.displayName,
-      key: column.dataName
-    }) : /*#__PURE__*/_react["default"].createElement(_SortableHeader["default"], {
+  }, columns.map(function (column, index) {
+    if (column.hidden) {
+      return /*#__PURE__*/_react["default"].createElement("th", {
+        scope: "col",
+        "aria-label": column.displayName,
+        key: column.dataName
+      });
+    }
+
+    return /*#__PURE__*/_react["default"].createElement(_SortableHeader["default"], {
       key: column.dataName,
       ariaName: column.displayName,
       sortPath: column.dataName,

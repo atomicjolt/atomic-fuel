@@ -13,6 +13,8 @@ var _i18next = _interopRequireDefault(require("i18next"));
 
 var _Table = require("../Table");
 
+var _Button = require("../Button");
+
 var _tooltip = _interopRequireDefault(require("../common/tooltip"));
 
 var _withLiveMessenger = _interopRequireDefault(require("../common/with-live-messenger"));
@@ -133,9 +135,9 @@ function SortableHeader(props) {
     return sortPath === currentPath;
   }
 
-  function sortClassName() {
+  function getSortLabel() {
     if (!isCurrentPath) return '';
-    return currentDirection === _Table.SortDirection.asc ? 'is-asc' : 'is-desc';
+    return currentDirection === _Table.SortDirection.asc ? 'ascending' : 'descending';
   }
 
   function getTooltip() {
@@ -174,23 +176,26 @@ function SortableHeader(props) {
   };
 
   return /*#__PURE__*/_react["default"].createElement("th", {
-    className: "header-".concat(sortPath),
-    rowSpan: rowSpan
+    className: "aj-table__head-row",
+    rowSpan: rowSpan,
+    "aria-label": getSortLabel(),
+    scope: "col"
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "aj-flex-cell ".concat(sortClassName())
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "aj-table__flex-cell",
     onClick: sortClick
-  }, /*#__PURE__*/_react["default"].createElement("span", null, children), getTooltip(), /*#__PURE__*/_react["default"].createElement("button", {
+  }, /*#__PURE__*/_react["default"].createElement("span", null, children), getTooltip(), /*#__PURE__*/_react["default"].createElement(_Button.Button, {
     onClick: sortClick,
-    className: "aj-btn--sort",
-    "aria-label": "Sort by ".concat(ariaName)
+    buttonType: _Button.ButtonType.sort,
+    "aria-options": {
+      "aria-label": "Sort by ".concat(ariaName)
+    }
   }, /*#__PURE__*/_react["default"].createElement("i", {
     className: "material-icons-outlined ".concat(arrowClassName(_Table.SortDirection.asc)),
     "aria-hidden": "true"
   }, "arrow_drop_up"), /*#__PURE__*/_react["default"].createElement("i", {
     className: "material-icons-outlined ".concat(arrowClassName(_Table.SortDirection.desc)),
     "aria-hidden": "true"
-  }, "arrow_drop_down"))), search()));
+  }, "arrow_drop_down")), search()));
 }
 
 var _default = (0, _withLiveMessenger["default"])(SortableHeader);

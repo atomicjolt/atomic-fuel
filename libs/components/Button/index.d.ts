@@ -18,6 +18,7 @@ export declare enum ButtonType {
     large = "large",
     primaryLarge = "primary-large",
     small = "small",
+    sort = "sort",
     gray = "gray",
     icon = "icon"
 }
