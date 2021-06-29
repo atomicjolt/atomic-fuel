@@ -11,19 +11,19 @@ enum FilterType {
 	completed = 'completed',
 }
 
-const Table = composeTable<FilterType>();
+const Table1 = composeTable<FilterType>();
 export default {
   title: 'Table',
-  component: Table,
+  component: Table1,
 } as Meta;
 
-const Template: Story<Props<FilterType>> = (args) => (
+const Template1: Story<Props<FilterType>> = (args) => (
   <StoryWrapper>
-    <Table {...args} />
+    <Table1 {...args} />
   </StoryWrapper>
 );
 
-export const Default = Template.bind({});
+export const Default = Template1.bind({});
 const defaultColumns = [
 	{ dataName: FilterType.name, displayName: 'NAME' },
 	{ dataName: FilterType.dueAt, displayName: 'DUE' },
@@ -45,6 +45,52 @@ Default.args = {
 				<td>{three}</td>
 				<td>四</td>
 				<td>E</td>
+			</tr>
+		</tbody>
+	)
+};
+
+enum FilterType2 {
+	product = 'product',
+	calories = 'calories',
+	fat = 'fat',
+	sugar = 'sugar',
+	protien = 'protien',
+	carbs = 'carbs',
+}
+
+const Table2 = composeTable<FilterType2>();
+
+const Template2: Story<Props<FilterType2>> = (args) => (
+  <StoryWrapper>
+    <Table2 {...args} />
+  </StoryWrapper>
+);
+
+export const TableTwo = Template2.bind({});
+const defaultColumns2 = [
+	{ dataName: FilterType2.product, displayName: 'PRODUCT' },
+	{ dataName: FilterType2.calories, displayName: 'CALORIES' },
+	{ dataName: FilterType2.fat, displayName: 'FAT' },
+	{ dataName: FilterType2.sugar, displayName: 'SUGAR' },
+	{ dataName: FilterType2.protien, displayName: 'PROTIEN' },
+	{ dataName: FilterType2.carbs, displayName: 'CARBS' },
+]
+
+TableTwo.args = {
+	columns: defaultColumns2,
+	searchTerm: 'Hello World',
+	searchColumn: FilterType2.product,
+	onSearch: () => console.log('Sup'),
+	renderTableContent: (one = 'one', two = 2, three = 'III') => (
+		<tbody>
+			<tr>
+				<td>{one}</td>
+				<td>{two}</td>
+				<td>{three}</td>
+				<td>四</td>
+				<td>E</td>
+				<td>VI</td>
 			</tr>
 		</tbody>
 	)

@@ -25,6 +25,7 @@ export interface Props<T extends string | number> {
 
 export const composeTable = <T extends string | number>() => {
 	const TableHead = composeTableHead<T>();
+
 	return ({
 		columns,
 		searchTerm,
