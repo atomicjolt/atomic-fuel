@@ -20,5 +20,8 @@ function StoryWrapper(props) {
   }), /*#__PURE__*/_react["default"].createElement("link", {
     href: "https://fonts.googleapis.com/icon?family=Material+Icons",
     rel: "stylesheet"
+  }), /*#__PURE__*/_react["default"].createElement("link", {
+    href: "https://fonts.googleapis.com/icon?family=Material+Icons+Outlined",
+    rel: "stylesheet"
   })), /*#__PURE__*/_react["default"].createElement("div", null, children));
 }

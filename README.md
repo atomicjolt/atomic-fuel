@@ -50,8 +50,10 @@ src/components/
 ---- index.stories.js
 ---- styles.scss
 ```
-
-## 🧪 Testing
+### 🚧 Building
+To build the lib folders and types run:
+`yarn build`
+### 🧪 Testing
 Run tests:
 `yarn test`
 

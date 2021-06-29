@@ -62,6 +62,7 @@ export { default as GqlStatus } from './components/common/gql_status';
 export { default as IframeResizeWrapper } from './components/common/resize_wrapper';
 export { default as InlineError } from './components/common/errors/inline_error';
 export { Banner, BannerTypes } from './components/Banner';
+export { Button, ButtonType } from './components/Button';
 
 // APOLLO REACT COMPONENTS
 export { default as AtomicMutation } from './graphql/atomic_mutation';

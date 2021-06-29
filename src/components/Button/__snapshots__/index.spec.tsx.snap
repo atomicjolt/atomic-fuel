@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component Should match default snapshot 1`] = `
+<DocumentFragment>
+  <button
+    aria-expanded="false"
+    aria-haspopup="menu"
+    aria-label="survey options"
+    class="aj-btn aj-btn--gray aj-btn--icon"
+    type="button"
+  >
+    Click
+  </button>
+</DocumentFragment>
+`;

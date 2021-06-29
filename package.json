@@ -6,13 +6,23 @@
     "test": "cross-env BABEL_ENV=test jest --no-cache --config package.json",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand --watch --config package.json",
     "jest_version": "which jest && jest --version",
-    "build": "cross-env BABEL_ENV=production babel src --out-dir libs",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "yarn type-check -- --watch",
+    "build:types": "tsc --emitDeclarationOnly",
+    "prebuild:js": "node-sass src/components/ -o libs/components/",
+    "build:js": "cross-env BABEL_ENV=production babel src --out-dir libs --extensions \".js,.jsx,.ts,.tsx\"",
+    "prebuild": "rm -rf libs/*",
+    "build": "yarn build:types && yarn build:js",
     "nuke": "rm -rf node_modules",
     "clean": "rimraf libs",
     "lint": "eslint src",
     "lint_fix": "eslint src --fix",
-    "prepare": "yarn clean && yarn build",
-    "storybook": "start-storybook -p 6006",
+    "prepare": "yarn clean",
+    "prestorybook": "yarn build:css",
+    "storybook": "npm-run-all -p watch:css dev-storybook",
+    "dev-storybook": "start-storybook -p 6006",
+    "build:css": "node-sass src/components/ -o src/components/ ",
+    "watch:css": "node-sass src/components/ -o src/components/ -w -r",
     "build-storybook": "build-storybook"
   },
   "repository": {
@@ -24,6 +34,11 @@
     "reactjs",
     "redux"
   ],
+  "jest": {
+    "moduleNameMapper": {
+      "^.+\\.(css|less)$": "<rootDir>/src/css-stub.js"
+    }
+  },
   "author": "atomicjolt (http://github.com/atomicjolt)",
   "license": "MIT",
   "bugs": {
@@ -48,14 +63,21 @@
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
+    "@babel/preset-typescript": "^7.14.5",
     "@storybook/addon-actions": "^6.2.9",
     "@storybook/addon-essentials": "^6.2.9",
     "@storybook/addon-links": "^6.2.9",
     "@storybook/react": "^6.2.9",
     "@testing-library/react": "^11.2.7",
+    "@types/jest": "^26.0.23",
+    "@types/node-sass": "^4.11.1",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "^17.0.8",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.3.0",
     "babel-loader": "^8.2.2",
+    "babel-plugin-react-css-modules": "^5.2.6",
+    "classnames": "^2.3.1",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
@@ -68,18 +90,22 @@
     "lodash": "^4.17.15",
     "mime": "^2.4.4",
     "nock": "^12.0.3",
+    "npm-run-all": "^4.1.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
+    "react-docgen-typescript": "^2.0.0",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "rimraf": "^3.0.2",
+    "sass": "^1.35.1",
     "superagent": "^5.2.2",
-    "babel-plugin-transform-scss": "^1.0.11",
-    "sass": "^1.35.1"
+    "tslint": "^6.1.3",
+    "typescript": "^4.3.4"
   },
   "dependencies": {
     "add": "^2.0.6",
+    "node-sass": "^6.0.0",
     "yarn": "^1.22.10"
   }
 }
