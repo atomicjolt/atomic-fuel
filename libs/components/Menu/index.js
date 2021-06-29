@@ -9,9 +9,9 @@ var _react = require("react");
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _hooks = require("../../hooks");
+var _hooks = require("../common/hooks");
 
-require("./style.scss");
+require("./style.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

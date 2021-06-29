@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import { useListenOutsideClick } from '../common/hooks';
 import './style.css';
-
 export default function Menu(props) {
   const [menuOpen, setMenuOpen] = useState(false);
   const activeClass = menuOpen ? 'is-active' : '';

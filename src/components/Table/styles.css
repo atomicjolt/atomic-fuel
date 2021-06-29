@@ -1,0 +1,30 @@
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+.aj-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  table-layout: fixed;
+  min-width: 800px;
+  font-family: 'Lato', 'sans-serif'; }
+
+.aj-table__row {
+  border-bottom: 1px solid #DDD;
+  height: 45px; }
+
+.aj-table__head {
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  border-bottom: 1px solid #DDD; }
+
+.aj-table__head-row {
+  height: 44px; }
+
+.aj-table__flex-cell {
+  display: flex;
+  align-items: center; }
