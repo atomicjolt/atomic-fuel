@@ -1,15 +1,23 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import StoryWrapper from '../StoryWrapper';
-import { Table, TableFilter, Props } from '.';
+import { composeTable, Props } from '.';
 import { TableRow } from '../TableRow';
 
+enum FilterType {
+	name = 'name',
+	dueAt = 'dueAt',
+	createdAt = 'createdAt',
+	completed = 'completed',
+}
+
+const Table = composeTable<FilterType>();
 export default {
   title: 'Table',
   component: Table,
 } as Meta;
 
-const Template: Story<Props> = (args) => (
+const Template: Story<Props<FilterType>> = (args) => (
   <StoryWrapper>
     <Table {...args} />
   </StoryWrapper>
@@ -17,17 +25,17 @@ const Template: Story<Props> = (args) => (
 
 export const Default = Template.bind({});
 const defaultColumns = [
-	{ dataName: TableFilter.name, displayName: 'NAME' },
-	{ dataName: TableFilter.dueAt, displayName: 'DUE' },
-	{ dataName: TableFilter.createdAt, displayName: 'CREATED' },
-	{ dataName: TableFilter.completed, displayName: 'COMPLETED' },
+	{ dataName: FilterType.name, displayName: 'NAME' },
+	{ dataName: FilterType.dueAt, displayName: 'DUE' },
+	{ dataName: FilterType.createdAt, displayName: 'CREATED' },
+	{ dataName: FilterType.completed, displayName: 'COMPLETED' },
 	{ dataName: 'actions', displayName: 'actions', hidden: true },
 ]
 
 Default.args = {
 	columns: defaultColumns,
 	searchTerm: 'Hello World',
-	searchColumn: TableFilter.name,
+	searchColumn: FilterType.name,
 	onSearch: () => console.log('Sup'),
 	renderTableContent: (one = 'one', two = 2, three = 'III') => (
 		<tbody>

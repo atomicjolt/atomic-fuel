@@ -1,62 +1,59 @@
 import React, { useState } from 'react';
-import { TableHead } from '../TableHead';
+import { composeTableHead } from '../TableHead';
 import './styles.css';
-
-export enum TableFilter {
-  createdAt = 'CREATED_AT',
-  dueAt = 'DUE_AT',
-  name = 'NAME',
-  completed = 'COMPLETED',
-}
 
 export enum SortDirection {
   asc = 'ASC',
   desc = 'DESC',
 }
 
-export type ColumnType = {
-	dataName: TableFilter | string
+export type ColumnType<T extends string | number> = {
+	dataName: T
 	displayName: string
 	hidden?: boolean
 }
 
-type renderDataType = ColumnType & any;
-export interface Props {
-	columns: ColumnType[]
-	filter: TableFilter
+export interface Props<T extends string | number> {
+	columns: ColumnType<T>[]
+	defaultSortColumn: T
 	searchTerm: string
-	searchColumn: TableFilter | string
-	headClasses: string
-	onSearch: <T>(arg: T) => any
+	searchColumn: T
+	headClasses?: string
+	onSearch: (arg: string) => void
 	renderTableContent: (...arg: any[]) => any
 }
 
-export const Table = ({
-	columns,
-	searchTerm,
-	searchColumn,
-	headClasses,
-	onSearch,
-	renderTableContent,
-}: Props) => {
-	const [sortColumn, setSortColumn] = useState<TableFilter | string>(TableFilter.createdAt);
-	const [sortDirection, setSortDirection] = useState(SortDirection.asc);
-	return (
-		<table className="aj-table">
-			<TableHead
-				columns={columns}
-				classes={headClasses}
-				searchColumn={searchColumn}
-				sortColumn={sortColumn}
-				sortDirection={sortDirection}
-				searchTerm={searchTerm}
-				onSearch={onSearch}
-				onSort={(newSortDirection, newSortColumn: TableFilter | string) => {
-					setSortDirection(newSortDirection);
-					setSortColumn(newSortColumn);
-				}}
-			/>
-			{renderTableContent()}
-		</table>
-	);
+export const composeTable = <T extends string | number>() => {
+	const TableHead = composeTableHead<T>();
+	return ({
+		columns,
+		searchTerm,
+		searchColumn,
+		headClasses,
+		defaultSortColumn,
+		onSearch,
+		renderTableContent,
+	}: Props<T>) => {
+		const [sortColumn, setSortColumn] = useState<T>(defaultSortColumn);
+		const [sortDirection, setSortDirection] = useState(SortDirection.asc);
+
+		return (
+			<table className="aj-table">
+				<TableHead
+					columns={columns}
+					classes={headClasses}
+					searchColumn={searchColumn}
+					sortColumn={sortColumn}
+					sortDirection={sortDirection}
+					searchTerm={searchTerm}
+					onSearch={onSearch}
+					onSort={(newSortDirection: SortDirection, newSortColumn: T) => {
+						setSortDirection(newSortDirection);
+						setSortColumn(newSortColumn);
+					}}
+				/>
+				{renderTableContent()}
+			</table>
+		);
+	}
 }
