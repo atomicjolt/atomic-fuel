@@ -1,8 +1,8 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import addStyles from '../../libs/styles';
 
-import { withSettings } from '../settings';
 
 function renderStyles(logoColor = '#444', backgroundColor1 = '#FFEA00', backgroundColor2 = '#FFFF56') {
   addStyles(`.aj-loader{
@@ -45,30 +45,30 @@ function renderStyles(logoColor = '#444', backgroundColor1 = '#FFEA00', backgrou
   addStyles(`@keyframes line1 {
     0% {
       stroke-dasharray: 0 250;
-   }
+    }
     40% {
       stroke-dasharray: 250 250;
-   }
+    }
     60% {
       stroke-dasharray: 250 250;
-   }
+    }
     100% {
       stroke-dasharray: 0 250;
-   }
+    }
   }`);
   addStyles(`@keyframes line2 {
     0% {
       stroke-dasharray: 0 270;
-   }
+    }
     40% {
       stroke-dasharray: 270 270;
-   }
+    }
     60% {
       stroke-dasharray: 270 270;
-   }
+    }
     100% {
       stroke-dasharray: 0 270;
-   }
+    }
   }`);
   addStyles(`.loader-text{
     font-size: 24px;
@@ -81,41 +81,32 @@ function renderStyles(logoColor = '#444', backgroundColor1 = '#FFEA00', backgrou
   }`);
 }
 
-export class Loader extends React.PureComponent {
+export default function Loader(props) {
+  const settings = useSelector((state) => state.settings);
+  const logoColor = settings?.aj_loader?.logoColor || props.logoColor || '#444';
+  const backgroundColor1 = settings?.aj_loader?.backgroundColor1 || props.backgroundColor1 || '#FFEA00';
+  const backgroundColor2 = settings?.aj_loader?.backgroundColor2 || props.backgroundColor2 || '#FFFF56';
 
-  static propTypes = {
-    message: PropTypes.string,
-    logoColor: PropTypes.string,
-    backgroundColor1: PropTypes.string,
-    backgroundColor2: PropTypes.string,
-    aj_loader: PropTypes.shape({
-      logoColor: PropTypes.string,
-      backgroundColor1: PropTypes.string,
-      backgroundColor2: PropTypes.string,
-    }),
-  };
+  renderStyles(logoColor, backgroundColor1, backgroundColor2);
 
-  render() {
-    const logoColor = this.props.settings.aj_loader.logoColor || this.props.logoColor || '#444';
-    const backgroundColor1 = this.props.settings.aj_loader.backgroundColor1 || this.props.backgroundColor1 || '#FFEA00';
-    const backgroundColor2 = this.props.settings.aj_loader.backgroundColor2 || this.props.backgroundColor2 || '#FFFF56';
-
-    renderStyles(logoColor, backgroundColor1, backgroundColor2);
-
-    return (
-      <div className="aj-loader">
-        <div className="atomicjolt-loading-animation">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 91.87 114.09" role="img" aria-label="loading">
-            <g data-name="Layer 2">
-              <polygon className="cls-1" points="40.45 111.32 89.11 99.26 71.35 19.9 21.1 89.71 40.45 111.32" />
-              <polyline className="cls-2" points="50.67 2.77 2.77 69.96 25.47 94.65 66.36 84.13 50.67 2.77 71.35 19.9" />
-            </g>
-          </svg>
-        </div>
-        <p className="loader-text">{ this.props.message }</p>
+  return (
+    <div className="aj-loader">
+      <div className="atomicjolt-loading-animation">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 91.87 114.09" role="img" aria-label="loading">
+          <g data-name="Layer 2">
+            <polygon className="cls-1" points="40.45 111.32 89.11 99.26 71.35 19.9 21.1 89.71 40.45 111.32" />
+            <polyline className="cls-2" points="50.67 2.77 2.77 69.96 25.47 94.65 66.36 84.13 50.67 2.77 71.35 19.9" />
+          </g>
+        </svg>
       </div>
-    );
-  }
+      <p className="loader-text">{ props.message }</p>
+    </div>
+  );
 }
 
-export default withSettings(Loader);
+Loader.propTypes = {
+  message: PropTypes.string,
+  logoColor: PropTypes.string,
+  backgroundColor1: PropTypes.string,
+  backgroundColor2: PropTypes.string,
+};
