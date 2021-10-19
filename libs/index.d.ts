@@ -5,6 +5,7 @@ export { default as postMessageMiddleware } from "./middleware/post_message";
 export { default as jwtLoader } from "./loaders/jwt";
 export { default as configureStore } from "./store/configure_store";
 export { default as Api } from "./api/api";
+export { default as AtomicjoltLoader } from "./components/common/atomicjolt_loader";
 export { default as GqlStatus } from "./components/common/gql_status";
 export { default as IframeResizeWrapper } from "./components/common/resize_wrapper";
 export { default as InlineError } from "./components/common/errors/inline_error";
@@ -20,7 +21,6 @@ export { default as settingsReducer, getInitialSettings } from "./reducers/setti
 export { apiRequest, default as ApiMiddleware } from "./middleware/api";
 export { default as Communicator, postMessage, broadcastRawMessage, broadcastMessage } from "./communications/communicator";
 export { SettingsContext, withSettings } from "./components/settings";
-export { default as AtomicjoltLoader, Loader as AtomicjoltLoaderRaw } from "./components/common/atomicjolt_loader";
 export { Banner, BannerTypes } from "./components/Banner";
 export { Button, ButtonType } from "./components/Button";
 export { isLtiInstructor, isLtiAdmin } from "./libs/lti_roles";
