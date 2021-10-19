@@ -1,5 +1,7 @@
 "use strict";
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -14,6 +16,28 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _styles = _interopRequireDefault(require("../../libs/styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function renderStyles() {
   var logoColor = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '#444';
@@ -30,39 +54,54 @@ function renderStyles() {
   (0, _styles["default"])(".loader-text{\n    font-size: 24px;\n    font-family: 'Lato', Arial, Helvetica, sans-serif;\n    font-weight: 500;\n    color: #222;\n    text-align: center;\n    padding-top: 48px;\n    margin: 0;\n  }");
 }
 
-function Loader(props) {
-  var _settings$aj_loader, _settings$aj_loader2, _settings$aj_loader3;
+var Loader = /*#__PURE__*/function (_React$PureComponent) {
+  _inherits(Loader, _React$PureComponent);
 
-  var settings = (0, _reactRedux.useSelector)(function (state) {
-    return state.settings;
-  });
-  var logoColor = (settings === null || settings === void 0 ? void 0 : (_settings$aj_loader = settings.aj_loader) === null || _settings$aj_loader === void 0 ? void 0 : _settings$aj_loader.logoColor) || props.logoColor || '#444';
-  var backgroundColor1 = (settings === null || settings === void 0 ? void 0 : (_settings$aj_loader2 = settings.aj_loader) === null || _settings$aj_loader2 === void 0 ? void 0 : _settings$aj_loader2.backgroundColor1) || props.backgroundColor1 || '#FFEA00';
-  var backgroundColor2 = (settings === null || settings === void 0 ? void 0 : (_settings$aj_loader3 = settings.aj_loader) === null || _settings$aj_loader3 === void 0 ? void 0 : _settings$aj_loader3.backgroundColor2) || props.backgroundColor2 || '#FFFF56';
-  renderStyles(logoColor, backgroundColor1, backgroundColor2);
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "aj-loader"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "atomicjolt-loading-animation"
-  }, /*#__PURE__*/_react["default"].createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 91.87 114.09",
-    role: "img",
-    "aria-label": "loading"
-  }, /*#__PURE__*/_react["default"].createElement("g", {
-    "data-name": "Layer 2"
-  }, /*#__PURE__*/_react["default"].createElement("polygon", {
-    className: "cls-1",
-    points: "40.45 111.32 89.11 99.26 71.35 19.9 21.1 89.71 40.45 111.32"
-  }), /*#__PURE__*/_react["default"].createElement("polyline", {
-    className: "cls-2",
-    points: "50.67 2.77 2.77 69.96 25.47 94.65 66.36 84.13 50.67 2.77 71.35 19.9"
-  })))), /*#__PURE__*/_react["default"].createElement("p", {
-    className: "loader-text"
-  }, props.message));
-}
+  var _super = _createSuper(Loader);
 
-Loader.propTypes = {
+  function Loader() {
+    _classCallCheck(this, Loader);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Loader, [{
+    key: "render",
+    value: function render() {
+      var ajLoader = 'aj_loader' in this.props.settings ? this.props.settings.aj_loader : null;
+      var logoColor = ajLoader || this.props.logoColor || '#444';
+      var backgroundColor1 = ajLoader && ajLoader.backgroundColor1 || this.props.backgroundColor1 || '#FFEA00';
+      var backgroundColor2 = ajLoader && ajLoader.backgroundColor2 || this.props.backgroundColor2 || '#FFFF56';
+      renderStyles(logoColor, backgroundColor1, backgroundColor2);
+      return /*#__PURE__*/_react["default"].createElement("div", {
+        className: "aj-loader"
+      }, /*#__PURE__*/_react["default"].createElement("div", {
+        className: "atomicjolt-loading-animation"
+      }, /*#__PURE__*/_react["default"].createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 91.87 114.09",
+        role: "img",
+        "aria-label": "loading"
+      }, /*#__PURE__*/_react["default"].createElement("g", {
+        "data-name": "Layer 2"
+      }, /*#__PURE__*/_react["default"].createElement("polygon", {
+        className: "cls-1",
+        points: "40.45 111.32 89.11 99.26 71.35 19.9 21.1 89.71 40.45 111.32"
+      }), /*#__PURE__*/_react["default"].createElement("polyline", {
+        className: "cls-2",
+        points: "50.67 2.77 2.77 69.96 25.47 94.65 66.36 84.13 50.67 2.77 71.35 19.9"
+      })))), /*#__PURE__*/_react["default"].createElement("p", {
+        className: "loader-text"
+      }, this.props.message));
+    }
+  }]);
+
+  return Loader;
+}(_react["default"].PureComponent);
+
+exports.Loader = Loader;
+
+_defineProperty(Loader, "propTypes", {
   message: _propTypes["default"].string,
   logoColor: _propTypes["default"].string,
   backgroundColor1: _propTypes["default"].string,

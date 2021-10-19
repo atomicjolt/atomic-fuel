@@ -197,6 +197,30 @@ Object.defineProperty(exports, "InlineError", {
     return _inline_error["default"];
   }
 });
+Object.defineProperty(exports, "Banner", {
+  enumerable: true,
+  get: function get() {
+    return _Banner.Banner;
+  }
+});
+Object.defineProperty(exports, "BannerTypes", {
+  enumerable: true,
+  get: function get() {
+    return _Banner.BannerTypes;
+  }
+});
+Object.defineProperty(exports, "Button", {
+  enumerable: true,
+  get: function get() {
+    return _Button.Button;
+  }
+});
+Object.defineProperty(exports, "ButtonType", {
+  enumerable: true,
+  get: function get() {
+    return _Button.ButtonType;
+  }
+});
 Object.defineProperty(exports, "AtomicMutation", {
   enumerable: true,
   get: function get() {
@@ -272,6 +296,10 @@ var _resize_wrapper = _interopRequireDefault(require("./components/common/resize
 
 var _inline_error = _interopRequireDefault(require("./components/common/errors/inline_error"));
 
+var _Banner = require("./components/Banner");
+
+var _Button = require("./components/Button");
+
 var _atomic_mutation = _interopRequireDefault(require("./graphql/atomic_mutation"));
 
 var _atomic_query = _interopRequireDefault(require("./graphql/atomic_query"));
@@ -282,8 +310,8 @@ var _resize_iframe = _interopRequireDefault(require("./libs/resize_iframe"));
 
 var _lti_roles = require("./libs/lti_roles");
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
