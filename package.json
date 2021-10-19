@@ -1,6 +1,6 @@
 {
   "name": "atomic-fuel",
-  "version": "4.10.0",
+  "version": "4.10.1",
   "description": "Atomic Jolt's front-end library code",
   "scripts": {
     "test": "cross-env BABEL_ENV=test jest --no-cache --config package.json",
