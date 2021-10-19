@@ -17,7 +17,7 @@
     "clean": "rimraf libs",
     "lint": "eslint src",
     "lint_fix": "eslint src --fix",
-    "prepare": "yarn clean",
+    "prepare": "yarn clean && yarn build",
     "prestorybook": "yarn build:css",
     "storybook": "npm-run-all -p watch:css dev-storybook",
     "dev-storybook": "start-storybook -p 6006",
