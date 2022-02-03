@@ -33,9 +33,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 /**
  *
- * @param {*} url The url to request
- * @param {*} params The params to pass to the request
- * @param {*} timeout Override the default network timeout for this request
+ * @param {string} url The url to request
+ * @param {*} params Optional url parameters to pass to the request
+ * @param {*} headers Optional headers to pass to the request
+ * @param {number} timeout Override the default network timeout for this request
  * @returns a response with the following fields:
  * {
  *  result, - the resulting data from the request

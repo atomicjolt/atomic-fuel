@@ -13,6 +13,7 @@ export { default as AtomicMutation } from "./graphql/atomic_mutation";
 export { default as AtomicQuery } from "./graphql/atomic_query";
 export { default as modalDecorator } from "./decorators/modal";
 export { default as iframeResizeHandler } from "./libs/resize_iframe";
+export { default as useGet } from "./hooks/use_get";
 export { addError as addErrorAction, clearErrors as clearErrorsAction, Constants as ErrorConstants } from "./actions/errors";
 export { refreshJwt as refreshJwtAction, Constants as JwtConstants } from "./actions/jwt";
 export { openModal as openModalAction, closeModal as closeModalAction, Constants as ModalConstants } from "./actions/modal";
