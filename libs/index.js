@@ -257,6 +257,12 @@ Object.defineProperty(exports, "isLtiAdmin", {
     return _lti_roles.isLtiAdmin;
   }
 });
+Object.defineProperty(exports, "useGet", {
+  enumerable: true,
+  get: function get() {
+    return _use_get["default"];
+  }
+});
 
 var _errors = require("./actions/errors");
 
@@ -309,6 +315,8 @@ var _modal3 = _interopRequireDefault(require("./decorators/modal"));
 var _resize_iframe = _interopRequireDefault(require("./libs/resize_iframe"));
 
 var _lti_roles = require("./libs/lti_roles");
+
+var _use_get = _interopRequireDefault(require("./hooks/use_get"));
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 

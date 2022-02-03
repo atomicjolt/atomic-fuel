@@ -77,3 +77,6 @@ export {
   isLtiInstructor,
   isLtiAdmin
 } from './libs/lti_roles';
+
+// HOOKS
+export { default as useGet } from './hooks/use_get';
