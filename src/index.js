@@ -80,3 +80,7 @@ export {
 
 // HOOKS
 export { default as useGet } from './hooks/use_get';
+export { default as usePost } from './hooks/use_post';
+export { default as usePut } from './hooks/use_put';
+export { default as useDelete } from './hooks/use_delete';
+

@@ -263,6 +263,24 @@ Object.defineProperty(exports, "useGet", {
     return _use_get["default"];
   }
 });
+Object.defineProperty(exports, "usePost", {
+  enumerable: true,
+  get: function get() {
+    return _use_post["default"];
+  }
+});
+Object.defineProperty(exports, "usePut", {
+  enumerable: true,
+  get: function get() {
+    return _use_put["default"];
+  }
+});
+Object.defineProperty(exports, "useDelete", {
+  enumerable: true,
+  get: function get() {
+    return _use_delete["default"];
+  }
+});
 
 var _errors = require("./actions/errors");
 
@@ -317,6 +335,12 @@ var _resize_iframe = _interopRequireDefault(require("./libs/resize_iframe"));
 var _lti_roles = require("./libs/lti_roles");
 
 var _use_get = _interopRequireDefault(require("./hooks/use_get"));
+
+var _use_post = _interopRequireDefault(require("./hooks/use_post"));
+
+var _use_put = _interopRequireDefault(require("./hooks/use_put"));
+
+var _use_delete = _interopRequireDefault(require("./hooks/use_delete"));
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
