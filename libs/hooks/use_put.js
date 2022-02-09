@@ -33,23 +33,21 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 /**
  *
- * @param {string} url The url to request
- * @param {*} params Optional url parameters to pass to the request
- * @param {*} body Optional post body to pass to the request
- * @param {*} headers Optional headers to pass to the request
  * @param {number} timeout Override the default network timeout for this request
  * @returns a response with the following fields:
  * {
  *  result, - the resulting data from the request
  *  error, - error if there is one
  *  loading, - boolean indicating if the request is still loading
+ *  usePut - method that executes the put. Accepts the following arguments
+ *    @param {string} url The url to request
+ *    @param {*} params Optional url parameters to pass to the request
+ *    @param {*} body Optional post body to pass to the request
+ *    @param {*} headers Optional headers to pass to the request
  * }
  */
-function usePut(url) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var body = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-  var headers = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
-  var timeout = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : _network["default"].TIMEOUT;
+function usePut() {
+  var timeout = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _network["default"].TIMEOUT;
 
   var _useState = (0, _react.useState)(),
       _useState2 = _slicedToArray(_useState, 2),
@@ -72,51 +70,56 @@ function usePut(url) {
   var jwt = (0, _reactRedux.useSelector)(function (state) {
     return state.jwt;
   });
-  (0, _react.useEffect)(function () {
-    function send() {
-      return _send.apply(this, arguments);
-    }
 
-    function _send() {
-      _send = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        var res;
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return _api["default"].put(url, settings.api_url, jwt, settings.csrf_token, params, body, headers, timeout);
+  var putIt = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(url) {
+      var params,
+          body,
+          headers,
+          res,
+          _args = arguments;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              params = _args.length > 1 && _args[1] !== undefined ? _args[1] : {};
+              body = _args.length > 2 && _args[2] !== undefined ? _args[2] : {};
+              headers = _args.length > 3 && _args[3] !== undefined ? _args[3] : {};
+              _context.prev = 3;
+              _context.next = 6;
+              return _api["default"].put(url, settings.api_url, jwt, settings.csrf_token, params, body, headers, timeout);
 
-              case 3:
-                res = _context.sent;
-                setResult(res);
-                _context.next = 10;
-                break;
+            case 6:
+              res = _context.sent;
+              setResult(res);
+              _context.next = 13;
+              break;
 
-              case 7:
-                _context.prev = 7;
-                _context.t0 = _context["catch"](0);
-                setError(_context.t0);
+            case 10:
+              _context.prev = 10;
+              _context.t0 = _context["catch"](3);
+              setError(_context.t0);
 
-              case 10:
-                setLoading(false);
+            case 13:
+              setLoading(false);
 
-              case 11:
-              case "end":
-                return _context.stop();
-            }
+            case 14:
+            case "end":
+              return _context.stop();
           }
-        }, _callee, null, [[0, 7]]);
-      }));
-      return _send.apply(this, arguments);
-    }
+        }
+      }, _callee, null, [[3, 10]]);
+    }));
 
-    send();
-  }, []);
+    return function putIt(_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
   return {
     result: result,
     error: error,
-    loading: loading
+    loading: loading,
+    putIt: putIt
   };
 }
