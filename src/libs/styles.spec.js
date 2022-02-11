@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import addStyles from './styles.js';
 
 describe('addStyles function', () => {

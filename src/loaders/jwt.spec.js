@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import { Jwt } from './jwt';
 
 describe('Jwt', () => {

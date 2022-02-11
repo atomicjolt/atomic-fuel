@@ -31,9 +31,8 @@ describe('api', () => {
     api.get(url, apiUrl, jwt, csrf, params, headers).then((result) => {
       expect(result.statusCode).toBe(200);
       expect(result.text).toEqual(Helper.testPayload());
+      nockRequest.done();
     });
-
-    expect(nockRequest.isDone()).toBeTruthy();
   });
 
   it('calls Get without a jwt', () => {
@@ -43,9 +42,8 @@ describe('api', () => {
 
     api.get(url, apiUrl, null, csrf, params, headers).then((result) => {
       expect(result.statusCode).toBe(200);
+      nockRequest.done();
     });
-
-    expect(nockRequest.isDone()).toBeTruthy();
   });
 
   it('calls Get without a csrf', () => {
@@ -55,9 +53,8 @@ describe('api', () => {
 
     api.get(url, apiUrl, jwt, null, params, headers).then((result) => {
       expect(result.statusCode).toBe(200);
+      nockRequest.done();
     });
-
-    expect(nockRequest.isDone()).toBeTruthy();
   });
 
   it('calls Get with a full url', () => {
@@ -66,9 +63,8 @@ describe('api', () => {
 
     api.get(`${apiUrl}${url}`, apiUrl, jwt, null, params, headers).then((result) => {
       expect(result.statusCode).toBe(200);
+      nockRequest.done();
     });
-
-    expect(nockRequest.isDone()).toBeTruthy();
   });
 
   it('calls Post', () => {
@@ -77,9 +73,8 @@ describe('api', () => {
 
     api.post(url, apiUrl, jwt, csrf, params, body, headers).then((result) => {
       expect(result.statusCode).toBe(200);
+      nockRequest.done();
     });
-
-    expect(nockRequest.isDone()).toBeTruthy();
   });
 
   it('calls Post with a full url', () => {
@@ -88,9 +83,8 @@ describe('api', () => {
 
     api.post(`${apiUrl}${url}`, apiUrl, jwt, csrf, params, body, headers).then((result) => {
       expect(result.statusCode).toBe(200);
+      nockRequest.done();
     });
-
-    expect(nockRequest.isDone()).toBeTruthy();
   });
 
   it('calls Put', () => {
@@ -101,9 +95,8 @@ describe('api', () => {
       expect(result.statusCode).toBe(200);
       const request = result.req;
       expect(request.method.toLowerCase()).toEqual(Network.PUT);
+      nockRequest.done();
     });
-
-    expect(nockRequest.isDone()).toBeTruthy();
   });
 
   it('calls Delete', () => {
@@ -112,9 +105,8 @@ describe('api', () => {
 
     api.del(url, apiUrl, jwt, csrf, params, headers).then((result) => {
       expect(result.statusCode).toBe(200);
+      nockRequest.done();
     });
-
-    expect(nockRequest.isDone()).toBeTruthy();
   });
 
   it('calls execRequest directly', () => {
@@ -124,9 +116,8 @@ describe('api', () => {
     api.execRequest(Network.GET, url, apiUrl, null, null).then((result) => {
       expect(result.statusCode).toBe(200);
       expect(result.text).toEqual(Helper.testPayload());
+      nockRequest.done();
     });
-
-    expect(nockRequest.isDone()).toBeTruthy();
   });
 
   it('calls execRequest with optional timeout', () => {
@@ -137,8 +128,8 @@ describe('api', () => {
     api.execRequest(Network.GET, url, apiUrl, null, null, {}, {}, {}, timeout).then((result) => {
       expect(result.statusCode).toBe(200);
       expect(result.text).toEqual(Helper.testPayload());
+      nockRequest.done();
     });
-    expect(nockRequest.isDone()).toBeTruthy();
   });
 
   it('calls execRequest on a Delete with body', () => {
@@ -148,9 +139,8 @@ describe('api', () => {
     api.execRequest(Network.DEL, url, apiUrl, null, null, {}, {foo: 'bar'}).then((result) => {
       expect(result.statusCode).toBe(200);
       expect(result.text).toEqual(Helper.testPayload());
+      nockRequest.done();
     });
-
-    expect(nockRequest.isDone()).toBeTruthy();
   });
 
   describe('Pending Requests', () => {
