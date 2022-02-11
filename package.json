@@ -105,7 +105,7 @@
   },
   "dependencies": {
     "add": "^2.0.6",
-    "node-sass": "^6.0.0",
+    "node-sass": "^7.0.0",
     "yarn": "^1.22.10"
   }
 }
