@@ -1,6 +1,6 @@
 export class HandlerSingleton {
-    static communicator: any;
-    static instance: any;
+    static communicator: null;
+    static instance: null;
     static prepareInstance(dispatch: any, domain?: string): void;
     constructor(dispatch: any);
     dispatch: any;

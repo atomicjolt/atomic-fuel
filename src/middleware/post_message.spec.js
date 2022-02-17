@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import postMessage, { HandlerSingleton } from './post_message';
 import Helper from '../specs_support/helper';
 
@@ -30,9 +33,11 @@ describe('postMessage middleware', () => {
     const middleware = postMessage(Helper.makeStore());
     const nextHandler = () => {};
     const actionHandler = middleware(nextHandler);
-    spyOn(HandlerSingleton, 'prepareInstance');
+
+    const spy = jest.spyOn(HandlerSingleton, 'prepareInstance');
     actionHandler(action);
-    expect(HandlerSingleton.prepareInstance).toHaveBeenCalled();
+
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it('calls comm when it recieves an action', () => {
@@ -45,9 +50,9 @@ describe('postMessage middleware', () => {
     const nextHandler = () => {};
     const actionHandler = middleware(nextHandler);
     HandlerSingleton.prepareInstance(() => {});
-    spyOn(HandlerSingleton.communicator, 'comm');
+    const spy = jest.spyOn(HandlerSingleton.communicator, 'comm');
     actionHandler(action);
-    expect(HandlerSingleton.communicator.comm).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it('HandlerSingleton.handleComm calls the dispatch', () => {

@@ -3,8 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.isLtiInstructor = isLtiInstructor;
 exports.isLtiAdmin = isLtiAdmin;
+exports.isLtiInstructor = isLtiInstructor;
 
 var _lodash = _interopRequireDefault(require("lodash"));
 

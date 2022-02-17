@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import Communicator, { postMessage, broadcastMessage } from './communicator';
 
 describe('Communicator', () => {

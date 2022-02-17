@@ -1,110 +1,14 @@
 "use strict";
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "addErrorAction", {
+Object.defineProperty(exports, "Api", {
   enumerable: true,
   get: function get() {
-    return _errors.addError;
-  }
-});
-Object.defineProperty(exports, "clearErrorsAction", {
-  enumerable: true,
-  get: function get() {
-    return _errors.clearErrors;
-  }
-});
-Object.defineProperty(exports, "ErrorConstants", {
-  enumerable: true,
-  get: function get() {
-    return _errors.Constants;
-  }
-});
-Object.defineProperty(exports, "refreshJwtAction", {
-  enumerable: true,
-  get: function get() {
-    return _jwt.refreshJwt;
-  }
-});
-Object.defineProperty(exports, "JwtConstants", {
-  enumerable: true,
-  get: function get() {
-    return _jwt.Constants;
-  }
-});
-Object.defineProperty(exports, "openModalAction", {
-  enumerable: true,
-  get: function get() {
-    return _modal.openModal;
-  }
-});
-Object.defineProperty(exports, "closeModalAction", {
-  enumerable: true,
-  get: function get() {
-    return _modal.closeModal;
-  }
-});
-Object.defineProperty(exports, "ModalConstants", {
-  enumerable: true,
-  get: function get() {
-    return _modal.Constants;
-  }
-});
-Object.defineProperty(exports, "postMessageAction", {
-  enumerable: true,
-  get: function get() {
-    return _post_message.postMessage;
-  }
-});
-Object.defineProperty(exports, "PostMessageConstants", {
-  enumerable: true,
-  get: function get() {
-    return _post_message.Constants;
-  }
-});
-Object.defineProperty(exports, "errorReducer", {
-  enumerable: true,
-  get: function get() {
-    return _errors2["default"];
-  }
-});
-Object.defineProperty(exports, "jwtReducer", {
-  enumerable: true,
-  get: function get() {
-    return _jwt2["default"];
-  }
-});
-Object.defineProperty(exports, "modalReducer", {
-  enumerable: true,
-  get: function get() {
-    return _modal2["default"];
-  }
-});
-Object.defineProperty(exports, "settingsReducer", {
-  enumerable: true,
-  get: function get() {
-    return _settings["default"];
-  }
-});
-Object.defineProperty(exports, "getInitialSettings", {
-  enumerable: true,
-  get: function get() {
-    return _settings.getInitialSettings;
-  }
-});
-Object.defineProperty(exports, "postMessageMiddleware", {
-  enumerable: true,
-  get: function get() {
-    return _post_message2["default"];
-  }
-});
-Object.defineProperty(exports, "apiRequest", {
-  enumerable: true,
-  get: function get() {
-    return _api.apiRequest;
+    return _api2["default"];
   }
 });
 Object.defineProperty(exports, "ApiMiddleware", {
@@ -113,58 +17,16 @@ Object.defineProperty(exports, "ApiMiddleware", {
     return _api["default"];
   }
 });
-Object.defineProperty(exports, "jwtLoader", {
+Object.defineProperty(exports, "AtomicMutation", {
   enumerable: true,
   get: function get() {
-    return _jwt3["default"];
+    return _atomic_mutation["default"];
   }
 });
-Object.defineProperty(exports, "configureStore", {
+Object.defineProperty(exports, "AtomicQuery", {
   enumerable: true,
   get: function get() {
-    return _configure_store["default"];
-  }
-});
-Object.defineProperty(exports, "Api", {
-  enumerable: true,
-  get: function get() {
-    return _api2["default"];
-  }
-});
-Object.defineProperty(exports, "Communicator", {
-  enumerable: true,
-  get: function get() {
-    return _communicator["default"];
-  }
-});
-Object.defineProperty(exports, "postMessage", {
-  enumerable: true,
-  get: function get() {
-    return _communicator.postMessage;
-  }
-});
-Object.defineProperty(exports, "broadcastRawMessage", {
-  enumerable: true,
-  get: function get() {
-    return _communicator.broadcastRawMessage;
-  }
-});
-Object.defineProperty(exports, "broadcastMessage", {
-  enumerable: true,
-  get: function get() {
-    return _communicator.broadcastMessage;
-  }
-});
-Object.defineProperty(exports, "SettingsContext", {
-  enumerable: true,
-  get: function get() {
-    return _settings2.SettingsContext;
-  }
-});
-Object.defineProperty(exports, "withSettings", {
-  enumerable: true,
-  get: function get() {
-    return _settings2.withSettings;
+    return _atomic_query["default"];
   }
 });
 Object.defineProperty(exports, "AtomicjoltLoader", {
@@ -177,24 +39,6 @@ Object.defineProperty(exports, "AtomicjoltLoaderRaw", {
   enumerable: true,
   get: function get() {
     return _atomicjolt_loader.Loader;
-  }
-});
-Object.defineProperty(exports, "GqlStatus", {
-  enumerable: true,
-  get: function get() {
-    return _gql_status["default"];
-  }
-});
-Object.defineProperty(exports, "IframeResizeWrapper", {
-  enumerable: true,
-  get: function get() {
-    return _resize_wrapper["default"];
-  }
-});
-Object.defineProperty(exports, "InlineError", {
-  enumerable: true,
-  get: function get() {
-    return _inline_error["default"];
   }
 });
 Object.defineProperty(exports, "Banner", {
@@ -221,22 +65,112 @@ Object.defineProperty(exports, "ButtonType", {
     return _Button.ButtonType;
   }
 });
-Object.defineProperty(exports, "AtomicMutation", {
+Object.defineProperty(exports, "Communicator", {
   enumerable: true,
   get: function get() {
-    return _atomic_mutation["default"];
+    return _communicator["default"];
   }
 });
-Object.defineProperty(exports, "AtomicQuery", {
+Object.defineProperty(exports, "ErrorConstants", {
   enumerable: true,
   get: function get() {
-    return _atomic_query["default"];
+    return _errors.Constants;
   }
 });
-Object.defineProperty(exports, "modalDecorator", {
+Object.defineProperty(exports, "GqlStatus", {
   enumerable: true,
   get: function get() {
-    return _modal3["default"];
+    return _gql_status["default"];
+  }
+});
+Object.defineProperty(exports, "IframeResizeWrapper", {
+  enumerable: true,
+  get: function get() {
+    return _resize_wrapper["default"];
+  }
+});
+Object.defineProperty(exports, "InlineError", {
+  enumerable: true,
+  get: function get() {
+    return _inline_error["default"];
+  }
+});
+Object.defineProperty(exports, "JwtConstants", {
+  enumerable: true,
+  get: function get() {
+    return _jwt.Constants;
+  }
+});
+Object.defineProperty(exports, "ModalConstants", {
+  enumerable: true,
+  get: function get() {
+    return _modal.Constants;
+  }
+});
+Object.defineProperty(exports, "PostMessageConstants", {
+  enumerable: true,
+  get: function get() {
+    return _post_message.Constants;
+  }
+});
+Object.defineProperty(exports, "SettingsContext", {
+  enumerable: true,
+  get: function get() {
+    return _settings2.SettingsContext;
+  }
+});
+Object.defineProperty(exports, "addErrorAction", {
+  enumerable: true,
+  get: function get() {
+    return _errors.addError;
+  }
+});
+Object.defineProperty(exports, "apiRequest", {
+  enumerable: true,
+  get: function get() {
+    return _api.apiRequest;
+  }
+});
+Object.defineProperty(exports, "broadcastMessage", {
+  enumerable: true,
+  get: function get() {
+    return _communicator.broadcastMessage;
+  }
+});
+Object.defineProperty(exports, "broadcastRawMessage", {
+  enumerable: true,
+  get: function get() {
+    return _communicator.broadcastRawMessage;
+  }
+});
+Object.defineProperty(exports, "clearErrorsAction", {
+  enumerable: true,
+  get: function get() {
+    return _errors.clearErrors;
+  }
+});
+Object.defineProperty(exports, "closeModalAction", {
+  enumerable: true,
+  get: function get() {
+    return _modal.closeModal;
+  }
+});
+Object.defineProperty(exports, "configureStore", {
+  enumerable: true,
+  get: function get() {
+    return _configure_store["default"];
+  }
+});
+Object.defineProperty(exports, "errorReducer", {
+  enumerable: true,
+  get: function get() {
+    return _errors2["default"];
+  }
+});
+Object.defineProperty(exports, "getInitialSettings", {
+  enumerable: true,
+  get: function get() {
+    return _settings.getInitialSettings;
   }
 });
 Object.defineProperty(exports, "iframeResizeHandler", {
@@ -245,16 +179,82 @@ Object.defineProperty(exports, "iframeResizeHandler", {
     return _resize_iframe["default"];
   }
 });
+Object.defineProperty(exports, "isLtiAdmin", {
+  enumerable: true,
+  get: function get() {
+    return _lti_roles.isLtiAdmin;
+  }
+});
 Object.defineProperty(exports, "isLtiInstructor", {
   enumerable: true,
   get: function get() {
     return _lti_roles.isLtiInstructor;
   }
 });
-Object.defineProperty(exports, "isLtiAdmin", {
+Object.defineProperty(exports, "jwtLoader", {
   enumerable: true,
   get: function get() {
-    return _lti_roles.isLtiAdmin;
+    return _jwt3["default"];
+  }
+});
+Object.defineProperty(exports, "jwtReducer", {
+  enumerable: true,
+  get: function get() {
+    return _jwt2["default"];
+  }
+});
+Object.defineProperty(exports, "modalDecorator", {
+  enumerable: true,
+  get: function get() {
+    return _modal3["default"];
+  }
+});
+Object.defineProperty(exports, "modalReducer", {
+  enumerable: true,
+  get: function get() {
+    return _modal2["default"];
+  }
+});
+Object.defineProperty(exports, "openModalAction", {
+  enumerable: true,
+  get: function get() {
+    return _modal.openModal;
+  }
+});
+Object.defineProperty(exports, "postMessage", {
+  enumerable: true,
+  get: function get() {
+    return _communicator.postMessage;
+  }
+});
+Object.defineProperty(exports, "postMessageAction", {
+  enumerable: true,
+  get: function get() {
+    return _post_message.postMessage;
+  }
+});
+Object.defineProperty(exports, "postMessageMiddleware", {
+  enumerable: true,
+  get: function get() {
+    return _post_message2["default"];
+  }
+});
+Object.defineProperty(exports, "refreshJwtAction", {
+  enumerable: true,
+  get: function get() {
+    return _jwt.refreshJwt;
+  }
+});
+Object.defineProperty(exports, "settingsReducer", {
+  enumerable: true,
+  get: function get() {
+    return _settings["default"];
+  }
+});
+Object.defineProperty(exports, "useDelete", {
+  enumerable: true,
+  get: function get() {
+    return _use_delete["default"];
   }
 });
 Object.defineProperty(exports, "useGet", {
@@ -275,10 +275,10 @@ Object.defineProperty(exports, "usePut", {
     return _use_put["default"];
   }
 });
-Object.defineProperty(exports, "useDelete", {
+Object.defineProperty(exports, "withSettings", {
   enumerable: true,
   get: function get() {
-    return _use_delete["default"];
+    return _settings2.withSettings;
   }
 });
 

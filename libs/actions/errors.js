@@ -3,9 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.clearErrors = clearErrors;
-exports.addError = addError;
 exports.Constants = void 0;
+exports.addError = addError;
+exports.clearErrors = clearErrors;
 
 var _wrapper = _interopRequireDefault(require("../constants/wrapper"));
 

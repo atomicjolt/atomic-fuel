@@ -1,6 +1,6 @@
 export default function _default(dispatch: any, currentUserId: any, refresh?: number): void;
 export class Jwt {
-    constructor(jwt: any, apiUrl: any, oauthConsumerKey?: any, refresh?: number);
+    constructor(jwt: any, apiUrl: any, oauthConsumerKey?: null, refresh?: number);
     jwt: any;
     apiUrl: any;
     oauthConsumerKey: any;

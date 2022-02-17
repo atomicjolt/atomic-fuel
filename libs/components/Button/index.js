@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Button = exports.ButtonType = void 0;
+exports.ButtonType = exports.Button = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 

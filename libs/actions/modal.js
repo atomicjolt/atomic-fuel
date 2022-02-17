@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.closeModal = exports.openModal = exports.Constants = void 0;
+exports.openModal = exports.closeModal = exports.Constants = void 0;
 
 var _wrapper = _interopRequireDefault(require("../constants/wrapper"));
 
