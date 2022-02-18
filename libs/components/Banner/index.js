@@ -1,51 +1,33 @@
 "use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Banner = Banner;
-exports.BannerTypes = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-require("./styles.css");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var BannerTypes = Object.freeze({
-  ERROR: 'error',
-  RELIEF: 'relief',
-  WARNING: 'warning'
-});
-exports.BannerTypes = BannerTypes;
-
-function Banner(props) {
-  var heading = props.heading,
-      message = props.message,
-      type = props.type,
-      icon = props.icon,
-      overrideClass = props.overrideClass;
-  var baseClass = Boolean(overrideClass) ? overrideClass : 'Banner';
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: (0, _classnames["default"])("".concat(baseClass), _defineProperty({}, "".concat(baseClass, "--").concat(type), Boolean(type)))
-  }, !!icon && /*#__PURE__*/_react["default"].createElement("i", {
-    className: "material-icons"
-  }, icon), !!heading && /*#__PURE__*/_react["default"].createElement("h3", null, heading), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(baseClass, "__content"),
-    "data-testid": "msg"
-  }, message));
-}
-
-Banner.propTypes = {
-  heading: _propTypes["default"].string,
-  message: _propTypes["default"].string.isRequired,
-  type: _propTypes["default"].string,
-  icon: _propTypes["default"].string,
-  overrideClass: _propTypes["default"].string
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Banner = exports.BannerTypes = void 0;
+var react_1 = __importDefault(require("react"));
+var prop_types_1 = __importDefault(require("prop-types"));
+var classnames_1 = __importDefault(require("classnames"));
+require("./styles.css");
+exports.BannerTypes = Object.freeze({
+    ERROR: 'error',
+    RELIEF: 'relief',
+    WARNING: 'warning',
+});
+function Banner(props) {
+    var _a;
+    var heading = props.heading, message = props.message, type = props.type, icon = props.icon, overrideClass = props.overrideClass;
+    var baseClass = Boolean(overrideClass) ? overrideClass : 'Banner';
+    return (react_1.default.createElement("div", { className: (0, classnames_1.default)("".concat(baseClass), (_a = {}, _a["".concat(baseClass, "--").concat(type)] = Boolean(type), _a)) },
+        !!icon && react_1.default.createElement("i", { className: "material-icons" }, icon),
+        !!heading && react_1.default.createElement("h3", null, heading),
+        react_1.default.createElement("div", { className: "".concat(baseClass, "__content"), "data-testid": "msg" }, message)));
+}
+exports.Banner = Banner;
+Banner.propTypes = {
+    heading: prop_types_1.default.string,
+    message: prop_types_1.default.string.isRequired,
+    type: prop_types_1.default.string,
+    icon: prop_types_1.default.string,
+    overrideClass: prop_types_1.default.string,
+};
+//# sourceMappingURL=index.js.map

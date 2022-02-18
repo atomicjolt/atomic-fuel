@@ -1,26 +1,22 @@
 "use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.postMessage = exports.Constants = void 0;
-
-var _wrapper = _interopRequireDefault(require("../constants/wrapper"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-var actions = ['POST_MESSAGE'];
-var Constants = (0, _wrapper["default"])(actions, []);
-exports.Constants = Constants;
-
-var postMessage = function postMessage(message) {
-  var broadcast = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-  return {
-    type: Constants.POST_MESSAGE,
-    postMessage: true,
-    broadcast: broadcast,
-    message: message
-  };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.postMessage = exports.Constants = void 0;
+var wrapper_1 = __importDefault(require("../constants/wrapper"));
+var actions = [
+    'POST_MESSAGE',
+];
+exports.Constants = (0, wrapper_1.default)(actions, []);
+var postMessage = function (message, broadcast) {
+    if (broadcast === void 0) { broadcast = false; }
+    return ({
+        type: exports.Constants.POST_MESSAGE,
+        postMessage: true,
+        broadcast: broadcast,
+        message: message,
+    });
+};
 exports.postMessage = postMessage;
+//# sourceMappingURL=post_message.js.map

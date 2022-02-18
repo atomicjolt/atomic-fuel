@@ -1,40 +1,25 @@
 "use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = GqlStatus;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _atomicjolt_loader = _interopRequireDefault(require("./atomicjolt_loader"));
-
-var _inline_error = _interopRequireDefault(require("./errors/inline_error"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function GqlStatus(props) {
-  if (props.loading) {
-    return /*#__PURE__*/_react["default"].createElement(_atomicjolt_loader["default"], {
-      message: props.loadMessage
-    });
-  }
-
-  if (props.error) {
-    return /*#__PURE__*/_react["default"].createElement(_inline_error["default"], {
-      error: props.error.message
-    });
-  }
-
-  return null;
-}
-
-GqlStatus.propTypes = {
-  loading: _propTypes["default"].bool,
-  error: _propTypes["default"].shape({
-    message: _propTypes["default"].string
-  }),
-  loadMessage: _propTypes["default"].string
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+Object.defineProperty(exports, "__esModule", { value: true });
+var react_1 = __importDefault(require("react"));
+var prop_types_1 = __importDefault(require("prop-types"));
+var atomicjolt_loader_1 = __importDefault(require("./atomicjolt_loader"));
+var inline_error_1 = __importDefault(require("./errors/inline_error"));
+function GqlStatus(props) {
+    if (props.loading) {
+        return (react_1.default.createElement(atomicjolt_loader_1.default, { message: props.loadMessage }));
+    }
+    if (props.error) {
+        return react_1.default.createElement(inline_error_1.default, { error: props.error.message });
+    }
+    return null;
+}
+exports.default = GqlStatus;
+GqlStatus.propTypes = {
+    loading: prop_types_1.default.bool,
+    error: prop_types_1.default.shape({ message: prop_types_1.default.string }),
+    loadMessage: prop_types_1.default.string,
+};
+//# sourceMappingURL=gql_status.js.map

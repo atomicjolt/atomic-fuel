@@ -1,61 +1,43 @@
 "use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ButtonType = exports.Button = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Button = exports.ButtonType = void 0;
+var react_1 = __importDefault(require("react"));
+var classnames_1 = __importDefault(require("classnames"));
 require("./styles.css");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var ButtonType;
-exports.ButtonType = ButtonType;
-
 (function (ButtonType) {
-  ButtonType["primary"] = "primary";
-  ButtonType["secondary"] = "secondary";
-  ButtonType["large"] = "large";
-  ButtonType["primaryLarge"] = "primary-large";
-  ButtonType["small"] = "small";
-  ButtonType["gray"] = "gray";
-  ButtonType["icon"] = "icon";
-})(ButtonType || (exports.ButtonType = ButtonType = {}));
-
-var Button = /*#__PURE__*/_react["default"].forwardRef(function (props, ref) {
-  var _cn;
-
-  var _props$ariaOptions = props.ariaOptions,
-      ariaOptions = _props$ariaOptions === void 0 ? {} : _props$ariaOptions,
-      children = props.children,
-      classes = props.classes,
-      color = props.color,
-      _props$disabled = props.disabled,
-      disabled = _props$disabled === void 0 ? false : _props$disabled,
-      _props$submit = props.submit,
-      submit = _props$submit === void 0 ? false : _props$submit,
-      noBold = props.noBold,
-      rest = props.rest,
-      _props$onClick = props.onClick,
-      onClick = _props$onClick === void 0 ? function () {} : _props$onClick;
-  var buttonType = disabled ? ButtonType.gray : props.buttonType;
-  var className = (0, _classnames["default"])('aj-btn', (_cn = {}, _defineProperty(_cn, "aj-btn--".concat(color), color), _defineProperty(_cn, "aj-btn--".concat(buttonType), buttonType), _defineProperty(_cn, 'aj-btn--no-bold', noBold), _defineProperty(_cn, classes, classes), _cn));
-  return /*#__PURE__*/_react["default"].createElement("button", _extends({
-    ref: ref,
-    type: submit ? 'submit' : 'button',
-    className: className,
-    disabled: disabled
-  }, ariaOptions, rest, {
-    onClick: onClick
-  }), children);
+    ButtonType["primary"] = "primary";
+    ButtonType["secondary"] = "secondary";
+    ButtonType["large"] = "large";
+    ButtonType["primaryLarge"] = "primary-large";
+    ButtonType["small"] = "small";
+    ButtonType["gray"] = "gray";
+    ButtonType["icon"] = "icon";
+})(ButtonType = exports.ButtonType || (exports.ButtonType = {}));
+exports.Button = react_1.default.forwardRef(function (props, ref) {
+    var _a;
+    var _b = props.ariaOptions, ariaOptions = _b === void 0 ? {} : _b, children = props.children, classes = props.classes, color = props.color, _c = props.disabled, disabled = _c === void 0 ? false : _c, _d = props.submit, submit = _d === void 0 ? false : _d, noBold = props.noBold, rest = props.rest, _e = props.onClick, onClick = _e === void 0 ? function () { } : _e;
+    var buttonType = disabled ? ButtonType.gray : props.buttonType;
+    var className = (0, classnames_1.default)('aj-btn', (_a = {},
+        _a["aj-btn--".concat(color)] = color,
+        _a["aj-btn--".concat(buttonType)] = buttonType,
+        _a['aj-btn--no-bold'] = noBold,
+        _a[classes] = classes,
+        _a));
+    return (react_1.default.createElement("button", __assign({ ref: ref, type: submit ? 'submit' : 'button', className: className, disabled: disabled }, ariaOptions, rest, { onClick: onClick }), children));
 });
-
-exports.Button = Button;
+//# sourceMappingURL=index.js.map
