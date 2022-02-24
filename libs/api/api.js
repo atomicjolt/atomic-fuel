@@ -1,212 +1,154 @@
 "use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-var _lodash = _interopRequireDefault(require("lodash"));
-
-var _superagent = _interopRequireDefault(require("superagent"));
-
-var _network = _interopRequireDefault(require("../constants/network"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var lodash_1 = __importDefault(require("lodash"));
+var superagent_1 = __importDefault(require("superagent"));
+var network_1 = __importDefault(require("../constants/network"));
 var pendingRequests = {};
-
-var Api = /*#__PURE__*/function () {
-  function Api() {
-    _classCallCheck(this, Api);
-  }
-
-  _createClass(Api, null, [{
-    key: "get",
-    value: function get(url, apiUrl, jwt, csrf, params, headers) {
-      var timeout = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : _network["default"].TIMEOUT;
-      return Api.execRequest(_network["default"].GET, url, apiUrl, jwt, csrf, params, null, headers, timeout);
+var Api = /** @class */ (function () {
+    function Api() {
     }
-  }, {
-    key: "post",
-    value: function post(url, apiUrl, jwt, csrf, params, body, headers) {
-      var timeout = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : _network["default"].TIMEOUT;
-      return Api.execRequest(_network["default"].POST, url, apiUrl, jwt, csrf, params, body, headers, timeout);
-    }
-  }, {
-    key: "put",
-    value: function put(url, apiUrl, jwt, csrf, params, body, headers) {
-      var timeout = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : _network["default"].TIMEOUT;
-      return Api.execRequest(_network["default"].PUT, url, apiUrl, jwt, csrf, params, body, headers, timeout);
-    }
-  }, {
-    key: "del",
-    value: function del(url, apiUrl, jwt, csrf, params, headers) {
-      var timeout = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : _network["default"].TIMEOUT;
-      return Api.execRequest(_network["default"].DEL, url, apiUrl, jwt, csrf, params, null, headers, timeout);
-    }
-  }, {
-    key: "execRequest",
-    value: function execRequest(method, url, apiUrl, jwt, csrf, params, body, headers) {
-      var timeout = arguments.length > 8 && arguments[8] !== undefined ? arguments[8] : _network["default"].TIMEOUT;
-      return Api.doRequest(Api.makeUrl("".concat(url).concat(Api.queryStringFrom(params)), apiUrl), function (fullUrl) {
-        var request;
-
-        switch (method) {
-          case _network["default"].GET:
-            request = _superagent["default"].get(fullUrl);
-            break;
-
-          case _network["default"].POST:
-            request = _superagent["default"].post(fullUrl).send(body);
-            break;
-
-          case _network["default"].PUT:
-            request = _superagent["default"].put(fullUrl).send(body);
-            break;
-
-          case _network["default"].DEL:
-            if (_lodash["default"].isEmpty(body)) {
-              request = _superagent["default"].del(fullUrl);
-            } else {
-              request = _superagent["default"].del(fullUrl).send(body);
+    Api.get = function (url, apiUrl, jwt, csrf, params, headers, timeout) {
+        if (timeout === void 0) { timeout = network_1.default.TIMEOUT; }
+        return Api.execRequest(network_1.default.GET, url, apiUrl, jwt, csrf, params, null, headers, timeout);
+    };
+    Api.post = function (url, apiUrl, jwt, csrf, params, body, headers, timeout) {
+        if (timeout === void 0) { timeout = network_1.default.TIMEOUT; }
+        return Api.execRequest(network_1.default.POST, url, apiUrl, jwt, csrf, params, body, headers, timeout);
+    };
+    Api.put = function (url, apiUrl, jwt, csrf, params, body, headers, timeout) {
+        if (timeout === void 0) { timeout = network_1.default.TIMEOUT; }
+        return Api.execRequest(network_1.default.PUT, url, apiUrl, jwt, csrf, params, body, headers, timeout);
+    };
+    Api.del = function (url, apiUrl, jwt, csrf, params, headers, timeout) {
+        if (timeout === void 0) { timeout = network_1.default.TIMEOUT; }
+        return Api.execRequest(network_1.default.DEL, url, apiUrl, jwt, csrf, params, null, headers, timeout);
+    };
+    Api.execRequest = function (method, url, apiUrl, jwt, csrf, params, body, headers, timeout) {
+        if (timeout === void 0) { timeout = network_1.default.TIMEOUT; }
+        return Api.doRequest(Api.makeUrl("".concat(url).concat(Api.queryStringFrom(params)), apiUrl), function (fullUrl) {
+            var request;
+            switch (method) {
+                case network_1.default.GET:
+                    request = superagent_1.default.get(fullUrl);
+                    break;
+                case network_1.default.POST:
+                    request = superagent_1.default.post(fullUrl).send(body);
+                    break;
+                case network_1.default.PUT:
+                    request = superagent_1.default.put(fullUrl).send(body);
+                    break;
+                case network_1.default.DEL:
+                    if (lodash_1.default.isEmpty(body)) {
+                        request = superagent_1.default.del(fullUrl);
+                    }
+                    else {
+                        request = superagent_1.default.del(fullUrl).send(body);
+                    }
+                    break;
+                default:
+                    break;
             }
-
-            break;
-
-          default:
-            break;
-        }
-
-        request.set('Accept', 'application/json');
-        request.timeout(timeout);
-
-        if (!_lodash["default"].isNil(jwt)) {
-          request.set('Authorization', "Bearer ".concat(jwt));
-        }
-
-        if (!_lodash["default"].isNil(csrf)) {
-          request.set('X-CSRF-Token', csrf);
-        }
-
-        if (!_lodash["default"].isNil(headers)) {
-          _lodash["default"].each(headers, function (headerValue, headerKey) {
-            request.set(headerKey, headerValue);
-          });
-        }
-
-        return request;
-      }, method);
-    }
+            request.set('Accept', 'application/json');
+            request.timeout(timeout);
+            if (!lodash_1.default.isNil(jwt)) {
+                request.set('Authorization', "Bearer ".concat(jwt));
+            }
+            if (!lodash_1.default.isNil(csrf)) {
+                request.set('X-CSRF-Token', csrf);
+            }
+            if (!lodash_1.default.isNil(headers)) {
+                lodash_1.default.each(headers, function (headerValue, headerKey) {
+                    request.set(headerKey, headerValue);
+                });
+            }
+            return request;
+        }, method);
+    };
     /**
      * Returns a complete, absolute URL by conditionally appending `path` to
      * `apiUrl`.  If `path` already contains "http", it is returned as-is.
      */
-
-  }, {
-    key: "makeUrl",
-    value: function makeUrl(part, apiUrl) {
-      if (_lodash["default"].startsWith(part, 'http')) {
-        return part;
-      }
-
-      var slash = _lodash["default"].last(apiUrl.split('')) === '/' ? '' : '/';
-      var newPart = part;
-
-      if (part[0] === '/') {
-        newPart = part.slice(1);
-      }
-
-      return apiUrl + slash + newPart;
-    }
-  }, {
-    key: "doRequest",
-    value: function doRequest(url, requestMethod, requestType) {
-      // Prevent duplicate requests
-      var wrapper = Api.wrapRequest(url, requestMethod, requestType);
-
-      if (wrapper.promise) {
-        // Existing request was found. Return promise from request
-        return wrapper.promise;
-      } // No request was found. Generate a promise, add it to the wrapper and return the promise.
-
-
-      wrapper.promise = Api.promisify(wrapper.request, url); // Dispose of the request when the call is complete
-
-      wrapper.promise.then(function () {
-        Api.disposeRequest(url);
-      }, function () {
-        Api.disposeRequest(url);
-      });
-      return wrapper.promise;
-    }
-  }, {
-    key: "wrapRequest",
-    value: function wrapRequest(url, requestMethod, requestType) {
-      if (requestType === _network["default"].GET) {
-        if (!pendingRequests[url]) {
-          pendingRequests[url] = {
-            request: requestMethod(url)
-          };
+    Api.makeUrl = function (part, apiUrl) {
+        if (lodash_1.default.startsWith(part, 'http')) {
+            return part;
         }
-
-        return pendingRequests[url];
-      }
-
-      return {
-        request: requestMethod(url)
-      };
-    }
-  }, {
-    key: "disposeRequest",
-    value: function disposeRequest(url) {
-      delete pendingRequests[url];
-    }
-  }, {
-    key: "promisify",
-    value: function promisify(request) {
-      return new Promise(function (resolve, reject) {
-        request.end(function (error, res) {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(res);
-          }
+        var slash = lodash_1.default.last(apiUrl.split('')) === '/' ? '' : '/';
+        var newPart = part;
+        if (part[0] === '/') {
+            newPart = part.slice(1);
+        }
+        return apiUrl + slash + newPart;
+    };
+    Api.doRequest = function (url, requestMethod, requestType) {
+        // Prevent duplicate requests
+        var wrapper = Api.wrapRequest(url, requestMethod, requestType);
+        if (wrapper.promise) {
+            // Existing request was found. Return promise from request
+            return wrapper.promise;
+        }
+        // No request was found. Generate a promise, add it to the wrapper and return the promise.
+        wrapper.promise = Api.promisify(wrapper.request, url);
+        // Dispose of the request when the call is complete
+        wrapper.promise.then(function () {
+            Api.disposeRequest(url);
+        }, function () {
+            Api.disposeRequest(url);
         });
-      });
-    }
-  }, {
-    key: "queryStringFrom",
-    value: function queryStringFrom(params) {
-      var query = _lodash["default"].chain(params).map(function (val, key) {
-        if (val) {
-          if (_lodash["default"].isArray(val)) {
-            return _lodash["default"].map(val, function (subVal) {
-              return "".concat(key, "[]=").concat(subVal);
-            }).join('&');
-          }
-
-          return "".concat(key, "=").concat(val);
+        return wrapper.promise;
+    };
+    Api.wrapRequest = function (url, requestMethod, requestType) {
+        if (requestType === network_1.default.GET) {
+            if (!pendingRequests[url]) {
+                pendingRequests[url] = {
+                    request: requestMethod(url),
+                };
+            }
+            return pendingRequests[url];
         }
-
+        return {
+            request: requestMethod(url),
+        };
+    };
+    Api.disposeRequest = function (url) {
+        delete pendingRequests[url];
+    };
+    Api.promisify = function (request) {
+        return new Promise(function (resolve, reject) {
+            request.end(function (error, res) {
+                if (error) {
+                    reject(error);
+                }
+                else {
+                    resolve(res);
+                }
+            });
+        });
+    };
+    Api.queryStringFrom = function (params) {
+        var query = lodash_1.default.chain(params)
+            .map(function (val, key) {
+            if (val) {
+                if (lodash_1.default.isArray(val)) {
+                    return lodash_1.default.map(val, function (subVal) { return "".concat(key, "[]=").concat(subVal); }).join('&');
+                }
+                return "".concat(key, "=").concat(val);
+            }
+            return '';
+        })
+            .compact()
+            .value();
+        if (query.length > 0) {
+            return "?".concat(query.join('&'));
+        }
         return '';
-      }).compact().value();
-
-      if (query.length > 0) {
-        return "?".concat(query.join('&'));
-      }
-
-      return '';
-    }
-  }]);
-
-  return Api;
-}(); // function *doCacheRequest(url, key, requestMethod, requestType){
+    };
+    return Api;
+}());
+exports.default = Api;
+// function *doCacheRequest(url, key, requestMethod, requestType){
 //   var promise;
 //   var fullUrl = Api.makeUrl(url);
 //   if (_cache[fullUrl]) {
@@ -252,6 +194,4 @@ var Api = /*#__PURE__*/function () {
 //       return request;
 //     }
 //   }
-
-
-exports["default"] = Api;
+//# sourceMappingURL=api.js.map

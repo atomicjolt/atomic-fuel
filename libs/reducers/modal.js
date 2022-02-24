@@ -1,38 +1,19 @@
 "use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-var _modal = require("../actions/modal");
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var modal_1 = require("../actions/modal");
 var initialState = {
-  currentOpenModal: ''
+    currentOpenModal: ''
 };
-
-var _default = function _default() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-
-  switch (action.type) {
-    case _modal.Constants.OPEN_MODAL:
-      {
-        return {
-          currentOpenModal: action.modalName
-        };
-      }
-
-    case _modal.Constants.CLOSE_MODAL:
-      {
-        return {
-          currentOpenModal: ''
-        };
-      }
-
-    default:
-      return state;
-  }
-};
-
-exports["default"] = _default;
+exports.default = (function (state, action) {
+    if (state === void 0) { state = initialState; }
+    switch (action.type) {
+        case modal_1.Constants.OPEN_MODAL: {
+            return { currentOpenModal: action.modalName };
+        }
+        case modal_1.Constants.CLOSE_MODAL: {
+            return { currentOpenModal: '' };
+        }
+        default: return state;
+    }
+});
+//# sourceMappingURL=modal.js.map
