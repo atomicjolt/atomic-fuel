@@ -62,7 +62,7 @@ function useDelete(timeout) {
     if (timeout === void 0) { timeout = network_1.default.TIMEOUT; }
     var _a = (0, react_1.useState)(), result = _a[0], setResult = _a[1];
     var _b = (0, react_1.useState)(), error = _b[0], setError = _b[1];
-    var _c = (0, react_1.useState)(true), loading = _c[0], setLoading = _c[1];
+    var _c = (0, react_1.useState)(false), loading = _c[0], setLoading = _c[1];
     var settings = (0, react_redux_1.useSelector)(function (state) { return state.settings; });
     var jwt = (0, react_redux_1.useSelector)(function (state) { return state.jwt; });
     var deleteIt = function (url, params, headers) {
@@ -74,6 +74,7 @@ function useDelete(timeout) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
+                        setLoading(true);
                         return [4 /*yield*/, api_1.default.del(url, settings.api_url, jwt, settings.csrf_token, params, headers, timeout)];
                     case 1:
                         res = _a.sent();

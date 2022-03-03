@@ -20,13 +20,14 @@ import { useSelector } from 'react-redux';
 export default function useGet(timeout = NetworkConstants.TIMEOUT) {
   const [result, setResult] = useState();
   const [error, setError] = useState();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const settings = useSelector((state) => state.settings);
   const jwt = useSelector((state) => state.jwt);
 
   const getIt = async (url, params = {}, headers = {}) => {
     try {
+      setLoading(true);
       const res = await Api.get(url, settings.api_url, jwt, settings.csrf_token, params, headers, timeout);
       setResult(res);
     } catch (err) {

@@ -21,13 +21,14 @@ import { useSelector } from 'react-redux';
 export default function usePut(timeout = NetworkConstants.TIMEOUT) {
   const [result, setResult] = useState();
   const [error, setError] = useState();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const settings = useSelector((state) => state.settings);
   const jwt = useSelector((state) => state.jwt);
 
   const putIt = async (url, params = {}, body = {}, headers = {}) => {
     try {
+      setLoading(true);
       const res = await Api.put(url, settings.api_url, jwt, settings.csrf_token, params, body, headers, timeout);
       setResult(res);
     } catch (err) {
