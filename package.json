@@ -45,14 +45,13 @@
   "homepage": "https://github.com/atomicjolt/atomic-fuel",
   "main": "libs/index.js",
   "peerDependencies": {
-    "@babel/preset-react": "^7.0.0",
-    "lodash": "^4.17.15",
-    "mime": "^2.4.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "@babel/preset-react": "^7.16.7",
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-redux": "^7.2.0",
-    "redux": "^4.0.5",
-    "superagent": "^5.2.2"
+    "redux": "^4.1.2",
+    "superagent": "^7.1.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
@@ -86,7 +85,6 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "jest": "^27.5.1",
     "lodash": "^4.17.15",
-    "mime": "^3.0.0",
     "nock": "^13.2.4",
     "npm-run-all": "^4.1.5",
     "prop-types": "^15.8.1",
