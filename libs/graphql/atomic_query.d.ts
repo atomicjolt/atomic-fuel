@@ -14,6 +14,7 @@ export default class AtomicQuery extends React.Component<any, any, any> {
     constructor(props: any, context: any);
     dataReady: boolean;
     dataLoading: boolean;
+    render(): JSX.Element;
 }
 import React from "react";
 import PropTypes from "prop-types";
