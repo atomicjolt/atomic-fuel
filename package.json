@@ -83,6 +83,7 @@
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
     "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
     "lodash": "^4.17.15",
     "nock": "^13.2.4",
     "npm-run-all": "^4.1.5",
@@ -99,7 +100,6 @@
   },
   "dependencies": {
     "add": "^2.0.6",
-    "jest-environment-jsdom": "^28.1.0",
     "node-sass": "^7.0.1",
     "yarn": "^1.22.17"
   }
