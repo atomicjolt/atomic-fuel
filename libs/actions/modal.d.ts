@@ -1,4 +1,4 @@
-export const Constants: any;
+export const Constants: {};
 export function openModal(modalName: any): {
     type: any;
     modalName: any;
