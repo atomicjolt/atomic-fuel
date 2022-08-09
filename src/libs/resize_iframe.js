@@ -13,13 +13,37 @@ const defaultGetSize = () => {
 };
 
 export default function initResizeHandler(getSize = defaultGetSize) {
-  const handleResize = () => {
-    const height = getSize();
 
+  function resizeIframe() {
+    let height = getSize();
     if (height === currentHeight) return;
 
     currentHeight = height;
     sendLtiIframeResize(currentHeight);
+  }
+
+  function findAllImages(child) {
+    if (child.tagName === 'IMG') {
+      child.addEventListener('load', () => resizeIframe())
+      return;
+    }
+  
+    if (child.children.length === 0) {
+      return;
+    }
+  
+    Array.prototype.forEach.call(child.children, (child) => {
+      findAllImages(child)
+    });
+  }
+
+  const handleResize = (mutations) => {
+    if (mutations?.length > 0) {
+      for (let mutation of mutations) {
+        findAllImages(mutation.target)
+      }
+    }
+    resizeIframe()
   };
 
   const mObserver = new MutationObserver(handleResize);
