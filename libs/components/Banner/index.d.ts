@@ -9,8 +9,8 @@ export namespace Banner {
     }
 }
 export const BannerTypes: Readonly<{
-    ERROR: string;
-    RELIEF: string;
-    WARNING: string;
+    ERROR: "error";
+    RELIEF: "relief";
+    WARNING: "warning";
 }>;
 import PropTypes from "prop-types";
