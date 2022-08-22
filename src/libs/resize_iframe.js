@@ -24,7 +24,7 @@ export default function initResizeHandler(getSize = defaultGetSize) {
 
   function findAllImages(child) {
     if (child.tagName === 'IMG') {
-      child.addEventListener('load', () => resizeIframe())
+      child.addEventListener('load', resizeIframe())
       return;
     }
   
