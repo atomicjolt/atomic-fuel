@@ -12,19 +12,15 @@ const defaultGetSize = () => {
   return ruler.offsetTop;
 };
 
-export default function initResizeHandler(getSize = defaultGetSize) {
 
-  function resizeIframe() {
-    let height = getSize();
-    if (height === currentHeight) return;
 
-    currentHeight = height;
-    sendLtiIframeResize(currentHeight);
-  }
+export default function initResizeHandler(getSize = defaultGetSize, observeImages = false) {
+  const observedImages = {}
 
-  function findAllImages(child) {
-    if (child.tagName === 'IMG') {
+  function observeImageLoading(child) {
+    if (child.tagName === 'IMG' && !observedImages[child.src]) {
       child.addEventListener('load', resizeIframe())
+      observedImages[child.src] = child.src;
       return;
     }
   
@@ -33,25 +29,35 @@ export default function initResizeHandler(getSize = defaultGetSize) {
     }
   
     Array.prototype.forEach.call(child.children, (child) => {
-      findAllImages(child)
+      observeImageLoading(child)
     });
+  }
+  
+  function resizeIframe() {
+    let height = getSize();
+    if (height === currentHeight) return;
+  
+    currentHeight = height;
+    sendLtiIframeResize(currentHeight);
   }
 
   const handleResize = (mutations) => {
-    if (mutations?.length > 0) {
-      for (let mutation of mutations) {
-        findAllImages(mutation.target)
+    if (observeImages) {
+      if (mutations?.length > 0) { 
+        for (let mutation of mutations) {
+          observeImageLoading(mutation.target)
+        }
       }
     }
     resizeIframe()
   };
 
   const mObserver = new MutationObserver(handleResize);
-  window.addEventListener('resize', handleResize);
-  mObserver.observe(
-    document.documentElement,
-    {
-      attributes: true, childList: true, subtree: true, characterData: true
-    }
-  );
+  window.addEventListener("resize", handleResize);
+  mObserver.observe(document.documentElement, {
+    attributes: true,
+    childList: true,
+    subtree: true,
+    characterData: true,
+  });
 }
