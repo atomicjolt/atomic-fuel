@@ -24,7 +24,7 @@ export default function initResizeHandler(getSize = defaultGetSize, observeImage
       return;
     }
   
-    if (child.children.length === 0) {
+    if (!child?.children || child.children.length === 0) {
       return;
     }
   
