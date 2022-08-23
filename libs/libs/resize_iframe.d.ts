@@ -1,1 +1,1 @@
-export default function initResizeHandler(getSize?: () => number, observeImages?: boolean): void;
+export default function initResizeHandler(getSize?: () => number): void;
