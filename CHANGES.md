@@ -1,6 +1,6 @@
 # Change Log
 
-## 4.16.0
+## 4.18.0
 * Allow image observing in resize_wrapper
 
 ## 4.1.0
