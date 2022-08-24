@@ -53,7 +53,7 @@ export default function initResizeHandler(getSize = defaultGetSize, observeImage
   };
 
   const mObserver = new MutationObserver(handleResize);
-  window.addEventListener("resize", handleResize);
+  window.addEventListener('resize', handleResize);
   mObserver.observe(document.documentElement, {
     attributes: true,
     childList: true,
