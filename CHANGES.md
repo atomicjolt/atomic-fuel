@@ -1,5 +1,8 @@
 # Change Log
 
+## 4.18.0
+* Allow image observing in resize_wrapper
+
 ## 4.1.0
 * Changes marging to padding in loader
 * Update eslint-utils

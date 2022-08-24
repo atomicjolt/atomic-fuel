@@ -30,9 +30,9 @@ var react_1 = __importStar(require("react"));
 var prop_types_1 = __importDefault(require("prop-types"));
 var resize_iframe_1 = __importDefault(require("../../libs/resize_iframe"));
 function ResizeWrapper(props) {
-    var children = props.children, getSize = props.getSize;
+    var children = props.children, getSize = props.getSize, observeImages = props.observeImages;
     (0, react_1.useEffect)(function () {
-        (0, resize_iframe_1.default)(getSize);
+        (0, resize_iframe_1.default)(getSize, observeImages);
     }, []);
     return (react_1.default.createElement(react_1.default.Fragment, null,
         children,

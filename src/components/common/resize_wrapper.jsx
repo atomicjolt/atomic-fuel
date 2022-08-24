@@ -4,10 +4,10 @@ import initResizeHandler from '../../libs/resize_iframe';
 
 export default function ResizeWrapper(props) {
 
-  const { children, getSize } = props;
+  const { children, getSize, observeImages } = props;
 
   useEffect(() => {
-    initResizeHandler(getSize);
+    initResizeHandler(getSize, observeImages);
   }, []);
 
   return (
