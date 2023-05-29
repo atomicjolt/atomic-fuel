@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mutation } from 'react-apollo';
+import { Mutation } from '@apollo/client/react/components';
 import PropTypes from 'prop-types';
 
 import InlineError from '../components/common/errors/inline_error';

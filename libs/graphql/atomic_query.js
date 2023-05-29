@@ -30,7 +30,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
-var react_apollo_1 = require("react-apollo");
+var components_1 = require("@apollo/client/react/components");
 var prop_types_1 = __importDefault(require("prop-types"));
 var atomicjolt_loader_1 = __importDefault(require("../components/common/atomicjolt_loader"));
 var inline_error_1 = __importDefault(require("../components/common/errors/inline_error"));
@@ -44,7 +44,7 @@ var AtomicQuery = /** @class */ (function (_super) {
     }
     AtomicQuery.prototype.render = function () {
         var _this = this;
-        return (react_1.default.createElement(react_apollo_1.Query, __assign({}, this.props), function (result) {
+        return (react_1.default.createElement(components_1.Query, __assign({}, this.props), function (result) {
             var loading = result.loading, error = result.error;
             if (loading) {
                 if (!_this.dataLoading) {
