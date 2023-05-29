@@ -44,7 +44,9 @@
   "homepage": "https://github.com/atomicjolt/atomic-fuel",
   "main": "libs/index.js",
   "peerDependencies": {
+    "@apollo/client": "^3.7.14",
     "@babel/preset-react": "^7.16.7",
+    "graphql": "^16.6.0",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
