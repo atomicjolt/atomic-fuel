@@ -1,5 +1,8 @@
 # Change Log
 
+## 4.20.0
+* Migrated to @apollo/client from react-apollo & other dependencies
+
 ## 4.18.0
 * Allow image observing in resize_wrapper
 
