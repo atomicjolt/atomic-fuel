@@ -82,6 +82,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
+    "graphql": "^16.6.0",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
     "lodash": "^4.17.15",
@@ -101,7 +102,6 @@
     "yarn": "^1.22.19"
   },
   "dependencies": {
-    "@apollo/client": "~3",
-    "graphql": "^15.5.0"
+    "@apollo/client": "~3"
   }
 }
