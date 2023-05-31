@@ -1,6 +1,6 @@
 {
   "name": "atomic-fuel",
-  "version": "4.20.0",
+  "version": "5.0.0",
   "description": "Atomic Jolt's front-end library code",
   "scripts": {
     "test": "cross-env BABEL_ENV=test jest --no-cache --config package.json",
@@ -44,9 +44,7 @@
   "homepage": "https://github.com/atomicjolt/atomic-fuel",
   "main": "libs/index.js",
   "peerDependencies": {
-    "@apollo/client": "^3.7.14",
     "@babel/preset-react": "^7.16.7",
-    "graphql": "^16.6.0",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -102,5 +100,8 @@
     "typescript": "^4.7.2",
     "yarn": "^1.22.19"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@apollo/client": "~3",
+    "graphql": "^16.6.0"
+  }
 }
