@@ -1,5 +1,5 @@
 import React from 'react';
-import { Query } from 'react-apollo';
+import { Query } from '@apollo/client/react/components';
 import PropTypes from 'prop-types';
 
 import AtomicJoltLoader from '../components/common/atomicjolt_loader';
@@ -19,8 +19,8 @@ export default class AtomicQuery extends React.Component {
   };
 
   static defaultProps = {
-    onDataReady: () => {},
-    onDataLoading: () => {},
+    onDataReady: () => { },
+    onDataLoading: () => { },
   };
 
   dataReady = false;
@@ -43,7 +43,7 @@ export default class AtomicQuery extends React.Component {
               return null;
             }
             return (
-              <AtomicJoltLoader message={this.props.loadingMessage}/>
+              <AtomicJoltLoader message={this.props.loadingMessage} />
             );
           }
           if (error) {

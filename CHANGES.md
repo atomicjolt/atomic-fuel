@@ -1,5 +1,9 @@
 # Change Log
 
+## 5.00.0
+* Migrated to @apollo/client from react-apollo & other dependencies
+* @apollo/client & graphql have changed to required dependencies
+
 ## 4.18.0
 * Allow image observing in resize_wrapper
 
