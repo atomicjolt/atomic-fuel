@@ -9,6 +9,7 @@ export { default as AtomicjoltLoader } from "./components/common/atomicjolt_load
 export { default as GqlStatus } from "./components/common/gql_status";
 export { default as IframeResizeWrapper } from "./components/common/resize_wrapper";
 export { default as InlineError } from "./components/common/errors/inline_error";
+export { default as LtiLaunchCheck } from "./components/common/lti_launch_check";
 export { default as AtomicMutation } from "./graphql/atomic_mutation";
 export { default as AtomicQuery } from "./graphql/atomic_query";
 export { default as modalDecorator } from "./decorators/modal";

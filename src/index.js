@@ -63,6 +63,7 @@ export { default as IframeResizeWrapper } from './components/common/resize_wrapp
 export { default as InlineError } from './components/common/errors/inline_error';
 export { Banner, BannerTypes } from './components/Banner';
 export { Button, ButtonType } from './components/Button';
+export { default as LtiLaunchCheck } from './components/common/lti_launch_check';
 
 // APOLLO REACT COMPONENTS
 export { default as AtomicMutation } from './graphql/atomic_mutation';

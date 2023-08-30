@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useDelete = exports.usePut = exports.usePost = exports.useGet = exports.isLtiAdmin = exports.isLtiInstructor = exports.iframeResizeHandler = exports.modalDecorator = exports.AtomicQuery = exports.AtomicMutation = exports.ButtonType = exports.Button = exports.BannerTypes = exports.Banner = exports.InlineError = exports.IframeResizeWrapper = exports.GqlStatus = exports.AtomicjoltLoaderRaw = exports.AtomicjoltLoader = exports.withSettings = exports.SettingsContext = exports.broadcastMessage = exports.broadcastRawMessage = exports.postMessage = exports.Communicator = exports.Api = exports.configureStore = exports.jwtLoader = exports.ApiMiddleware = exports.apiRequest = exports.postMessageMiddleware = exports.getInitialSettings = exports.settingsReducer = exports.modalReducer = exports.jwtReducer = exports.errorReducer = exports.PostMessageConstants = exports.postMessageAction = exports.ModalConstants = exports.closeModalAction = exports.openModalAction = exports.JwtConstants = exports.refreshJwtAction = exports.ErrorConstants = exports.clearErrorsAction = exports.addErrorAction = void 0;
+exports.useDelete = exports.usePut = exports.usePost = exports.useGet = exports.isLtiAdmin = exports.isLtiInstructor = exports.iframeResizeHandler = exports.modalDecorator = exports.AtomicQuery = exports.AtomicMutation = exports.LtiLaunchCheck = exports.ButtonType = exports.Button = exports.BannerTypes = exports.Banner = exports.InlineError = exports.IframeResizeWrapper = exports.GqlStatus = exports.AtomicjoltLoaderRaw = exports.AtomicjoltLoader = exports.withSettings = exports.SettingsContext = exports.broadcastMessage = exports.broadcastRawMessage = exports.postMessage = exports.Communicator = exports.Api = exports.configureStore = exports.jwtLoader = exports.ApiMiddleware = exports.apiRequest = exports.postMessageMiddleware = exports.getInitialSettings = exports.settingsReducer = exports.modalReducer = exports.jwtReducer = exports.errorReducer = exports.PostMessageConstants = exports.postMessageAction = exports.ModalConstants = exports.closeModalAction = exports.openModalAction = exports.JwtConstants = exports.refreshJwtAction = exports.ErrorConstants = exports.clearErrorsAction = exports.addErrorAction = void 0;
 // REDUX ACTIONS
 var errors_1 = require("./actions/errors");
 Object.defineProperty(exports, "addErrorAction", { enumerable: true, get: function () { return errors_1.addError; } });
@@ -68,6 +68,8 @@ Object.defineProperty(exports, "BannerTypes", { enumerable: true, get: function 
 var Button_1 = require("./components/Button");
 Object.defineProperty(exports, "Button", { enumerable: true, get: function () { return Button_1.Button; } });
 Object.defineProperty(exports, "ButtonType", { enumerable: true, get: function () { return Button_1.ButtonType; } });
+var lti_launch_check_1 = require("./components/common/lti_launch_check");
+Object.defineProperty(exports, "LtiLaunchCheck", { enumerable: true, get: function () { return __importDefault(lti_launch_check_1).default; } });
 // APOLLO REACT COMPONENTS
 var atomic_mutation_1 = require("./graphql/atomic_mutation");
 Object.defineProperty(exports, "AtomicMutation", { enumerable: true, get: function () { return __importDefault(atomic_mutation_1).default; } });
