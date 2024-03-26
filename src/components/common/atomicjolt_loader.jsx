@@ -81,8 +81,8 @@ function renderStyles(logoColor = '#444', backgroundColor1 = '#FFEA00', backgrou
   }`);
 }
 
-export default function Loader(props) {
-  const settings = useSelector((state) => state.settings);
+export function CoreLoader(props) {
+  const { settings } = props;
   const logoColor = settings?.aj_loader?.logoColor || props.logoColor || '#444';
   const backgroundColor1 = settings?.aj_loader?.backgroundColor1 || props.backgroundColor1 || '#FFEA00';
   const backgroundColor2 = settings?.aj_loader?.backgroundColor2 || props.backgroundColor2 || '#FFFF56';
@@ -102,6 +102,11 @@ export default function Loader(props) {
       <p className="loader-text">{ props.message }</p>
     </div>
   );
+}
+
+export default function Loader(props) {
+  const settings = useSelector((state) => state.settings);
+  return <CoreLoader {...props} settings={settings} />;
 }
 
 Loader.propTypes = {
