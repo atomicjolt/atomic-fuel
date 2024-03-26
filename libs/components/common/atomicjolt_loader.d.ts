@@ -1,3 +1,4 @@
+export function CoreLoader(props: any): JSX.Element;
 declare function Loader(props: any): JSX.Element;
 declare namespace Loader {
     namespace propTypes {

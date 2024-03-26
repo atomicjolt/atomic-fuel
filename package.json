@@ -1,6 +1,6 @@
 {
   "name": "atomic-fuel",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "Atomic Jolt's front-end library code",
   "scripts": {
     "test": "cross-env BABEL_ENV=test jest --no-cache --config package.json",
@@ -34,7 +34,8 @@
   "jest": {
     "moduleNameMapper": {
       "^.+\\.(css|less)$": "<rootDir>/src/css-stub.js"
-    }
+    },
+    "testEnvironment": "jsdom"
   },
   "author": "atomicjolt (http://github.com/atomicjolt)",
   "license": "MIT",
@@ -95,6 +96,7 @@
     "react-dom": "^18.1.0",
     "react-redux": "^8.0.2",
     "redux": "^4.2.0",
+    "redux-mock-store": "^1.5.4",
     "sass": "^1.52.1",
     "superagent": "^7.1.3",
     "tslint": "^6.1.3",

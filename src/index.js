@@ -56,7 +56,8 @@ export {
 } from './components/settings';
 export {
   default as AtomicjoltLoader,
-  Loader as AtomicjoltLoaderRaw
+  Loader as AtomicjoltLoaderRaw,
+  CoreLoader as CoreLoader,
 } from './components/common/atomicjolt_loader';
 export { default as GqlStatus } from './components/common/gql_status';
 export { default as IframeResizeWrapper } from './components/common/resize_wrapper';
@@ -83,4 +84,3 @@ export { default as useGet } from './hooks/use_get';
 export { default as usePost } from './hooks/use_post';
 export { default as usePut } from './hooks/use_put';
 export { default as useDelete } from './hooks/use_delete';
-
