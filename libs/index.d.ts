@@ -25,6 +25,4 @@ export { apiRequest, default as ApiMiddleware } from "./middleware/api";
 export { default as Communicator, postMessage, broadcastRawMessage, broadcastMessage } from "./communications/communicator";
 export { SettingsContext, withSettings } from "./components/settings";
 export { default as AtomicjoltLoader, CoreLoader } from "./components/common/atomicjolt_loader";
-export { Banner, BannerTypes } from "./components/Banner";
-export { Button, ButtonType } from "./components/Button";
 export { isLtiInstructor, isLtiAdmin } from "./libs/lti_roles";

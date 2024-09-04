@@ -21,7 +21,7 @@ export default class Helper {
             dispatchedActions: never[];
         };
     };
-    static indicies(arr: any, a: any, b: any): number[];
+    static indicies(arr: any, a: any, b: any): any;
     static isBefore(...args: any[]): boolean;
 }
 import nock from "nock";

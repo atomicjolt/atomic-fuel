@@ -3,12 +3,13 @@ env:
   browser: true
   es6: true
 extends: airbnb
-parser: babel-eslint
+parser: "@typescript-eslint/parser"
 plugins:
   - react
   - jsx-a11y
   - import
   - react-hooks
+  - "@typescript-eslint"
 globals:
   describe: false
   beforeAll: false
@@ -52,11 +53,11 @@ rules:
     - 2
     - as-needed
   react/prefer-stateless-function: 0
-  react/jsx-props-no-spreading: false
+  react/jsx-props-no-spreading: 0
   react/forbid-prop-types:
     - 2
     - forbid:
-      - any
+        - any
   import/extensions: 0
   react/prop-types: 0
   import/no-named-as-default: 0
