@@ -9,4 +9,4 @@ export function addError(error: any, message: any, context: any): {
         context: any;
     };
 };
-export const Constants: {};
+export const Constants: any;

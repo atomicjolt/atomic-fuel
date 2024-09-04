@@ -3,4 +3,4 @@ export function refreshJwt(userId: any): {
     method: string;
     url: string;
 };
-export const Constants: {};
+export const Constants: any;
