@@ -15,12 +15,8 @@
     "lint": "eslint src",
     "lint_fix": "eslint src --fix",
     "prepare": "yarn clean && yarn build",
-    "prestorybook": "yarn compile:css",
-    "storybook": "npm-run-all -p watch:css dev-storybook",
-    "dev-storybook": "start-storybook -p 6006",
     "compile:css": "node-sass src/components/ -o src/components/ ",
     "watch:css": "node-sass src/components/ -o src/components/ -w -r",
-    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -60,10 +56,6 @@
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
     "@babel/preset-typescript": "^7.17.12",
-    "@storybook/addon-actions": "^6.5.5",
-    "@storybook/addon-essentials": "^6.5.5",
-    "@storybook/addon-links": "^6.5.5",
-    "@storybook/react": "^6.5.5",
     "@testing-library/react": "^13.2.0",
     "@types/jest": "^27.5.1",
     "@types/node-sass": "^4.11.2",

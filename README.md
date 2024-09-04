@@ -34,22 +34,6 @@ convenience, so you can do this:
 import { configureStore } from 'atomic-fuel';
 ```
 
-## 🛠️ Development
-Develop using Storybook, which features hot-reloading, component browsing, and testing of React Components.
-
-Run Storybook:
-`yarn storybook`
-
-#### 📝 Note
-Component file structure should be organized in the following structure.
-```
-src/components/
--- ComponentName/
----- index.js
----- index.spec.js
----- index.stories.js
----- styles.scss
-```
 ### 🚧 Building
 To build the lib folders and types run:
 `yarn build`
