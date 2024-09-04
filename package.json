@@ -12,7 +12,7 @@
     "clean": "rm -rf libs/*",
     "lint": "eslint src",
     "lint_fix": "eslint src --fix",
-    "prepare": "yarn clean && yarn build"
+    "clean_build": "yarn clean && yarn build"
   },
   "repository": {
     "type": "git",
