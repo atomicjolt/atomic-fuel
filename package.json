@@ -45,11 +45,10 @@
   "homepage": "https://github.com/atomicjolt/atomic-fuel",
   "main": "libs/index.js",
   "peerDependencies": {
-    "@babel/preset-react": "^7.16.7",
     "lodash": "^4.17.21",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-redux": "^7.2.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-redux": "^8.0.0",
     "redux": "^4.1.2",
     "superagent": "^7.1.1"
   },
