@@ -1,4 +1,8 @@
 # 🔋 Atomic Fuel
+
+>[!IMPORTANT] 
+> This project is now maintained as part of [this repository](https://github.com/atomicjolt/atomic-libs)
+
 This package contains all of the front-end library code for Atomic Jolt apps. It includes all front-end code that was previously in the `client/libs` directory.
 
 ## 🧱 Installation
